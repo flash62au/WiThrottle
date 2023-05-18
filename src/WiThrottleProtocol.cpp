@@ -511,7 +511,7 @@ void WiThrottleProtocol::processRosterList(char *c, int len) {
 		// split element in segments and parse them		
 		String name;
 		int address = 0;
-		char length = '';
+		char length = 0;
 		int segmentStartPosition = 0;
 		for(int j = 0; j < 3; j++) {
 		
