@@ -142,7 +142,7 @@ WiThrottleProtocol::check()
 
         while(stream->available()) {
             char b = stream->read();
-            if (b == NEWLINE | b==CR) {
+            if (b == NEWLINE || b==CR) {
                 // server sends TWO newlines after each command, we trigger on the
                 // first, and this skips the second one
                 if (nextChar != 0) {
@@ -397,7 +397,7 @@ WiThrottleProtocol::setCurrentFastTime(const String& s)
     else {
         console->print("updating fast time (should be "); console->print(t);
         console->print(" is "); console->print(currentFastTime);  console->println(")");
-        console->printf("currentTime is %d\n", millis());
+        console->printf("currentTime is %ld\n", millis());
     }
     currentFastTime = t;
 }
@@ -510,8 +510,8 @@ void WiThrottleProtocol::processRosterList(char *c, int len) {
 		
 		// split element in segments and parse them		
 		String name;
-		int address;
-		char length;
+		int address = 0;
+		char length = '';
 		int segmentStartPosition = 0;
 		for(int j = 0; j < 3; j++) {
 		
@@ -555,7 +555,7 @@ void WiThrottleProtocol::processTurnoutList(char *c, int len) {
 		// split element in segments and parse them		
 		String sysName;
 		String userName;
-        int state;
+        int state = 0;
 		int segmentStartPosition = 0;
 		for(int j = 0; j < 3; j++) {
 		
@@ -608,7 +608,7 @@ void WiThrottleProtocol::processRouteList(char *c, int len) {
 		// split element in segments and parse them		
 		String sysName;
 		String userName;
-        int state;
+        int state = 0;
 		int segmentStartPosition = 0;
 		for(int j = 0; j < 3; j++) {
 		
@@ -942,18 +942,18 @@ WiThrottleProtocol::releaseLocomotive(String address)
 
 String
 WiThrottleProtocol::getLeadLocomotive() {
-    if (locomotives.size()>=0) { 
+    if (locomotives.size()>0) { 
         return locomotives.front();
     }
-    return "";
+    return {};
 }
 
 String
 WiThrottleProtocol::getLocomotiveAtPosition(int position) {
-    if (locomotives.size()>=0) { 
+    if (locomotives.size()>0) { 
         return locomotives[position];
     }
-    return "";
+    return {};
 }
 
 int
