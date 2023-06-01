@@ -1,6 +1,6 @@
 /* -*- c++ -*-
  *
- * WiThrottleProtocolProtocol
+ * WiThrottleProtocol
  *
  * This package implements a WiThrottle protocol connection,
  * allow a device to communicate with a JMRI server or other
@@ -242,14 +242,14 @@ WiThrottleProtocol::processLocomotiveAction(char *c, int len)
 {
     String remainder(c);  // the leading "MTA" was not passed to this method
 
-    //console->printf("processLocomotiveAction: remainder at first is %s\n", remainder.c_str());
+    console->printf("processLocomotiveAction: remainder at first is %s\n", remainder.c_str());
 
     if (currentAddress.equals("")) {
-        //console->printf("  skipping due to no selected address\n");
+        console->printf("  skipping due to no selected address\n");
         return true;
     }
     else {
-        //console->printf("  currentAddress is '%s'\n", currentAddress.c_str());
+        console->printf("  currentAddress is '%s'\n", currentAddress.c_str());
     }
 
     String addrCheck = currentAddress + PROPERTY_SEPARATOR;
@@ -262,7 +262,7 @@ WiThrottleProtocol::processLocomotiveAction(char *c, int len)
         remainder.remove(0, allCheck.length());
     }
 
-    //console->printf("processLocomotiveAction: after separator is %s\n", remainder.c_str());
+    console->printf("processLocomotiveAction: after separator is %s\n", remainder.c_str());
 
     if (remainder.length() > 0) {
         char action = remainder[0];
@@ -285,6 +285,50 @@ WiThrottleProtocol::processLocomotiveAction(char *c, int len)
                 console->printf("unrecognized action '%c'\n", action);
                 // no processing on unrecognized actions
                 break;
+        }
+        return true;
+    }
+    else {
+        console->printf("insufficient action to process\n");
+        return false;
+    }
+}
+
+bool
+WiThrottleProtocol::processRosterFunctionList(char *c, int len)
+{
+    String remainder(c);  // the leading "MTL" was not passed to this method
+
+    console->printf("processRosterFunctionList: remainder at first is %s\n", remainder.c_str());
+
+    if (currentAddress.equals("")) {
+        console->printf("  skipping due to no selected address\n");
+        return true;
+    }
+    else {
+        console->printf("  currentAddress is '%s'\n", currentAddress.c_str());
+    }
+
+    String addrCheck = currentAddress + PROPERTY_SEPARATOR;
+    String allCheck = "*";
+    allCheck.concat(PROPERTY_SEPARATOR);
+    if (remainder.startsWith(addrCheck)) {
+        remainder.remove(0, addrCheck.length());
+    }
+    else if (remainder.startsWith(allCheck)) {
+        remainder.remove(0, allCheck.length());
+    }
+
+    console->printf("processRosterFunctionList: after separator is %s\n", remainder.c_str());
+
+    if (remainder.length() > 0) {
+        char action = remainder[0];
+
+        if (action == ']') {
+            processRosterFunctionListEntries(remainder);
+        } else {
+            console->printf("unrecognized L action '%c'\n", action);
+            // no processing on unrecognized actions
         }
         return true;
     }
@@ -366,6 +410,9 @@ WiThrottleProtocol::processCommand(char *c, int len)
     }
     else if (len > 8 && c[0]=='M' && c[1]=='T' && c[2]=='A') {
         return processLocomotiveAction(c+3, len-3);
+    }
+    else if (len > 8 && c[0]=='M' && c[1]=='T' && c[2]=='L') {
+        return processRosterFunctionList(c+3, len-3);
     }
     else if (len > 5 && c[0]=='P' && c[1]=='T' && c[2]=='A') {
         processTurnoutAction(c+3, len-3);
@@ -661,6 +708,38 @@ WiThrottleProtocol::processFunctionState(const String& functionData)
     }
 }
 
+// the string passed in will look ']\[Headlight]\[Bell]\[Whistle]\[Short Whistle]\[Steam Release]\[FX5 Light]\[FX6 Light]\[Dimmer]\[Mute]\[Water Stop]\[Injectors]\[Brake Squeal]\[Coupler]\[]\[]\[]\[]\[]\[]\[]\[]\[]\[]\[]\[]\[]\[]\[]\['
+void
+WiThrottleProtocol::processRosterFunctionListEntries(const String& s)
+{
+    String functions[28];
+
+    // loop
+    int entries = -1;
+    boolean entryFound = true;
+	int entryStartPosition = 3; //ignore the first entry separator
+    if (s.length() <= 3) entryFound =false;
+
+    while ((entryFound) && (entries < 28)) {
+	    entries++;
+
+		// get element
+		int entrySeparatorPosition = s.indexOf(ENTRY_SEPARATOR, entryStartPosition);
+        if (entrySeparatorPosition == -1) entrySeparatorPosition = s.length();
+		String entry = s.substring(entryStartPosition, entrySeparatorPosition);
+        functions[entries] = entry;
+		console->print("Function Entry: "); console->print(entries); console->print(" - "); console->println(entry);
+        
+        entryStartPosition = entrySeparatorPosition + 3;
+    }
+
+    console->print("Functions for roster entry: "); console->println(entries);
+
+    for(int i = entries+1; i < 28; i++) {
+        functions[i] = "";
+    } 
+    delegate->receivedRosterFunctionList(functions);
+}
 
 void
 WiThrottleProtocol::processSpeed(const String& speedData)

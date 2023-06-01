@@ -104,6 +104,7 @@ class WiThrottleProtocolDelegate
     virtual void heartbeatConfig(int seconds) { }
 
     virtual void receivedFunctionState(uint8_t func, bool state) { }
+    virtual void receivedRosterFunctionList(String functions[28]) { }
 
     virtual void receivedSpeed(int speed) { }             // Vnnn
     virtual void receivedDirection(Direction dir) { }     // R{0,1}
@@ -188,6 +189,7 @@ class WiThrottleProtocol
     bool processLocomotiveAction(char *c, int len);
     bool processFastTime(char *c, int len);
     bool processHeartbeat(char *c, int len);
+    bool processRosterFunctionList(char *c, int len);
     void processProtocolVersion(char *c, int len);
     void processServerType(char *c, int len);
     void processServerDescription(char *c, int len);	
@@ -197,6 +199,7 @@ class WiThrottleProtocol
     void processRouteList(char *c, int len);
     void processTrackPower(char *c, int len);
     void processFunctionState(const String& functionData);
+    void processRosterFunctionListEntries(const String& s);
     void processSpeedSteps(const String& speedStepData);
     void processDirection(const String& speedStepData);
     void processSpeed(const String& speedData);
@@ -204,6 +207,7 @@ class WiThrottleProtocol
     void processStealNeeded(char *c, int len);
     void processTurnoutAction(char *c, int len);
     void processRouteAction(char *c, int len);
+    void processUnknownCommand(const String& unknownCommand);
 
     bool checkFastTime();
     bool checkHeartbeat();

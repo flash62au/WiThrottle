@@ -233,6 +233,12 @@ void receivedRosterEntry(int index, String name, int address, char length)
 Indicates that the WiThrottle Server has sent the details of an individual roster entry.
 
 ```
+virtual void receivedRosterFunctionList(String functions[28]) { }
+```
+
+Indicates the labels of the functions for the roster entry.
+
+```
 void fastTimeChanged(uint32_t time)
 ```
 Called whenever the fast time changes.  ```time``` is a standard Unix time value.   This should probably be changed to provide hour & minute parameters instead of forcing the callee to parse unix time.  
