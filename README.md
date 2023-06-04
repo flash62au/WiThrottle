@@ -20,6 +20,7 @@ These patterns (Dependency Injection and Delegation) allow you to keep the diffe
  
  ## Differences from the lucadentella version of the library
  - Added the trademark changes from the original library
+ - supports multi-throttle commands (max 6)  (Added in version 1.1.0)
  - Rudimentary support added for on-the-fly consists
  - Support added for turnouts/points
  - Support added for routes
@@ -132,6 +133,7 @@ void requireHeartbeat(bool needed)
 Sends the ```*``` command with either ```+``` or ```-``` to indicate that heartbeat messages are needed (or not).
 
 ```
+void addLocomotive(char multiThrottle, String address)
 void addLocomotive(String address)
 ```
 Select the given locomotive address.  The address must be in the form "Snnn" or "Lnnn", where the S or L represent a short or long address, and nnn is the numeric address.   Returns ```true``` if the address was properly formed, ```false``` otherwise.
@@ -139,43 +141,62 @@ Select the given locomotive address.  The address must be in the form "Snnn" or 
 The WiThrottleProtocol library does provides only basic support adding multiple locomotives at the same time.  
 
 ```
+bool stealLocomotive(char multiThrottle, String address)
 bool stealLocomotive(String address)
 ```
 Attempt to steal a locomotive address by releasing it and then selecting it.  Return ```true``` the address is properly formed, ```false``` otherwise.
 
+multiThrottle defaults to 'T' if not specified.  Otherwise use '0', '1', '2', '3', '4', '5' only.
+
 ```
+bool releaseLocomotive(char multiThrottle, String address="*")
 bool releaseLocomotive(String address="*")
 ```
 Release the specified locomotive address.  If the address is specified as "*" (or not explicitly given, as this is the default value), all locomotives will be released.
 
+multiThrottle defaults to 'T' if not specified.  Otherwise use '0', '1', '2', '3', '4', '5' only.
+
 ### Function State
 ```
+void setFunction(char multiThrottle, int num, bool pressed)
 void setFunction(int num, bool pressed)
 ```
 Update the state for the specified function (0-28 is the acceptable range).  If the function button has been pressed down (or otherwise activated), set ```pressed``` to ```true```.   When the button is released, set ```pressed``` to ```false```. 
 
+multiThrottle defaults to 'T' if not specified.  Otherwise use '0', '1', '2', '3', '4', '5' only.
+
 ### Speed & Direction
 ```
+bool setSpeed(char multiThrottle, int value)
 bool setSpeed(int value)
 ```
 Set the DCC speed value (0-126).  If there is no locomotive selected, or if the speed value is out of range, returns ```false```, otherwise this returns ```true```.
 
+multiThrottle defaults to 'T' if not specified.  Otherwise use '0', '1', '2', '3', '4', '5' only.
+
 ```
+int getSpeed(char multiThrottle)
 int getSpeed()
 ```
 Return the current speed value.  This is not meaningful if no locomotive is selected.
 
+multiThrottle defaults to 'T' if not specified.  Otherwise use '0', '1', '2', '3', '4', '5' only.
 
 ```
+bool setDirection(char multiThrottle, Direction d)
 bool setDirection(Direction d)
 ```
 Set the direction of travel.  The values for ```d``` can be ```Forward``` or ```Reverse```.
 
+multiThrottle defaults to 'T' if not specified.  Otherwise use '0', '1', '2', '3', '4', '5' only.
 
 ```
+Direction getDirection(char multiThrottle)
 Direction getDirection()
 ```
 Returns the current direction of travel.  Will be ```Forward``` or ```Reverse```.
+
+multiThrottle defaults to 'T' if not specified.  Otherwise use '0', '1', '2', '3', '4', '5' only.
 
 ```
 void emergencyStop()

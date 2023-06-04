@@ -49,6 +49,7 @@ WiThrottleProtocol::WiThrottleProtocol(bool server) {
 
 // init the WiThrottleProtocol instance after connection to the server
 void WiThrottleProtocol::init() {
+    console->println("init()");
     
 	// allocate input buffer and init position variable
 	memset(inputbuffer, 0, sizeof(inputbuffer));
@@ -64,16 +65,21 @@ void WiThrottleProtocol::init() {
     currentFastTimeRate = 0.0;
     
 	// init global variables
-	locomotiveSelected = false;
-	currentSpeed = 0;
-	speedSteps = 0;
-	currentDirection = Forward;
+    for (int multiThrottleIndex=0; multiThrottleIndex<6; multiThrottleIndex++) {
+        locomotiveSelected[multiThrottleIndex] = false;
+        currentSpeed[multiThrottleIndex] = 0;
+        speedSteps[multiThrottleIndex] = 0;
+        currentDirection[multiThrottleIndex] = Forward;
+        locomotives[multiThrottleIndex].resize(0);
+    }
 
     //last Response time
     lastServerResponseTime = millis() /1000;
 	
 	// init change flags
     resetChangeFlags();
+
+    console->println("init(): end");
 }
 
 
@@ -92,46 +98,40 @@ void WiThrottleProtocol::setLogStream(Stream *console) {
 
 
 void
-WiThrottleProtocol::resetChangeFlags()
-{
+WiThrottleProtocol::resetChangeFlags() {
     clockChanged = false;
     heartbeatChanged = false;
 }
 
 void
-WiThrottleProtocol::connect(Stream *stream)
-{
+WiThrottleProtocol::connect(Stream *stream) {
     init();
     this->stream = stream;
 }
 
 void
-WiThrottleProtocol::disconnect()
-{
+WiThrottleProtocol::disconnect() {
     String command = "Q";
     sendCommand(command);
     this->stream = NULL;
 }
 
 void
-WiThrottleProtocol::setDeviceName(String deviceName)
-{
+WiThrottleProtocol::setDeviceName(String deviceName) {
     currentDeviceName = deviceName;
     String command = "N" + deviceName;
     sendCommand(command);
 }
 
 void
-WiThrottleProtocol::setDeviceID(String deviceId)
-{
+WiThrottleProtocol::setDeviceID(String deviceId) {
     String command = "HU" + deviceId;
     sendCommand(command);
 }
 
 
 bool
-WiThrottleProtocol::check()
-{
+WiThrottleProtocol::check() {
     bool changed = false;
     resetChangeFlags();
 
@@ -174,8 +174,7 @@ WiThrottleProtocol::check()
 }
 
 void
-WiThrottleProtocol::sendCommand(String cmd)
-{
+WiThrottleProtocol::sendCommand(String cmd) {
     if (stream) {
         // TODO: what happens when the write fails?
         stream->println(cmd);
@@ -235,24 +234,22 @@ float WiThrottleProtocol::getFastTimeRate() {
     return currentFastTimeRate;
 }
 
-
-
 bool
-WiThrottleProtocol::processLocomotiveAction(char *c, int len)
-{
+WiThrottleProtocol::processLocomotiveAction(char multiThrottle, char *c, int len) {
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
     String remainder(c);  // the leading "MTA" was not passed to this method
 
     console->printf("processLocomotiveAction: remainder at first is %s\n", remainder.c_str());
 
-    if (currentAddress.equals("")) {
+    if (currentAddress[multiThrottleIndex].equals("")) {
         console->printf("  skipping due to no selected address\n");
         return true;
     }
     else {
-        console->printf("  currentAddress is '%s'\n", currentAddress.c_str());
+        console->printf("  currentAddress is '%s'\n", currentAddress[multiThrottleIndex].c_str());
     }
 
-    String addrCheck = currentAddress + PROPERTY_SEPARATOR;
+    String addrCheck = currentAddress[multiThrottleIndex] + PROPERTY_SEPARATOR;
     String allCheck = "*";
     allCheck.concat(PROPERTY_SEPARATOR);
     if (remainder.startsWith(addrCheck)) {
@@ -270,16 +267,16 @@ WiThrottleProtocol::processLocomotiveAction(char *c, int len)
         switch (action) {
             case 'F':
                 //console->printf("processing function state\n");
-                processFunctionState(remainder);
+                processFunctionState(multiThrottle, remainder);
                 break;
             case 'V':
-                processSpeed(remainder);
+                processSpeed(multiThrottle, remainder);
                 break;
             case 's':
-                processSpeedSteps(remainder);
+                processSpeedSteps(multiThrottle, remainder);
                 break;
             case 'R':
-                processDirection(remainder);
+                processDirection(multiThrottle, remainder);
                 break;
             default:
                 console->printf("unrecognized action '%c'\n", action);
@@ -295,21 +292,21 @@ WiThrottleProtocol::processLocomotiveAction(char *c, int len)
 }
 
 bool
-WiThrottleProtocol::processRosterFunctionList(char *c, int len)
-{
+WiThrottleProtocol::processRosterFunctionList(char multiThrottle, char *c, int len) {
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
     String remainder(c);  // the leading "MTL" was not passed to this method
 
     console->printf("processRosterFunctionList: remainder at first is %s\n", remainder.c_str());
 
-    if (currentAddress.equals("")) {
+    if (currentAddress[multiThrottleIndex].equals("")) {
         console->printf("  skipping due to no selected address\n");
         return true;
     }
     else {
-        console->printf("  currentAddress is '%s'\n", currentAddress.c_str());
+        console->printf("  currentAddress is '%s'\n", currentAddress[multiThrottleIndex].c_str());
     }
 
-    String addrCheck = currentAddress + PROPERTY_SEPARATOR;
+    String addrCheck = currentAddress[multiThrottleIndex] + PROPERTY_SEPARATOR;
     String allCheck = "*";
     allCheck.concat(PROPERTY_SEPARATOR);
     if (remainder.startsWith(addrCheck)) {
@@ -325,7 +322,7 @@ WiThrottleProtocol::processRosterFunctionList(char *c, int len)
         char action = remainder[0];
 
         if (action == ']') {
-            processRosterFunctionListEntries(remainder);
+            processRosterFunctionListEntries(multiThrottle, remainder);
         } else {
             console->printf("unrecognized L action '%c'\n", action);
             // no processing on unrecognized actions
@@ -339,8 +336,7 @@ WiThrottleProtocol::processRosterFunctionList(char *c, int len)
 }
 
 bool
-WiThrottleProtocol::processCommand(char *c, int len)
-{
+WiThrottleProtocol::processCommand(char *c, int len) {
     bool changed = false;
 
     console->print("<== ");
@@ -399,20 +395,20 @@ WiThrottleProtocol::processCommand(char *c, int len)
         processRouteList(c+2, len-2);
         return true;
     }	
-    else if (len > 6 && c[0]=='M' && c[1]=='T' && c[2]=='S') {
-        processStealNeeded(c+3, len-3);
+    else if (len > 6 && c[0]=='M' && c[2]=='S') {
+        processStealNeeded(c[1], c+3, len-3);
         return true;
     }
-    else if (len > 6 && c[0]=='M' && c[1]=='T' && (c[2]=='+' || c[2]=='-')) {
+    else if (len > 6 && c[0]=='M' && (c[2]=='+' || c[2]=='-')) {
         // we want to make sure the + or - is passed in as part of the string to process
-        processAddRemove(c+2, len-2);
+        processAddRemove(c[1], c+2, len-2);
         return true;
     }
-    else if (len > 8 && c[0]=='M' && c[1]=='T' && c[2]=='A') {
-        return processLocomotiveAction(c+3, len-3);
+    else if (len > 8 && c[0]=='M' && c[2]=='A') {
+        return processLocomotiveAction(c[1], c+3, len-3);
     }
-    else if (len > 8 && c[0]=='M' && c[1]=='T' && c[2]=='L') {
-        return processRosterFunctionList(c+3, len-3);
+    else if (len > 8 && c[0]=='M' && c[2]=='L') {
+        return processRosterFunctionList(c[1], c+3, len-3);
     }
     else if (len > 5 && c[0]=='P' && c[1]=='T' && c[2]=='A') {
         processTurnoutAction(c+3, len-3);
@@ -435,8 +431,7 @@ WiThrottleProtocol::processCommand(char *c, int len)
 
 
 void
-WiThrottleProtocol::setCurrentFastTime(const String& s)
-{
+WiThrottleProtocol::setCurrentFastTime(const String& s) {
     int t = s.toInt();
     if (currentFastTime == 0.0) {
         console->print("set fast time to "); console->println(t);
@@ -451,8 +446,7 @@ WiThrottleProtocol::setCurrentFastTime(const String& s)
 
 
 bool
-WiThrottleProtocol::processFastTime(char *c, int len)
-{
+WiThrottleProtocol::processFastTime(char *c, int len) {
     // keep this style -- I don't validate the settings and syntax
     // as well as I could, so someday we might return false
 
@@ -481,8 +475,7 @@ WiThrottleProtocol::processFastTime(char *c, int len)
 
 
 bool
-WiThrottleProtocol::processHeartbeat(char *c, int len)
-{
+WiThrottleProtocol::processHeartbeat(char *c, int len) {
     bool changed = false;
     String s(c);
 
@@ -499,8 +492,7 @@ WiThrottleProtocol::processHeartbeat(char *c, int len)
 
 
 void
-WiThrottleProtocol::processProtocolVersion(char *c, int len)
-{
+WiThrottleProtocol::processProtocolVersion(char *c, int len) {
     if (delegate && len > 0) {
         String protocolVersion = String(c);
         delegate->receivedVersion(protocolVersion);
@@ -524,8 +516,7 @@ void WiThrottleProtocol::processServerDescription(char *c, int len) {
 }
 
 void
-WiThrottleProtocol::processWebPort(char *c, int len)
-{
+WiThrottleProtocol::processWebPort(char *c, int len) {
     if (delegate && len > 0) {
         String port_string = String(c);
         int port = port_string.toInt();
@@ -535,6 +526,7 @@ WiThrottleProtocol::processWebPort(char *c, int len)
 }
 
 void WiThrottleProtocol::processRosterList(char *c, int len) {
+    console->println("processRosterList()");
 
 	String s(c);
 
@@ -579,9 +571,13 @@ void WiThrottleProtocol::processRosterList(char *c, int len) {
 		
 		entryStartPosition = entrySeparatorPosition + 3;
 	}
+
+    console->println("processRosterList(): end");
 }
 
 void WiThrottleProtocol::processTurnoutList(char *c, int len) {
+    console->println("processTurnoutList()");
+
   	String s(c);
 
     // loop
@@ -632,9 +628,11 @@ void WiThrottleProtocol::processTurnoutList(char *c, int len) {
 	// if set, call the delegate method
 	if (delegate) delegate->receivedTurnoutEntries(entries+1);	
 
+    console->println("processTurnoutList(): end");
 }
 
 void WiThrottleProtocol::processRouteList(char *c, int len) {
+    console->println("processRouteList()");
   	String s(c);
 
     // loop
@@ -685,13 +683,29 @@ void WiThrottleProtocol::processRouteList(char *c, int len) {
 	// if set, call the delegate method
 	if (delegate) delegate->receivedRouteEntries(entries+1);	
 
+    console->println("processRouteList(): end");
+}
+
+// supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+int 
+WiThrottleProtocol::getMultiThrottleIndex(char multiThrottle) {
+    console->print("getMultiThrottleIndex(): "); console->println(multiThrottle);
+    int mThrottle = multiThrottle - '0';
+
+
+    if ((mThrottle >= 0) && (mThrottle<=5)) {
+        return mThrottle;
+    } else {
+        return 0;
+    }
 }
 
 // the string passed in will look 'F03' (meaning turn off Function 3) or
 // 'F112' (turn on function 12)
 void
-WiThrottleProtocol::processFunctionState(const String& functionData)
-{
+WiThrottleProtocol::processFunctionState(char multiThrottle, const String& functionData) {
+    console->print("processFunctionState(): "); console->println(multiThrottle);
+
     // F[0|1]nn - where nn is 0-28
     if (delegate && functionData.length() >= 3) {
         bool state = functionData[1]=='1' ? true : false;
@@ -703,15 +717,22 @@ WiThrottleProtocol::processFunctionState(const String& functionData)
             // error in parsing
         }
         else {
-            delegate->receivedFunctionState(funcNum, state);
+            if (multiThrottle == DEFAULT_MULTITHROTTLE) {
+                delegate->receivedFunctionState(funcNum, state);
+            } else {
+                delegate->receivedFunctionStateMultiThrottle(multiThrottle,funcNum, state);
+            }
         }
     }
+    console->println("processFunctionState(): end");
 }
+
 
 // the string passed in will look ']\[Headlight]\[Bell]\[Whistle]\[Short Whistle]\[Steam Release]\[FX5 Light]\[FX6 Light]\[Dimmer]\[Mute]\[Water Stop]\[Injectors]\[Brake Squeal]\[Coupler]\[]\[]\[]\[]\[]\[]\[]\[]\[]\[]\[]\[]\[]\[]\[]\['
 void
-WiThrottleProtocol::processRosterFunctionListEntries(const String& s)
-{
+WiThrottleProtocol::processRosterFunctionListEntries(char multiThrottle, const String& s) {
+    console->print("processRosterFunctionListEntries(): "); console->println(multiThrottle);
+
     String functions[28];
 
     // loop
@@ -738,12 +759,21 @@ WiThrottleProtocol::processRosterFunctionListEntries(const String& s)
     for(int i = entries+1; i < 28; i++) {
         functions[i] = "";
     } 
-    delegate->receivedRosterFunctionList(functions);
+
+    if (multiThrottle == DEFAULT_MULTITHROTTLE) {
+        delegate->receivedRosterFunctionList(functions);
+    } else {
+        delegate->receivedRosterFunctionListMultiThrottle(multiThrottle, functions);
+    }
+
+    console->println("processRosterFunctionListEntries(): end");
 }
 
+
 void
-WiThrottleProtocol::processSpeed(const String& speedData)
-{
+WiThrottleProtocol::processSpeed(char multiThrottle, const String& speedData) {
+    console->print("processSpeed(): "); console->println(multiThrottle);
+
     if (delegate && speedData.length() >= 2) {
         String speedStr = speedData.substring(1);
         int speed = speedStr.toInt();
@@ -752,14 +782,21 @@ WiThrottleProtocol::processSpeed(const String& speedData)
             speed = 0;
         }
 
-        delegate->receivedSpeed(speed);
+        if (multiThrottle == DEFAULT_MULTITHROTTLE) {
+            delegate->receivedSpeed(speed);
+        } else {
+            delegate->receivedSpeedMultiThrottle(multiThrottle, speed);
+        }
     }
+
+    console->println("processSpeed(): end");
 }
 
 
 void
-WiThrottleProtocol::processSpeedSteps(const String& speedStepData)
-{
+WiThrottleProtocol::processSpeedSteps(char multiThrottle, const String& speedStepData) {
+    console->print("processSpeedSteps(): "); console->println(multiThrottle);
+
     if (delegate && speedStepData.length() >= 2) {
         String speedStepStr = speedStepData.substring(1);
         int steps = speedStepStr.toInt();
@@ -768,15 +805,23 @@ WiThrottleProtocol::processSpeedSteps(const String& speedStepData)
             // error, not one of the known values
         }
         else {
-            delegate->receivedSpeedSteps(steps);
+            if (multiThrottle == DEFAULT_MULTITHROTTLE) {
+                delegate->receivedSpeedSteps(steps);
+            } else {
+                delegate->receivedSpeedStepsMultiThrottle(multiThrottle, steps);
+            }
         }
     }
+
+    console->println("processSpeedSteps(): end");
 }
 
 
 void
-WiThrottleProtocol::processDirection(const String& directionStr)
-{
+WiThrottleProtocol::processDirection(char multiThrottle, const String& directionStr) {
+    console->print("processDirection(): "); console->println(multiThrottle);
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
     console->print("DIRECTION STRING: ");
     console->println(directionStr);
     console->print("LENGTH: ");
@@ -786,21 +831,28 @@ WiThrottleProtocol::processDirection(const String& directionStr)
     // R[0|1]
     if (delegate && directionStr.length() == 2) {
         if (directionStr.charAt(1) == '0') {
-            currentDirection = Reverse;
+            currentDirection[multiThrottleIndex] = Reverse;
         }
         else {
-            currentDirection = Forward;
+            currentDirection[multiThrottleIndex] = Forward;
         }
 
-        delegate->receivedDirection(currentDirection);
+        if (multiThrottle == DEFAULT_MULTITHROTTLE) {
+            delegate->receivedDirection(currentDirection[multiThrottleIndex]);
+        } else {
+            delegate->receivedDirectionMultiThrottle(multiThrottle, currentDirection[multiThrottleIndex]);
+        }
     }
+
+    console->println("processDirection(): end"); 
 }
 
 
 
 void
-WiThrottleProtocol::processTrackPower(char *c, int len)
-{
+WiThrottleProtocol::processTrackPower(char *c, int len) {
+    console->println("processTrackPower()");
+
     if (delegate) {
         if (len > 0) {
             TrackPower state = PowerUnknown;
@@ -818,8 +870,9 @@ WiThrottleProtocol::processTrackPower(char *c, int len)
 
 
 void
-WiThrottleProtocol::processAddRemove(char *c, int len)
-{
+WiThrottleProtocol::processAddRemove(char multiThrottle, char *c, int len) {
+    console->print("processAddRemove(): "); console->println(multiThrottle);
+
     if (!delegate) {
         // If no one is listening, don't do the work to parse the string
         return;
@@ -841,7 +894,11 @@ WiThrottleProtocol::processAddRemove(char *c, int len)
         entry.trim();
 
         if (add) {
-            delegate->addressAdded(address, entry);
+            if (multiThrottle == DEFAULT_MULTITHROTTLE) {
+                delegate->addressAdded(address, entry);
+            } else {
+                delegate->addressAddedMultiThrottle(multiThrottle, address, entry);
+            }
         }
         if (remove) {
             if (entry.equals("d\n") || entry.equals("r\n")) {
@@ -857,13 +914,13 @@ WiThrottleProtocol::processAddRemove(char *c, int len)
         }
     }
 
-
+    console->println("processAddRemove(): end"); 
 }
 
-
 void
-WiThrottleProtocol::processStealNeeded(char *c, int len)
-{
+WiThrottleProtocol::processStealNeeded(char multiThrottle, char *c, int len) {
+    console->print("processStealNeeded(): "); console->println(multiThrottle);
+
     if (!delegate) {
         // If no one is listening, don't do the work to parse the string
         return;
@@ -878,13 +935,18 @@ WiThrottleProtocol::processStealNeeded(char *c, int len)
         String address = s.substring(0, p);
         String entry   = s.substring(p+3);
 
-        delegate->addressStealNeeded(address, entry);
+        if (multiThrottle == DEFAULT_MULTITHROTTLE) {
+            delegate->addressStealNeeded(address, entry);
+        } else {
+            delegate->addressStealNeededMultiThrottle(multiThrottle, address, entry);
+        }
     }
+
+    console->println("processStealNeeded(): end");
 }
 
 void
-WiThrottleProtocol::processTurnoutAction(char *c, int len)
-{
+WiThrottleProtocol::processTurnoutAction(char *c, int len) {
     if (delegate) {
         String s(c);
         String systemName = s.substring(1,s.length()-1);
@@ -907,8 +969,7 @@ WiThrottleProtocol::processTurnoutAction(char *c, int len)
 }
 
 void
-WiThrottleProtocol::processRouteAction(char *c, int len)
-{
+WiThrottleProtocol::processRouteAction(char *c, int len) {
     if (delegate) {
         String s(c);
         String systemName = s.substring(1,s.length()-1);
@@ -941,8 +1002,7 @@ bool WiThrottleProtocol::checkHeartbeat() {
 
 
 void
-WiThrottleProtocol::requireHeartbeat(bool needed)
-{
+WiThrottleProtocol::requireHeartbeat(bool needed) {
     if (needed) {
         sendCommand("*+");
     }
@@ -952,132 +1012,207 @@ WiThrottleProtocol::requireHeartbeat(bool needed)
 }
 
 bool
-WiThrottleProtocol::addLocomotive(String address)
-{
+WiThrottleProtocol::addLocomotive(String address) {
+    return addLocomotive(DEFAULT_MULTITHROTTLE, address);
+}
+
+bool
+WiThrottleProtocol::addLocomotive(char multiThrottle, String address) {
+    console->print("addLocomotive(): "); console->print(multiThrottle); console->print(" : "); console->println(address);
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
     bool ok = false;
 
     if (address[0] == 'S' || address[0] == 'L') {
         String rosterName = address; 
-        String cmd = "MT+" + address + PROPERTY_SEPARATOR + rosterName;
+        String cmd = "M" + String(multiThrottle) + "+" + address + PROPERTY_SEPARATOR + rosterName;
         sendCommand(cmd);
 
         boolean locoAlreadyInList = false;
-        for(int i=0;i<locomotives.size();i++) {
-            if (locomotives[i].equals(address)) {
+        for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
+            if (locomotives[multiThrottleIndex][i].equals(address)) {
                 locoAlreadyInList = true;
                 break;
             }
         } 
         if (!locoAlreadyInList) {
-            locomotives.push_back(address);
-            currentAddress = locomotives.front();
-
-            locomotiveSelected = true;
+            locomotives[multiThrottleIndex].push_back(address);
+            currentAddress[multiThrottleIndex] = locomotives[multiThrottleIndex].front();
+            locomotiveSelected[multiThrottleIndex] = true;
         }
         ok = true;
     }
 
+    console->print("addLocomotive(): end : ");  console->println(ok); 
     return ok;
 }
 
 
 bool
-WiThrottleProtocol::stealLocomotive(String address)
-{
+WiThrottleProtocol::stealLocomotive(String address) {
+    return stealLocomotive(DEFAULT_MULTITHROTTLE, address);
+}
+
+bool
+WiThrottleProtocol::stealLocomotive(char multiThrottle, String address) {
+    console->print("stealLocomotive(): "); console->print(multiThrottle); console->print(" : "); console->println(address);
+
     bool ok = false;
 
-    if (releaseLocomotive(address)) {
-        ok = addLocomotive(address);
+    if (releaseLocomotive(multiThrottle, address)) {
+        ok = addLocomotive(multiThrottle, address);
     }
 
     return ok;
 }
 
+bool
+WiThrottleProtocol::releaseLocomotive(String address) {
+    return releaseLocomotive(DEFAULT_MULTITHROTTLE, address);
+}
 
 bool
-WiThrottleProtocol::releaseLocomotive(String address)
-{
+WiThrottleProtocol::releaseLocomotive(char multiThrottle, String address) {
+    console->print("releaseLocomotive(): "); console->print(multiThrottle); console->print(" : "); console->println(address);
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
     // MT-*<;>r
-    String cmd = "MT-";
+    String cmd = "M" + String(multiThrottle) + "-";
     cmd.concat(address);
     cmd.concat(PROPERTY_SEPARATOR);
     cmd.concat("r");
     sendCommand(cmd);
 
-    for(int i=0;i<locomotives.size();i++) {
-        if (locomotives[i].equals(address)) {
-           locomotives.erase(locomotives.begin()+i);
+    for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
+        if (locomotives[multiThrottleIndex][i].equals(address)) {
+           locomotives[multiThrottleIndex].erase(locomotives[multiThrottleIndex].begin()+i);
            break;
         }
     } 
-    if (locomotives.size()==0) { 
-        locomotiveSelected = false;
-        currentAddress = "";
+    if (locomotives[multiThrottleIndex].size()==0) { 
+        locomotiveSelected[multiThrottleIndex] = false;
+        currentAddress[multiThrottleIndex] = "";
     } else {        
-        currentAddress = locomotives.front();
+        currentAddress[multiThrottleIndex] = locomotives[multiThrottleIndex].front();
     }
+
+    console->println("releaseLocomotive(): end"); 
     return true;
 }
 
+
 String
 WiThrottleProtocol::getLeadLocomotive() {
-    if (locomotives.size()>0) { 
-        return locomotives.front();
+    return getLeadLocomotive(DEFAULT_MULTITHROTTLE);
+}
+
+String
+WiThrottleProtocol::getLeadLocomotive(char multiThrottle) {
+    console->print("getLeadLocomotive(): "); console->println(multiThrottle);
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
+    if (locomotives[multiThrottleIndex].size()>0) { 
+        return locomotives[multiThrottleIndex].front();
     }
     return {};
 }
+
 
 String
 WiThrottleProtocol::getLocomotiveAtPosition(int position) {
-    if (locomotives.size()>0) { 
-        return locomotives[position];
+    return getLocomotiveAtPosition(DEFAULT_MULTITHROTTLE, position);
+}
+
+String
+WiThrottleProtocol::getLocomotiveAtPosition(char multiThrottle, int position) {
+    console->print("getLocomotiveAtPosition(): "); console->print(multiThrottle); console->print(" : "); console->println(position);
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
+    console->print("getLocomotiveAtPosition(): vector size: "); console->println(locomotives[multiThrottleIndex].size());
+    if (locomotives[multiThrottleIndex].size()>0) { 
+        console->print("getLocomotiveAtPosition(): return: "); console->println(locomotives[multiThrottleIndex][position]);
+        return locomotives[multiThrottleIndex][position];
     }
     return {};
 }
 
+
 int
 WiThrottleProtocol::getNumberOfLocomotives() {
-    return locomotives.size();
+    return getNumberOfLocomotives(DEFAULT_MULTITHROTTLE);
+}
+
+int
+WiThrottleProtocol::getNumberOfLocomotives(char multiThrottle) {
+    console->print("getNumberOfLocomotives(): "); console->println(multiThrottle);
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
+
+    int size = locomotives[multiThrottleIndex].size();
+    console->print("getNumberOfLocomotives(): end "); console->println(size);
+    return size;
+}
+
+
+bool
+WiThrottleProtocol::setSpeed(int speed) {
+    return setSpeed(DEFAULT_MULTITHROTTLE, speed);
 }
 
 bool
-WiThrottleProtocol::setSpeed(int speed)
-{
+WiThrottleProtocol::setSpeed(char multiThrottle, int speed) {
+    console->print("setSpeed(): "); console->print(multiThrottle); console->print(" : "); console->println(speed);
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
     if (speed < 0 || speed > 126) {
         return false;
     }
-    if (!locomotiveSelected) {
+    if (!locomotiveSelected[multiThrottleIndex]) {
         return false;
     }
 
-    if (speed != currentSpeed) {
-        String cmd = "MTA*";
+    if (speed != currentSpeed[multiThrottleIndex]) {
+        String cmd = "M" + String(multiThrottle) + "A*";
         cmd.concat(PROPERTY_SEPARATOR);
         cmd.concat("V");
         cmd.concat(String(speed));
         sendCommand(cmd);
-        currentSpeed = speed;
+        currentSpeed[multiThrottleIndex] = speed;
     }
     return true;
 }
 
 
 int
-WiThrottleProtocol::getSpeed()
-{
-    return currentSpeed;
+WiThrottleProtocol::getSpeed() {
+    return getSpeed(DEFAULT_MULTITHROTTLE);
+}
+
+int
+WiThrottleProtocol::getSpeed(char multiThrottle) {
+    console->print("getSpeed(): "); console->println(multiThrottle);
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
+    return currentSpeed[multiThrottleIndex];
 }
 
 
 bool
-WiThrottleProtocol::setDirection(Direction direction)
-{
-    if (!locomotiveSelected) {
+WiThrottleProtocol::setDirection(Direction direction) {
+    return setDirection(DEFAULT_MULTITHROTTLE, direction);
+}
+
+bool
+WiThrottleProtocol::setDirection(char multiThrottle, Direction direction) {
+    console->print("setDirection(): "); console->print(multiThrottle); console->print(" : "); console->println(direction);
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
+    if (!locomotiveSelected[multiThrottleIndex]) {
         return false;
     }
 
 
-    String cmd = "MTA*";
+    String cmd = "M" + String(multiThrottle) + "A*";
     cmd.concat(PROPERTY_SEPARATOR);
     cmd.concat("R");
     if (direction == Reverse) {
@@ -1088,33 +1223,50 @@ WiThrottleProtocol::setDirection(Direction direction)
     }
     sendCommand(cmd);
 
-    currentDirection = direction;
+    currentDirection[multiThrottleIndex] = direction;
     return true;
 }
 
 
 Direction
-WiThrottleProtocol::getDirection()
-{
-    return currentDirection;
+WiThrottleProtocol::getDirection() {
+    return getDirection(DEFAULT_MULTITHROTTLE);
 }
 
+Direction
+WiThrottleProtocol::getDirection(char multiThrottle) {
+    console->print("getDirection(): "); console->println(multiThrottle);
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
+    return currentDirection[multiThrottleIndex];
+}
 
 void
-WiThrottleProtocol::emergencyStop()
-{
-    String cmd = "MTA*";
+WiThrottleProtocol::emergencyStop() {
+    emergencyStop('T');
+}
+
+void
+WiThrottleProtocol::emergencyStop(char multiThrottle) {
+    String cmd = "M" + String(multiThrottle) + "A*";
     cmd.concat(PROPERTY_SEPARATOR);
     cmd.concat("X");
 
     sendCommand(cmd);
 }
 
+void
+WiThrottleProtocol::setFunction(int funcNum, bool pressed) {
+    setFunction(DEFAULT_MULTITHROTTLE, funcNum, pressed);
+}
 
 void
-WiThrottleProtocol::setFunction(int funcNum, bool pressed)
-{
-    if (!locomotiveSelected) {
+WiThrottleProtocol::setFunction(char multiThrottle, int funcNum, bool pressed) {
+    console->print("setFunction(): "); console->print(multiThrottle); console->print(" : "); console->println(funcNum);
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
+    if (!locomotiveSelected[multiThrottleIndex]) {
+        console->println("setFunction(): end - not selected");
         return;
     }
 
@@ -1122,8 +1274,8 @@ WiThrottleProtocol::setFunction(int funcNum, bool pressed)
         return;
     }
 
-    String cmd = "MTA";
-    cmd.concat(currentAddress);
+    String cmd = "M" + String(multiThrottle) + "A";
+    cmd.concat(currentAddress[multiThrottleIndex]);
     cmd.concat(PROPERTY_SEPARATOR);
     cmd.concat("F");
 
@@ -1137,6 +1289,8 @@ WiThrottleProtocol::setFunction(int funcNum, bool pressed)
     cmd += funcNum;
 
     sendCommand(cmd);
+
+    console->println("setFunction(): end"); 
 }
 
 void WiThrottleProtocol::setTrackPower(TrackPower state) {

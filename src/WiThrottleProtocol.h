@@ -39,6 +39,7 @@
 #define SEGMENT_SEPARATOR 	"}|{"
 #define NEWLINE 			'\n'
 #define CR 					'\r'
+#define DEFAULT_MULTITHROTTLE 'T'
 
 typedef enum Direction {
     Reverse = 0,
@@ -106,9 +107,16 @@ class WiThrottleProtocolDelegate
     virtual void receivedFunctionState(uint8_t func, bool state) { }
     virtual void receivedRosterFunctionList(String functions[28]) { }
 
+    virtual void receivedFunctionStateMultiThrottle(char multiThrottle, uint8_t func, bool state) { }
+    virtual void receivedRosterFunctionListMultiThrottle(char multiThrottle, String functions[28]) { }
+
     virtual void receivedSpeed(int speed) { }             // Vnnn
     virtual void receivedDirection(Direction dir) { }     // R{0,1}
     virtual void receivedSpeedSteps(int steps) { }        // snn
+
+    virtual void receivedSpeedMultiThrottle(char multiThrottle, int speed) { }             // Vnnn
+    virtual void receivedDirectionMultiThrottle(char multiThrottle, Direction dir) { }     // R{0,1}
+    virtual void receivedSpeedStepsMultiThrottle(char multiThrottle, int steps) { }        // snn
 
     virtual void receivedWebPort(int port) { }            // PWnnnnn
     virtual void receivedTrackPower(TrackPower state) { } // PPAn
@@ -116,6 +124,10 @@ class WiThrottleProtocolDelegate
     virtual void addressAdded(String address, String entry) { }  // MT+addr<;>roster entry
     virtual void addressRemoved(String address, String command) { } // MT-addr<;>[dr]
     virtual void addressStealNeeded(String address, String entry) { } // MTSaddr<;>addr
+
+    virtual void addressAddedMultiThrottle(char multiThrottle, String address, String entry) { }  // M0+addr<;>roster entry
+    virtual void addressRemovedMultiThrottle(char multiThrottle, String address, String command) { } // M0-addr<;>[dr]
+    virtual void addressStealNeededMultiThrottle(char multiThrottle, String address, String entry) { } // MTSaddr<;>addr
 
     virtual void receivedTurnoutAction(String systemName, TurnoutState state) { } //  PTAturnoutstatesystemname
     virtual void receivedRouteAction(String systemName, RouteState state) { } //  PTAturnoutstatesystemname
@@ -156,21 +168,46 @@ class WiThrottleProtocol
     String getLocomotiveAtPosition(int position);
     int getNumberOfLocomotives();
 
+    // multiThrottle support
+    bool addLocomotive(char multiThrottle, String address);  // address is [S|L]nnnn (where n is 0-10000)
+    bool stealLocomotive(char multiThrottle, String address);   // address is [S|L]nnnn (where n is 0-10000)
+    bool releaseLocomotive(char multiThrottle, String address = "*");
+    String getLeadLocomotive(char multiThrottle);
+    String getLocomotiveAtPosition(char multiThrottle, int position);
+    int getNumberOfLocomotives(char multiThrottle);
+
     void setFunction(int funcnum, bool pressed);
+    // multiThrottle support
+    void setFunction(char multiThrottle, int funcnum, bool pressed);
 
     bool setSpeed(int speed);
     int getSpeed();
     bool setDirection(Direction direction);
     Direction getDirection();
+
+    // multiThrottle support
+    bool setSpeed(char multiThrottle, int speed);
+    int getSpeed(char multiThrottle);
+    bool setDirection(char multiThrottle, Direction direction);
+    Direction getDirection(char multiThrottle);
 	
 	void setTrackPower(TrackPower state);
 
     void emergencyStop();
+    void emergencyStop(char multiThrottle);
 
     bool setTurnout(String address, TurnoutAction action);   // address is turnout system name e.g. LT92
     bool setRoute(String address);   // address is turnout system name e.g. IO:AUTO:0008
 
-    std::vector<String> locomotives;
+    std::vector<String> locomotives[6];
+    // std::vector<String> locomotives0;
+    // std::vector<String> locomotives1;
+    // std::vector<String> locomotives2;
+    // std::vector<String> locomotives3;
+    // std::vector<String> locomotives4;
+    // std::vector<String> locomotives5;
+
+    int getMultiThrottleIndex(char multiThrottle);
     
     long getLastServerResponseTime();  // seconds since Arduino start
     
@@ -186,10 +223,10 @@ class WiThrottleProtocol
 	WiThrottleProtocolDelegate *delegate = NULL;
 
     bool processCommand(char *c, int len);
-    bool processLocomotiveAction(char *c, int len);
+    bool processLocomotiveAction(char multiThrottle, char *c, int len);
     bool processFastTime(char *c, int len);
     bool processHeartbeat(char *c, int len);
-    bool processRosterFunctionList(char *c, int len);
+    bool processRosterFunctionList(char multiThrottle, char *c, int len);
     void processProtocolVersion(char *c, int len);
     void processServerType(char *c, int len);
     void processServerDescription(char *c, int len);	
@@ -198,16 +235,17 @@ class WiThrottleProtocol
     void processTurnoutList(char *c, int len);
     void processRouteList(char *c, int len);
     void processTrackPower(char *c, int len);
-    void processFunctionState(const String& functionData);
-    void processRosterFunctionListEntries(const String& s);
-    void processSpeedSteps(const String& speedStepData);
-    void processDirection(const String& speedStepData);
-    void processSpeed(const String& speedData);
-    void processAddRemove(char *c, int len);
-    void processStealNeeded(char *c, int len);
+    void processFunctionState(char multiThrottle, const String& functionData);
+    void processRosterFunctionListEntries(char multiThrottle, const String& s);
+    void processSpeedSteps(char multiThrottle, const String& speedStepData);
+    void processDirection(char multiThrottle, const String& speedStepData);
+    void processSpeed(char multiThrottle, const String& speedData);
+    void processAddRemove(char multiThrottle, char *c, int len);
+    void processStealNeeded(char multiThrottle, char *c, int len);
     void processTurnoutAction(char *c, int len);
     void processRouteAction(char *c, int len);
     void processUnknownCommand(const String& unknownCommand);
+    // std::vector<String>& getLocomotivesVector(int multiThrottleIndex);
 
     bool checkFastTime();
     bool checkHeartbeat();
@@ -232,20 +270,18 @@ class WiThrottleProtocol
 
     void init();
 
-    bool locomotiveSelected = false;
+    bool locomotiveSelected[6] = {false, false, false, false, false, false};
 
-    String currentAddress;
+    String currentAddress[6];
 
-    int currentSpeed;
-    int speedSteps;  // 1=128, 2=28, 4=27, 8=14, 16=28Mot
-    Direction currentDirection;
+    int currentSpeed[6];
+    int speedSteps[6];  // 1=128, 2=28, 4=27, 8=14, 16=28Mot
+    Direction currentDirection[6];
 
     String mostRecentTurnout;
     TurnoutState mostRecentTurnoutState;
 
     long lastServerResponseTime;
 };
-
-
 
 #endif // WITHROTTLE_H
