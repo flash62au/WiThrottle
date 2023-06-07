@@ -1224,7 +1224,7 @@ WiThrottleProtocol::setDirection(Direction direction) {
 
 bool
 WiThrottleProtocol::setDirection(char multiThrottle, Direction direction) {
-    setDirection(multiThrottle, ALL_LOCOS_ON_THROTTLE, direction);
+    return setDirection(multiThrottle, ALL_LOCOS_ON_THROTTLE, direction);
 }
 
 bool
