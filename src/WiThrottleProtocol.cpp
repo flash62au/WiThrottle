@@ -71,6 +71,7 @@ void WiThrottleProtocol::init() {
         speedSteps[multiThrottleIndex] = 0;
         currentDirection[multiThrottleIndex] = Forward;
         locomotives[multiThrottleIndex].resize(0);
+        locomotivesFacing[multiThrottleIndex].resize(0);
     }
 
     //last Response time
@@ -1011,6 +1012,8 @@ WiThrottleProtocol::requireHeartbeat(bool needed) {
     }
 }
 
+// ******************************************************************************************************
+
 bool
 WiThrottleProtocol::addLocomotive(String address) {
     return addLocomotive(DEFAULT_MULTITHROTTLE, address);
@@ -1038,6 +1041,7 @@ WiThrottleProtocol::addLocomotive(char multiThrottle, String address) {
         if (!locoAlreadyInList) {
             locomotives[multiThrottleIndex].push_back(address);
             currentAddress[multiThrottleIndex] = locomotives[multiThrottleIndex].front();
+            locomotivesFacing[multiThrottleIndex].push_back(Forward);
             locomotiveSelected[multiThrottleIndex] = true;
         }
         ok = true;
@@ -1047,6 +1051,7 @@ WiThrottleProtocol::addLocomotive(char multiThrottle, String address) {
     return ok;
 }
 
+// ******************************************************************************************************
 
 bool
 WiThrottleProtocol::stealLocomotive(String address) {
@@ -1066,6 +1071,8 @@ WiThrottleProtocol::stealLocomotive(char multiThrottle, String address) {
     return ok;
 }
 
+// ******************************************************************************************************
+
 bool
 WiThrottleProtocol::releaseLocomotive(String address) {
     return releaseLocomotive(DEFAULT_MULTITHROTTLE, address);
@@ -1083,12 +1090,19 @@ WiThrottleProtocol::releaseLocomotive(char multiThrottle, String address) {
     cmd.concat("r");
     sendCommand(cmd);
 
-    for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
-        if (locomotives[multiThrottleIndex][i].equals(address)) {
-           locomotives[multiThrottleIndex].erase(locomotives[multiThrottleIndex].begin()+i);
-           break;
-        }
-    } 
+    if (address.equals(ALL_LOCOS_ON_THROTTLE)) {
+            locomotives[multiThrottleIndex].clear();
+            locomotivesFacing[multiThrottleIndex].clear();
+    } else {
+        for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
+            if (locomotives[multiThrottleIndex][i].equals(address)) {
+            locomotives[multiThrottleIndex].erase(locomotives[multiThrottleIndex].begin()+i);
+            locomotivesFacing[multiThrottleIndex].erase(locomotivesFacing[multiThrottleIndex].begin()+i);
+            break;
+            }
+        } 
+    }
+    
     if (locomotives[multiThrottleIndex].size()==0) { 
         locomotiveSelected[multiThrottleIndex] = false;
         currentAddress[multiThrottleIndex] = "";
@@ -1096,10 +1110,11 @@ WiThrottleProtocol::releaseLocomotive(char multiThrottle, String address) {
         currentAddress[multiThrottleIndex] = locomotives[multiThrottleIndex].front();
     }
 
-    console->println("releaseLocomotive(): end"); 
+    // console->println("releaseLocomotive(): end"); 
     return true;
 }
 
+// ******************************************************************************************************
 
 String
 WiThrottleProtocol::getLeadLocomotive() {
@@ -1117,6 +1132,7 @@ WiThrottleProtocol::getLeadLocomotive(char multiThrottle) {
     return {};
 }
 
+// ******************************************************************************************************
 
 String
 WiThrottleProtocol::getLocomotiveAtPosition(int position) {
@@ -1128,14 +1144,15 @@ WiThrottleProtocol::getLocomotiveAtPosition(char multiThrottle, int position) {
     console->print("getLocomotiveAtPosition(): "); console->print(multiThrottle); console->print(" : "); console->println(position);
 
     int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
-    console->print("getLocomotiveAtPosition(): vector size: "); console->println(locomotives[multiThrottleIndex].size());
+    // console->print("getLocomotiveAtPosition(): vector size: "); console->println(locomotives[multiThrottleIndex].size());
     if (locomotives[multiThrottleIndex].size()>0) { 
-        console->print("getLocomotiveAtPosition(): return: "); console->println(locomotives[multiThrottleIndex][position]);
+        // console->print("getLocomotiveAtPosition(): return: "); console->println(locomotives[multiThrottleIndex][position]);
         return locomotives[multiThrottleIndex][position];
     }
     return {};
 }
 
+// ******************************************************************************************************
 
 int
 WiThrottleProtocol::getNumberOfLocomotives() {
@@ -1153,6 +1170,7 @@ WiThrottleProtocol::getNumberOfLocomotives(char multiThrottle) {
     return size;
 }
 
+// ******************************************************************************************************
 
 bool
 WiThrottleProtocol::setSpeed(int speed) {
@@ -1182,6 +1200,7 @@ WiThrottleProtocol::setSpeed(char multiThrottle, int speed) {
     return true;
 }
 
+// ******************************************************************************************************
 
 int
 WiThrottleProtocol::getSpeed() {
@@ -1196,14 +1215,20 @@ WiThrottleProtocol::getSpeed(char multiThrottle) {
     return currentSpeed[multiThrottleIndex];
 }
 
+// ******************************************************************************************************
 
 bool
 WiThrottleProtocol::setDirection(Direction direction) {
-    return setDirection(DEFAULT_MULTITHROTTLE, direction);
+    return setDirection(DEFAULT_MULTITHROTTLE, ALL_LOCOS_ON_THROTTLE, direction);
 }
 
 bool
 WiThrottleProtocol::setDirection(char multiThrottle, Direction direction) {
+    setDirection(multiThrottle, ALL_LOCOS_ON_THROTTLE, direction);
+}
+
+bool
+WiThrottleProtocol::setDirection(char multiThrottle, String address, Direction direction) {
     console->print("setDirection(): "); console->print(multiThrottle); console->print(" : "); console->println(direction);
 
     int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
@@ -1212,7 +1237,7 @@ WiThrottleProtocol::setDirection(char multiThrottle, Direction direction) {
     }
 
 
-    String cmd = "M" + String(multiThrottle) + "A*";
+    String cmd = "M" + String(multiThrottle) + "A" + address;
     cmd.concat(PROPERTY_SEPARATOR);
     cmd.concat("R");
     if (direction == Reverse) {
@@ -1223,37 +1248,72 @@ WiThrottleProtocol::setDirection(char multiThrottle, Direction direction) {
     }
     sendCommand(cmd);
 
-    currentDirection[multiThrottleIndex] = direction;
+    if (address.equals(ALL_LOCOS_ON_THROTTLE)) {
+        currentDirection[multiThrottleIndex] = direction;
+    } else {
+        for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
+            if (locomotives[multiThrottleIndex][i].equals(address)) {
+                locomotivesFacing[multiThrottleIndex][i] = direction;
+                break;
+            }
+        }
+    }
     return true;
 }
 
+// ******************************************************************************************************
 
 Direction
 WiThrottleProtocol::getDirection() {
-    return getDirection(DEFAULT_MULTITHROTTLE);
+    return getDirection(DEFAULT_MULTITHROTTLE, ALL_LOCOS_ON_THROTTLE);
 }
 
 Direction
 WiThrottleProtocol::getDirection(char multiThrottle) {
+    return getDirection(multiThrottle, ALL_LOCOS_ON_THROTTLE);
+}
+
+Direction
+WiThrottleProtocol::getDirection(char multiThrottle, String address) {
     console->print("getDirection(): "); console->println(multiThrottle);
 
     int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
-    return currentDirection[multiThrottleIndex];
+
+    if (address.equals(ALL_LOCOS_ON_THROTTLE)) {
+        return currentDirection[multiThrottleIndex];
+    } else {
+        Direction individualDirection = currentDirection[multiThrottleIndex];
+        for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
+            if (locomotives[multiThrottleIndex][i].equals(address)) {
+                individualDirection = locomotivesFacing[multiThrottleIndex][i];
+                break;
+            }
+        }
+        return individualDirection;
+    }
 }
+
+// ******************************************************************************************************
 
 void
 WiThrottleProtocol::emergencyStop() {
-    emergencyStop('T');
+    emergencyStop(DEFAULT_MULTITHROTTLE, ALL_LOCOS_ON_THROTTLE);
+}
+void
+WiThrottleProtocol::emergencyStop(char multiThrottle) {
+    emergencyStop(multiThrottle, ALL_LOCOS_ON_THROTTLE);
 }
 
 void
-WiThrottleProtocol::emergencyStop(char multiThrottle) {
-    String cmd = "M" + String(multiThrottle) + "A*";
+WiThrottleProtocol::emergencyStop(char multiThrottle, String address) {
+    String cmd = "M" + String(multiThrottle) + "A" + address;
     cmd.concat(PROPERTY_SEPARATOR);
     cmd.concat("X");
 
     sendCommand(cmd);
 }
+
+// ******************************************************************************************************
 
 void
 WiThrottleProtocol::setFunction(int funcNum, bool pressed) {
@@ -1285,13 +1345,13 @@ WiThrottleProtocol::setFunction(char multiThrottle, int funcNum, bool pressed) {
     else {
         cmd += "0";
     }
-
     cmd += funcNum;
-
     sendCommand(cmd);
 
     console->println("setFunction(): end"); 
 }
+
+// ******************************************************************************************************
 
 void WiThrottleProtocol::setTrackPower(TrackPower state) {
 

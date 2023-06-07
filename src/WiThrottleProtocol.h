@@ -40,6 +40,7 @@
 #define NEWLINE 			'\n'
 #define CR 					'\r'
 #define DEFAULT_MULTITHROTTLE 'T'
+#define ALL_LOCOS_ON_THROTTLE "*"
 
 typedef enum Direction {
     Reverse = 0,
@@ -189,23 +190,21 @@ class WiThrottleProtocol
     bool setSpeed(char multiThrottle, int speed);
     int getSpeed(char multiThrottle);
     bool setDirection(char multiThrottle, Direction direction);
+    bool setDirection(char multiThrottle, String address, Direction direction);
     Direction getDirection(char multiThrottle);
+    Direction getDirection(char multiThrottle, String address);
+    void emergencyStop(char multiThrottle);
+    void emergencyStop(char multiThrottle, String address);
 	
 	void setTrackPower(TrackPower state);
 
     void emergencyStop();
-    void emergencyStop(char multiThrottle);
 
     bool setTurnout(String address, TurnoutAction action);   // address is turnout system name e.g. LT92
     bool setRoute(String address);   // address is turnout system name e.g. IO:AUTO:0008
 
     std::vector<String> locomotives[6];
-    // std::vector<String> locomotives0;
-    // std::vector<String> locomotives1;
-    // std::vector<String> locomotives2;
-    // std::vector<String> locomotives3;
-    // std::vector<String> locomotives4;
-    // std::vector<String> locomotives5;
+    std::vector<Direction> locomotivesFacing[6];
 
     int getMultiThrottleIndex(char multiThrottle);
     
@@ -245,7 +244,6 @@ class WiThrottleProtocol
     void processTurnoutAction(char *c, int len);
     void processRouteAction(char *c, int len);
     void processUnknownCommand(const String& unknownCommand);
-    // std::vector<String>& getLocomotivesVector(int multiThrottleIndex);
 
     bool checkFastTime();
     bool checkHeartbeat();

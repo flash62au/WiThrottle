@@ -175,20 +175,24 @@ Set the DCC speed value (0-126).  If there is no locomotive selected, or if the 
 multiThrottle defaults to 'T' if not specified.  Otherwise use '0', '1', '2', '3', '4', '5' only.
 
 ```
+int getSpeed(char multiThrottle, String address)
 int getSpeed(char multiThrottle)
 int getSpeed()
 ```
 Return the current speed value.  This is not meaningful if no locomotive is selected.
 
 multiThrottle defaults to 'T' if not specified.  Otherwise use '0', '1', '2', '3', '4', '5' only.
+address defaults to "*" if not specified.
 
 ```
+bool setDirection(char multiThrottle, String address, Direction d)
 bool setDirection(char multiThrottle, Direction d)
 bool setDirection(Direction d)
 ```
 Set the direction of travel.  The values for ```d``` can be ```Forward``` or ```Reverse```.
 
 multiThrottle defaults to 'T' if not specified.  Otherwise use '0', '1', '2', '3', '4', '5' only.
+address defaults to "*" if not specified.
 
 ```
 Direction getDirection(char multiThrottle)
