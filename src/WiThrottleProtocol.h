@@ -180,6 +180,7 @@ class WiThrottleProtocol
     void setFunction(int funcnum, bool pressed);
     // multiThrottle support
     void setFunction(char multiThrottle, int funcnum, bool pressed);
+    void setFunction(char multiThrottle, String address, int funcnum, bool pressed);
 
     bool setSpeed(int speed);
     int getSpeed();

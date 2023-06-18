@@ -1096,9 +1096,9 @@ WiThrottleProtocol::releaseLocomotive(char multiThrottle, String address) {
     } else {
         for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
             if (locomotives[multiThrottleIndex][i].equals(address)) {
-            locomotives[multiThrottleIndex].erase(locomotives[multiThrottleIndex].begin()+i);
-            locomotivesFacing[multiThrottleIndex].erase(locomotivesFacing[multiThrottleIndex].begin()+i);
-            break;
+                locomotives[multiThrottleIndex].erase(locomotives[multiThrottleIndex].begin()+i);
+                locomotivesFacing[multiThrottleIndex].erase(locomotivesFacing[multiThrottleIndex].begin()+i);
+                break;
             }
         } 
     }
@@ -1322,6 +1322,11 @@ WiThrottleProtocol::setFunction(int funcNum, bool pressed) {
 
 void
 WiThrottleProtocol::setFunction(char multiThrottle, int funcNum, bool pressed) {
+    setFunction(multiThrottle, "", funcNum, pressed) ;
+}
+
+void
+WiThrottleProtocol::setFunction(char multiThrottle, String address, int funcNum, bool pressed) {
     console->print("setFunction(): "); console->print(multiThrottle); console->print(" : "); console->println(funcNum);
 
     int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
@@ -1335,7 +1340,12 @@ WiThrottleProtocol::setFunction(char multiThrottle, int funcNum, bool pressed) {
     }
 
     String cmd = "M" + String(multiThrottle) + "A";
-    cmd.concat(currentAddress[multiThrottleIndex]);
+    if (address.equals("")) {
+        cmd.concat(currentAddress[multiThrottleIndex]);
+    } else {
+        cmd.concat(address);
+    }
+
     cmd.concat(PROPERTY_SEPARATOR);
     cmd.concat("F");
 
