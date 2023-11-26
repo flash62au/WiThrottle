@@ -189,6 +189,7 @@ class WiThrottleProtocol
 
     // multiThrottle support
     bool setSpeed(char multiThrottle, int speed);
+    bool setSpeed(char multiThrottle, int speed, bool forceSend);
     int getSpeed(char multiThrottle);
     bool setDirection(char multiThrottle, Direction direction);
     bool setDirection(char multiThrottle, String address, Direction direction);
@@ -259,6 +260,7 @@ class WiThrottleProtocol
     //Chrono heartbeatTimer;
 	unsigned long heartbeatTimer;
     int heartbeatPeriod;
+	unsigned long timeLastLocoAcquired;
 
     //Chrono fastTimeTimer;
 	unsigned long fastTimeTimer;

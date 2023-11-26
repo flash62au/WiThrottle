@@ -58,12 +58,15 @@ void WiThrottleProtocol::init() {
 	// init heartbeat
 	heartbeatTimer = millis();
     heartbeatPeriod = 0;
+    timeLastLocoAcquired = 0;
+                           
 	
 	// init fasttime
 	fastTimeTimer = millis();
     currentFastTime = 0.0;
     currentFastTimeRate = 0.0;
-    
+
+
 	// init global variables
     for (int multiThrottleIndex=0; multiThrottleIndex<6; multiThrottleIndex++) {
         locomotiveSelected[multiThrottleIndex] = false;
@@ -991,8 +994,20 @@ bool WiThrottleProtocol::checkHeartbeat() {
 	// if heartbeat is required and half of heartbeat period has passed, send a heartbeat and reset the timer
     if ((heartbeatPeriod > 0) && ((millis() - heartbeatTimer) > 0.5 * heartbeatPeriod * 1000)) {
 
-        // sendCommand("*");
+        sendCommand("*");
         setDeviceName(currentDeviceName);  // resent the device name instead of the heartbeat.  this forces the wit server to respond
+
+        // if there are any locos under control, resend all their speeds
+        if ( (timeLastLocoAcquired!=0) && ((millis() - timeLastLocoAcquired) > 5000) ) { // wait at least 5 seconds from the last time that a loco was aqcuired, to give the server time to send any existing speeds
+            for (int i=0; i<6; i++) {
+                char multiThrottleChar = '0' + i;
+                if (getNumberOfLocomotives(multiThrottleChar)>0) {
+                    setSpeed(getSpeed(multiThrottleChar), getDirection(multiThrottleChar), true);
+                    setDirection(getDirection(multiThrottleChar));
+                }
+            }
+            }
+
 		heartbeatTimer = millis();
 		
         return true;
@@ -1043,6 +1058,7 @@ WiThrottleProtocol::addLocomotive(char multiThrottle, String address) {
             currentAddress[multiThrottleIndex] = locomotives[multiThrottleIndex].front();
             locomotivesFacing[multiThrottleIndex].push_back(Forward);
             locomotiveSelected[multiThrottleIndex] = true;
+            timeLastLocoAcquired = millis();
         }
         ok = true;
     }
@@ -1179,6 +1195,11 @@ WiThrottleProtocol::setSpeed(int speed) {
 
 bool
 WiThrottleProtocol::setSpeed(char multiThrottle, int speed) {
+    return setSpeed(multiThrottle, speed, false);
+}
+
+bool
+WiThrottleProtocol::setSpeed(char multiThrottle, int speed, bool forceSend) {
     console->print("setSpeed(): "); console->print(multiThrottle); console->print(" : "); console->println(speed);
 
     int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
@@ -1189,7 +1210,7 @@ WiThrottleProtocol::setSpeed(char multiThrottle, int speed) {
         return false;
     }
 
-    if (speed != currentSpeed[multiThrottleIndex]) {
+    if ( (speed != currentSpeed[multiThrottleIndex]) || (forceSend) ) {
         String cmd = "M" + String(multiThrottle) + "A*";
         cmd.concat(PROPERTY_SEPARATOR);
         cmd.concat("V");
