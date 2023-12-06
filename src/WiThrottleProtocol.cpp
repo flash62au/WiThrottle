@@ -990,9 +990,10 @@ WiThrottleProtocol::processRouteAction(char *c, int len) {
 }
 
 bool WiThrottleProtocol::checkHeartbeat() {
-	
+
 	// if heartbeat is required and half of heartbeat period has passed, send a heartbeat and reset the timer
     if ((heartbeatPeriod > 0) && ((millis() - heartbeatTimer) > 0.5 * heartbeatPeriod * 1000)) {
+    	console->println("checkHeartbeat(): ");
 
         sendCommand("*");
         setDeviceName(currentDeviceName);  // resent the device name instead of the heartbeat.  this forces the wit server to respond
@@ -1002,18 +1003,19 @@ bool WiThrottleProtocol::checkHeartbeat() {
             for (int i=0; i<6; i++) {
                 char multiThrottleChar = '0' + i;
                 if (getNumberOfLocomotives(multiThrottleChar)>0) {
-                    setSpeed(getSpeed(multiThrottleChar), getDirection(multiThrottleChar), true);
-                    setDirection(getDirection(multiThrottleChar));
+                    setSpeed(multiThrottleChar, getSpeed(multiThrottleChar), true);
+                    setDirection(multiThrottleChar, getDirection(multiThrottleChar), true);
                 }
             }
-            }
+        }
 
 		heartbeatTimer = millis();
 		
+    	console->println("checkHeartbeat(): end: true");
         return true;
     }
-	
-    else return false;
+
+    return false;
 }
 
 
@@ -1249,7 +1251,17 @@ WiThrottleProtocol::setDirection(char multiThrottle, Direction direction) {
 }
 
 bool
+WiThrottleProtocol::setDirection(char multiThrottle, Direction direction, bool ForceSend) {
+    return setDirection(multiThrottle, ALL_LOCOS_ON_THROTTLE, direction, ForceSend);
+}
+bool
+
 WiThrottleProtocol::setDirection(char multiThrottle, String address, Direction direction) {
+    return setDirection(multiThrottle, address, direction, false);
+}
+
+bool
+WiThrottleProtocol::setDirection(char multiThrottle, String address, Direction direction, bool forceSend) {
     console->print("setDirection(): "); console->print(multiThrottle); console->print(" : "); console->println(direction);
 
     int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
@@ -1257,25 +1269,26 @@ WiThrottleProtocol::setDirection(char multiThrottle, String address, Direction d
         return false;
     }
 
+    if ( (direction != currentDirection[multiThrottleIndex]) || (forceSend) ) {
+        String cmd = "M" + String(multiThrottle) + "A" + address;
+        cmd.concat(PROPERTY_SEPARATOR);
+        cmd.concat("R");
+        if (direction == Reverse) {
+            cmd += "0";
+        }
+        else {
+            cmd += "1";
+        }
+        sendCommand(cmd);
 
-    String cmd = "M" + String(multiThrottle) + "A" + address;
-    cmd.concat(PROPERTY_SEPARATOR);
-    cmd.concat("R");
-    if (direction == Reverse) {
-        cmd += "0";
-    }
-    else {
-        cmd += "1";
-    }
-    sendCommand(cmd);
-
-    if (address.equals(ALL_LOCOS_ON_THROTTLE)) {
-        currentDirection[multiThrottleIndex] = direction;
-    } else {
-        for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
-            if (locomotives[multiThrottleIndex][i].equals(address)) {
-                locomotivesFacing[multiThrottleIndex][i] = direction;
-                break;
+        if (address.equals(ALL_LOCOS_ON_THROTTLE)) {
+            currentDirection[multiThrottleIndex] = direction;
+        } else {
+            for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
+                if (locomotives[multiThrottleIndex][i].equals(address)) {
+                    locomotivesFacing[multiThrottleIndex][i] = direction;
+                    break;
+                }
             }
         }
     }

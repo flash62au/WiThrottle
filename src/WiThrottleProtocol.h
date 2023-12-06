@@ -192,7 +192,9 @@ class WiThrottleProtocol
     bool setSpeed(char multiThrottle, int speed, bool forceSend);
     int getSpeed(char multiThrottle);
     bool setDirection(char multiThrottle, Direction direction);
+    bool setDirection(char multiThrottle, Direction direction, bool forceSend);
     bool setDirection(char multiThrottle, String address, Direction direction);
+    bool setDirection(char multiThrottle, String address, Direction direction, bool ForceSend);
     Direction getDirection(char multiThrottle);
     Direction getDirection(char multiThrottle, String address);
     void emergencyStop(char multiThrottle);
