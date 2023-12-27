@@ -710,7 +710,7 @@ void
 WiThrottleProtocol::processFunctionState(char multiThrottle, const String& functionData) {
     console->print("processFunctionState(): "); console->println(multiThrottle);
 
-    // F[0|1]nn - where nn is 0-28
+    // F[0|1]nn - where nn is 0-31
     if (delegate && functionData.length() >= 3) {
         bool state = functionData[1]=='1' ? true : false;
 
@@ -737,7 +737,7 @@ void
 WiThrottleProtocol::processRosterFunctionListEntries(char multiThrottle, const String& s) {
     console->print("processRosterFunctionListEntries(): "); console->println(multiThrottle);
 
-    String functions[28];
+    String functions[MAX_FUNCTIONS];
 
     // loop
     int entries = -1;
@@ -745,7 +745,7 @@ WiThrottleProtocol::processRosterFunctionListEntries(char multiThrottle, const S
 	int entryStartPosition = 3; //ignore the first entry separator
     if (s.length() <= 3) entryFound =false;
 
-    while ((entryFound) && (entries < 28)) {
+    while ((entryFound) && (entries < MAX_FUNCTIONS)) {
 	    entries++;
 
 		// get element
@@ -760,7 +760,7 @@ WiThrottleProtocol::processRosterFunctionListEntries(char multiThrottle, const S
 
     console->print("Functions for roster entry: "); console->println(entries);
 
-    for(int i = entries+1; i < 28; i++) {
+    for(int i = entries+1; i < MAX_FUNCTIONS; i++) {
         functions[i] = "";
     } 
 
@@ -1369,7 +1369,7 @@ WiThrottleProtocol::setFunction(char multiThrottle, String address, int funcNum,
         return;
     }
 
-    if (funcNum < 0 || funcNum > 28) {
+    if (funcNum < 0 || funcNum > MAX_FUNCTIONS) {
         return;
     }
 

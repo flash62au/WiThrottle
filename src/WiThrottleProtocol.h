@@ -42,6 +42,8 @@
 #define DEFAULT_MULTITHROTTLE 'T'
 #define ALL_LOCOS_ON_THROTTLE "*"
 
+#define MAX_FUNCTIONS 32
+
 typedef enum Direction {
     Reverse = 0,
     Forward = 1
@@ -106,10 +108,10 @@ class WiThrottleProtocolDelegate
     virtual void heartbeatConfig(int seconds) { }
 
     virtual void receivedFunctionState(uint8_t func, bool state) { }
-    virtual void receivedRosterFunctionList(String functions[28]) { }
+    virtual void receivedRosterFunctionList(String functions[MAX_FUNCTIONS]) { }
 
     virtual void receivedFunctionStateMultiThrottle(char multiThrottle, uint8_t func, bool state) { }
-    virtual void receivedRosterFunctionListMultiThrottle(char multiThrottle, String functions[28]) { }
+    virtual void receivedRosterFunctionListMultiThrottle(char multiThrottle, String functions[MAX_FUNCTIONS]) { }
 
     virtual void receivedSpeed(int speed) { }             // Vnnn
     virtual void receivedDirection(Direction dir) { }     // R{0,1}

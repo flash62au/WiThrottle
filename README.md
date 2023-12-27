@@ -162,7 +162,7 @@ void setFunction(char multiThrottle, String address, int num, bool pressed)
 void setFunction(char multiThrottle, int num, bool pressed)
 void setFunction(int num, bool pressed)
 ```
-Update the state for the specified function (0-28 is the acceptable range).  If the function button has been pressed down (or otherwise activated), set ```pressed``` to ```true```.   When the button is released, set ```pressed``` to ```false```. 
+Update the state for the specified function (0-31 is the acceptable range).  If the function button has been pressed down (or otherwise activated), set ```pressed``` to ```true```.   When the button is released, set ```pressed``` to ```false```. 
 
 multiThrottle defaults to 'T' if not specified.  Otherwise use '0', '1', '2', '3', '4', '5' only.
 If the Address is blank ("") on not provided, the lead loco only ill be sent the function.  "*" will send to all locos in the consist.
@@ -260,7 +260,7 @@ void receivedRosterEntry(int index, String name, int address, char length)
 Indicates that the WiThrottle Server has sent the details of an individual roster entry.
 
 ```
-virtual void receivedRosterFunctionList(String functions[28]) { }
+virtual void receivedRosterFunctionList(String functions[31]) { }
 ```
 
 Indicates the labels of the functions for the roster entry.
