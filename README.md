@@ -25,6 +25,7 @@ These patterns (Dependency Injection and Delegation) allow you to keep the diffe
  - Support added for turnouts/points
  - Support added for routes
  - Heartbeat sends the device name, which forces the WiThrottle server to respond (used to confirm it is still connected)
+ - minimum time separation/delay between commands sent (introduced in v1.1.7)
  - bug fixes
 
 ## Included examples
@@ -78,14 +79,23 @@ WiThrottleProtocol(bool isServer)
 Create a new WiThrottleProtocol manager.   You probably only need one in your program, unless you connect to multiple WiThrottle protocol servers at the same time.   
 
 ```
+void WiThrottleProtocol::setDelegate(WiThrottleProtocolDelegate *delegate)
+```
+Initialises the Delegate class to receive responses from the Command Station.  
+
+
+```
 void begin(Stream *console)
 ```
-Initializes the WiThrottleProtocol object.   You should call this as part of your ```setup``` function.  You must pass in a pointer to a ```Stream``` object, which is where all debug messages will go.  This can be ```Serial```, or anything similar.  If you pass in ```NULL```, no log messages will be generated.
+Initialises the WiThrottleProtocol object.   You should call this as part of your ```setup``` function.  You must pass in a pointer to a ```Stream``` object, which is where all debug messages will go.  This can be ```Serial```, or anything similar.  If you pass in ```NULL```, no log messages will be generated.
 
 ```
 void connect(Stream *network)
+void
 ```
 Once you have created the network client connection (say, via ```WiFiClient```), configure the WiThrottleProtocol library to use it.  After you've connected the client to the WiThrottle protocol server, do NOT perform any I/O operations on the client object directly.   The WiThrottleProtocol library must control all further use of the connection (until you call ```disconnect()```).
+
+``delayBetweenCommandsSent`` can be used to limit how frequently commands are sent to the command station.
 
 ```
 void disconnect()
