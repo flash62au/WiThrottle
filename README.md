@@ -115,7 +115,7 @@ WiThrottleProtocolDelegate *delegate
 This variable holds a pointer to a class that subclasses the ```WiThrottleProtocolDelegate``` class.  Once this is set, various methods will be called when protocol commands come in and have been processed.
 
 ```
-setSpeedCommandShouldBeSenttwice(bool twice)
+setSpeedCommandShouldBeSentTwice(bool twice)
 ```
 This should be set to true for wifiTrax to get around a fault in their implementation of WiThrottle protocol.
 
