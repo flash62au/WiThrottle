@@ -147,6 +147,8 @@ class WiThrottleProtocol
 	void setDelegate(WiThrottleProtocolDelegate *delegate, int delayBetweenCommandsSent);
     void setLogStream(Stream *console);
 
+    void setSpeedCommandsNeedToBeSentTwice(bool twice);
+
 	void connect(Stream *stream);
     void connect(Stream *stream, int delayBetweenCommandsSent);
     void disconnect();
@@ -229,6 +231,7 @@ class WiThrottleProtocol
     String outboundBuffer;
     double outboundCmdsTimeLastSent;
     int outboundCmdsMininumDelay;
+    bool speedCommandsNeedToBeSentTwice = false;
 	
 	WiThrottleProtocolDelegate *delegate = NULL;
 
@@ -260,7 +263,9 @@ class WiThrottleProtocol
     bool checkHeartbeat();
 
     void sendCommand(String cmd);
+    void sendCommand(String cmd, bool twice);
     void sendDelayedCommand(String cmd);
+    void sendDelayedCommand(String cmd, bool twice);
 
     void setCurrentFastTime(const String& s);
 

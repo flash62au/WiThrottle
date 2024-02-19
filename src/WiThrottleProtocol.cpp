@@ -140,6 +140,10 @@ void WiThrottleProtocol::setDeviceID(String deviceId) {
     sendDelayedCommand(command);
 }
 
+void WiThrottleProtocol::setSpeedCommandsNeedToBeSentTwice(bool twice) {
+    speedCommandsNeedToBeSentTwice = twice;
+}
+
 
 bool WiThrottleProtocol::check() {
     bool changed = false;
@@ -185,9 +189,17 @@ bool WiThrottleProtocol::check() {
 }
 
 void WiThrottleProtocol::sendCommand(String cmd) {
+    sendCommand(cmd, 0);
+}
+
+void WiThrottleProtocol::sendCommand(String cmd, bool twice) {
     if (stream) {
         // TODO: what happens when the write fails?
         stream->println(cmd);
+        if (twice) {
+            stream->println(cmd);
+            console->println("==> Sending Twice !!!!!!!!!!!");
+        }
         if (server) {
             stream->println("");
         }
@@ -196,6 +208,10 @@ void WiThrottleProtocol::sendCommand(String cmd) {
 }
 
 void WiThrottleProtocol::sendDelayedCommand(String cmd) {
+    sendDelayedCommand(cmd, 0);
+}
+
+void WiThrottleProtocol::sendDelayedCommand(String cmd, bool twice) {
     if (stream) {
         // TODO: what happens when the write fails?
 
@@ -204,13 +220,16 @@ void WiThrottleProtocol::sendDelayedCommand(String cmd) {
         }
 
         if ( (outboundBuffer.length()>0) &&((millis()-outboundCmdsTimeLastSent) > outboundCmdsMininumDelay) ) {
-            console->print("Flushing outbound buffer - delay: "); console->print(outboundCmdsMininumDelay); console->print(" Buffer: ");  console->println(outboundBuffer);
+            // console->print("sendDelayedCommand() : Flushing outbound buffer - delay: "); console->print(outboundCmdsMininumDelay); console->print(" Buffer: ");  console->println(outboundBuffer);
             int end = outboundBuffer.indexOf("\n");
             String thisCmd = outboundBuffer; // default to sending the lot
             if (end>0) {
                 thisCmd = outboundBuffer.substring(0,end);
                 end++;
                 outboundBuffer = outboundBuffer.substring(end);
+                if (outboundBuffer.length()>0) {
+                    console->print("sendDelayedCommand() : deferring cmds: "); console->print(outboundCmdsMininumDelay); console->print(" Buffer: ");  console->println(outboundBuffer);
+                }
             } else if (end==0) {
                 thisCmd = "";
                 outboundBuffer = outboundBuffer.substring(end+1);
@@ -221,6 +240,10 @@ void WiThrottleProtocol::sendDelayedCommand(String cmd) {
 
             if (thisCmd.length()>0) {
                 stream->println(thisCmd);
+                if (twice) {
+                    stream->println(thisCmd);
+                    console->println("==> Sending Twice !!!!!!!!!!!");
+                }
                 if (server) {
                     stream->println("");
                 }
@@ -1209,7 +1232,7 @@ bool WiThrottleProtocol::setSpeed(char multiThrottle, int speed) {
 }
 
 bool WiThrottleProtocol::setSpeed(char multiThrottle, int speed, bool forceSend) {
-    console->print("setSpeed(): "); console->print(multiThrottle); console->print(" : "); console->println(speed);
+    console->print("setSpeed(): "); console->print(multiThrottle); console->print(" : "); console->print(speed); console->print(" : "); console->println(forceSend);
 
     int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
     if (speed < 0 || speed > 126) {
@@ -1220,11 +1243,11 @@ bool WiThrottleProtocol::setSpeed(char multiThrottle, int speed, bool forceSend)
     }
 
     if ( (speed != currentSpeed[multiThrottleIndex]) || (forceSend) ) {
-        String cmd = "M" + String(multiThrottle) + "A*";
-        cmd.concat(PROPERTY_SEPARATOR);
-        cmd.concat("V");
-        cmd.concat(String(speed));
-        sendDelayedCommand(cmd);
+        String cmd = "M" + String(multiThrottle) + "A*" 
+            + PROPERTY_SEPARATOR
+            + "V"
+            + String(speed);
+        sendDelayedCommand(cmd, speedCommandsNeedToBeSentTwice);
         currentSpeed[multiThrottleIndex] = speed;
     }
     return true;
@@ -1279,7 +1302,7 @@ bool WiThrottleProtocol::setDirection(char multiThrottle, String address, Direct
         else {
             cmd += "1";
         }
-        sendDelayedCommand(cmd);
+        sendDelayedCommand(cmd, speedCommandsNeedToBeSentTwice);
 
         if (address.equals(ALL_LOCOS_ON_THROTTLE)) {
             currentDirection[multiThrottleIndex] = direction;
