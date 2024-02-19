@@ -229,6 +229,7 @@ class WiThrottleProtocol
     Stream *console;
 	NullStream nullStream;
     String outboundBuffer;
+    String outboundBufferCommandsNeedsToBeSentTwice;
     double outboundCmdsTimeLastSent;
     int outboundCmdsMininumDelay;
     bool speedCommandsNeedToBeSentTwice = false;
