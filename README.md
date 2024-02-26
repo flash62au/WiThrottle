@@ -115,9 +115,10 @@ WiThrottleProtocolDelegate *delegate
 This variable holds a pointer to a class that subclasses the ```WiThrottleProtocolDelegate``` class.  Once this is set, various methods will be called when protocol commands come in and have been processed.
 
 ```
-setSpeedCommandShouldBeSentTwice(bool twice)
+setCommandsNeedLeadingCrLf(bool needed);
 ```
-This should be set to true for wifiTrax to get around a fault in their implementation of WiThrottle protocol.
+For some reason WifiTrax WFD-30 system don't respond unless the commands are preceeded with CR+LF
+These will be sent if the SSID name contains "wftrx_"
 
 ### Fast Time 
 ```

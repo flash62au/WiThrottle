@@ -57,7 +57,6 @@ void WiThrottleProtocol::init() {
 
     // output buffer
     outboundBuffer = "";
-    outboundBufferCommandsNeedsToBeSentTwice = "";
     outboundCmdsTimeLastSent = millis();
 	
 	// init heartbeat
@@ -141,8 +140,8 @@ void WiThrottleProtocol::setDeviceID(String deviceId) {
     sendDelayedCommand(command);
 }
 
-void WiThrottleProtocol::setSpeedCommandsNeedToBeSentTwice(bool twice) {
-    speedCommandsNeedToBeSentTwice = twice;
+void WiThrottleProtocol::setCommandsNeedLeadingCrLf(bool needed) {
+    commandsNeedLeadingCrLf = needed;
 }
 
 
@@ -190,17 +189,9 @@ bool WiThrottleProtocol::check() {
 }
 
 void WiThrottleProtocol::sendCommand(String cmd) {
-    sendCommand(cmd, 0);
-}
-
-void WiThrottleProtocol::sendCommand(String cmd, bool twice) {
     if (stream) {
         // TODO: what happens when the write fails?
         stream->println(cmd);
-        if (twice) {
-            stream->println(cmd);
-            console->println("==> Sending Twice !!!!!!!!!!!");
-        }
         if (server) {
             stream->println("");
         }
@@ -209,56 +200,41 @@ void WiThrottleProtocol::sendCommand(String cmd, bool twice) {
 }
 
 void WiThrottleProtocol::sendDelayedCommand(String cmd) {
-    sendDelayedCommand(cmd, 0);
-}
-
-void WiThrottleProtocol::sendDelayedCommand(String cmd, bool twice) {
     if (stream) {
         // TODO: what happens when the write fails?
 
         if (cmd.length()>0) {
             outboundBuffer = outboundBuffer + cmd + '\n';
-            outboundBufferCommandsNeedsToBeSentTwice = outboundBufferCommandsNeedsToBeSentTwice + ((twice) ? "Y" : "N") +"\n";
-            // console->print("sendDelayedCommand() : "); console->print(cmd); console->print(" - twice: "); console->println(((twice) ? "Y" : "N"));
-            // console->println(" XTwice: ");  console->println(outboundBufferCommandsNeedsToBeSentTwice);
         }
 
         if ( (outboundBuffer.length()>0) &&((millis()-outboundCmdsTimeLastSent) > outboundCmdsMininumDelay) ) {
             // console->print("sendDelayedCommand() : Flushing outbound buffer - delay: "); console->print(outboundCmdsMininumDelay); console->print(" Buffer: ");  console->println(outboundBuffer);
             int end = outboundBuffer.indexOf("\n");
-            int endTwice = outboundBufferCommandsNeedsToBeSentTwice.indexOf("\n");
             String thisCmd = outboundBuffer; // default to sending the lot
-            bool thisTwice = false;
             if (end>0) {
                 thisCmd = outboundBuffer.substring(0,end);
-                thisTwice = (outboundBufferCommandsNeedsToBeSentTwice.substring(0,endTwice)=="Y") ? true : false;
                 end++;
-                endTwice++;
                 outboundBuffer = outboundBuffer.substring(end);
-                outboundBufferCommandsNeedsToBeSentTwice = outboundBufferCommandsNeedsToBeSentTwice.substring(endTwice);
                 if (outboundBuffer.length()>0) {
                     console->print("sendDelayedCommand() : deferring cmds: "); console->println(outboundCmdsMininumDelay); 
                     console->println(" Buffer: ");  console->println(outboundBuffer);
-                    console->println(" Twice: ");  console->println(outboundBufferCommandsNeedsToBeSentTwice);
                 }
             } else if (end==0) {
                 thisCmd = "";
                 outboundBuffer = outboundBuffer.substring(end+1);
             } else {
                 thisCmd = outboundBuffer;
-                thisTwice = twice;
                 outboundBuffer = "";
             }
 
             if (thisCmd.length()>0) {
                 outboundCmdsTimeLastSent = millis();
-                stream->println(thisCmd);
-                if (thisTwice) {
-                    stream->println(thisCmd);
-                    // console->println("==> Sending Twice !!!!!!!!!!!");
-                    console->print("==> "); console->print(thisCmd);
-                    console->print(" ("); console->print(millis()); console->println(")");
+                if (commandsNeedLeadingCrLf) {
+                    stream->write(0x0D);
+                    stream->write(0x0A);
                 }
+                stream->println(thisCmd);
+
                 if (server) {
                     stream->println("");
                 }
@@ -1261,7 +1237,7 @@ bool WiThrottleProtocol::setSpeed(char multiThrottle, int speed, bool forceSend)
             + PROPERTY_SEPARATOR
             + "V"
             + String(speed);
-        sendDelayedCommand(cmd, speedCommandsNeedToBeSentTwice);
+        sendDelayedCommand(cmd);
         currentSpeed[multiThrottleIndex] = speed;
     }
     return true;
@@ -1316,7 +1292,7 @@ bool WiThrottleProtocol::setDirection(char multiThrottle, String address, Direct
         else {
             cmd += "1";
         }
-        sendDelayedCommand(cmd, speedCommandsNeedToBeSentTwice);
+        sendDelayedCommand(cmd);
 
         if (address.equals(ALL_LOCOS_ON_THROTTLE)) {
             currentDirection[multiThrottleIndex] = direction;

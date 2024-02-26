@@ -26,6 +26,25 @@
  *
  */
 
+/*
+Version information:
+
+1.1.11   - Change to the fix for the _wifiTrax WFD-30, so that leading CR+LF is always sent
+         - Removal of setSpeedCommandShouldBeSenttwice(bool twice)
+1.1.10   - discarded
+1.1.9    - discarded         
+1.1.8    - Addition of setSpeedCommandShouldBeSenttwice(bool twice)
+1.1.7    - Addition of minimum time separation/delay between commands sent
+1.1.6    - Change to support 32 functions
+1.1.5    - Adjust the aggressive heartbeat
+1.1.4    - Use more aggressive heartbeat commands
+1.1.3    - Add add ability to specify which loco in a consist is sent a function co…
+1.1.2    - Bug fix
+1.1.1    - Improve consist support
+1.1.0    - Muiti-throttle support added
+
+*/
+
 #ifndef WITHROTTLE_H
 #define WITHROTTLE_H
 
@@ -147,7 +166,7 @@ class WiThrottleProtocol
 	void setDelegate(WiThrottleProtocolDelegate *delegate, int delayBetweenCommandsSent);
     void setLogStream(Stream *console);
 
-    void setSpeedCommandsNeedToBeSentTwice(bool twice);
+    void setCommandsNeedLeadingCrLf(bool needed);
 
 	void connect(Stream *stream);
     void connect(Stream *stream, int delayBetweenCommandsSent);
@@ -229,10 +248,9 @@ class WiThrottleProtocol
     Stream *console;
 	NullStream nullStream;
     String outboundBuffer;
-    String outboundBufferCommandsNeedsToBeSentTwice;
     double outboundCmdsTimeLastSent;
     int outboundCmdsMininumDelay;
-    bool speedCommandsNeedToBeSentTwice = false;
+    bool commandsNeedLeadingCrLf = false;
 	
 	WiThrottleProtocolDelegate *delegate = NULL;
 
@@ -264,9 +282,7 @@ class WiThrottleProtocol
     bool checkHeartbeat();
 
     void sendCommand(String cmd);
-    void sendCommand(String cmd, bool twice);
     void sendDelayedCommand(String cmd);
-    void sendDelayedCommand(String cmd, bool twice);
 
     void setCurrentFastTime(const String& s);
 
