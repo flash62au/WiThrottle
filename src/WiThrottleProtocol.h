@@ -29,6 +29,7 @@
 /*
 Version information:
 
+1.1.12   - Add support for broadcast messages and alerts
 1.1.11   - Change to the fix for the _wifiTrax WFD-30, so that leading CR+LF is always sent
          - Removal of setSpeedCommandShouldBeSenttwice(bool twice)
 1.1.10   - discarded
@@ -112,6 +113,8 @@ class WiThrottleProtocolDelegate
     virtual void receivedVersion(String version) {}
     virtual void receivedServerType(String type) {}
     virtual void receivedServerDescription(String description) {}
+    virtual void receivedMessage(String message) {}
+    virtual void receivedAlert(String alert) {}
     virtual void receivedRosterEntries(int rosterSize) {}
     virtual void receivedRosterEntry(int index, String name, int address, char length) {}
 
@@ -262,6 +265,8 @@ class WiThrottleProtocol
     void processProtocolVersion(char *c, int len);
     void processServerType(char *c, int len);
     void processServerDescription(char *c, int len);	
+    void processMessage(char *c, int len);	
+    void processAlert(char *c, int len);	
     void processWebPort(char *c, int len);
 	void processRosterList(char *c, int len);
     void processTurnoutList(char *c, int len);

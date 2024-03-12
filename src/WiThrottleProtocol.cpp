@@ -435,6 +435,14 @@ bool WiThrottleProtocol::processCommand(char *c, int len) {
         processServerDescription(c+2, len-2);
         return true;
     }	
+    else if (len > 2 && c[0]=='H' && c[1]=='M') {
+        processAlert(c+2, len-2);
+        return true;
+    }	
+    else if (len > 2 && c[0]=='H' && c[1]=='m') {
+        processMessage(c+2, len-2);
+        return true;
+    }	
     else if (len > 2 && c[0]=='P' && c[1]=='W') {
         processWebPort(c+2, len-2);
         return true;
@@ -564,6 +572,24 @@ void WiThrottleProtocol::processServerDescription(char *c, int len) {
     if (delegate && len > 0) {
         String serverDescription = String(c);
         delegate->receivedServerDescription(serverDescription);
+    }
+}
+
+void WiThrottleProtocol::processMessage(char *c, int len) {
+    console->println("processMessage()");
+	
+    if (delegate && len > 0) {
+        String message = String(c);
+        delegate->receivedMessage(message);
+    }
+}
+
+void WiThrottleProtocol::processAlert(char *c, int len) {
+    console->println("processAlert()");
+	
+    if (delegate && len > 0) {
+        String alert = String(c);
+        delegate->receivedAlert(alert);
     }
 }
 
