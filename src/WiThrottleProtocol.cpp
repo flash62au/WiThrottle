@@ -121,6 +121,7 @@ void WiThrottleProtocol::connect(Stream *stream, int delayBetweenCommandsSent) {
     this->stream = stream;
 
     outboundCmdsMininumDelay = delayBetweenCommandsSent;
+    console->print("connect(): Outbound commands minimum delay: "); console->println(outboundCmdsMininumDelay);
 }
 
 void WiThrottleProtocol::disconnect() {
@@ -1373,6 +1374,7 @@ void WiThrottleProtocol::emergencyStop(char multiThrottle) {
 }
 
 void WiThrottleProtocol::emergencyStop(char multiThrottle, String address) {
+    setSpeed(multiThrottle,0);
     String cmd = "M" + String(multiThrottle) + "A" + address;
     cmd.concat(PROPERTY_SEPARATOR);
     cmd.concat("X");

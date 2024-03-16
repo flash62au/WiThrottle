@@ -29,6 +29,7 @@
 /*
 Version information:
 
+1.1.13   - Bug fix for ESTOP
 1.1.12   - Add support for broadcast messages and alerts
 1.1.11   - Change to the fix for the _wifiTrax WFD-30, so that leading CR+LF is always sent
          - Removal of setSpeedCommandShouldBeSenttwice(bool twice)
