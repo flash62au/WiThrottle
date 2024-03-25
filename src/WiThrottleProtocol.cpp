@@ -145,7 +145,6 @@ void WiThrottleProtocol::setCommandsNeedLeadingCrLf(bool needed) {
     commandsNeedLeadingCrLf = needed;
 }
 
-
 bool WiThrottleProtocol::check() {
     bool changed = false;
     resetChangeFlags();

@@ -29,6 +29,7 @@
 /*
 Version information:
 
+1.1.14   - addition of 'sendCommand(String cmd);
 1.1.13   - Bug fix for ESTOP
 1.1.12   - Add support for broadcast messages and alerts
 1.1.11   - Change to the fix for the _wifiTrax WFD-30, so that leading CR+LF is always sent
@@ -181,6 +182,8 @@ class WiThrottleProtocol
 
     bool check();
 
+    void sendCommand(String cmd);
+    
     //int fastTimeHours();
     //int fastTimeMinutes();
 	double getCurrentFastTime();
@@ -287,7 +290,6 @@ class WiThrottleProtocol
     bool checkFastTime();
     bool checkHeartbeat();
 
-    void sendCommand(String cmd);
     void sendDelayedCommand(String cmd);
 
     void setCurrentFastTime(const String& s);
