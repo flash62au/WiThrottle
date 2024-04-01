@@ -846,16 +846,21 @@ void WiThrottleProtocol::processRosterFunctionListEntries(char multiThrottle, co
 
 void WiThrottleProtocol::processSpeed(char multiThrottle, const String& speedData) {
     console->print("processSpeed(): "); console->println(multiThrottle);
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
 
     if (delegate && speedData.length() >= 2) {
         String speedStr = speedData.substring(1);
         int speed = speedStr.toInt();
 
-        if ((speed < MIN_SPEED) || (speed > MAX_SPEED)) {
+        if (speed < MIN_SPEED) {
             speed = 0;
+        } else if (speed > MAX_SPEED) {
+            speed = MAX_SPEED;
         }
 
+        currentSpeed[multiThrottleIndex] = speed;
         if (multiThrottle == DEFAULT_MULTITHROTTLE) {
+            currentSpeed[multiThrottleIndex] = speed;
             delegate->receivedSpeed(speed);
         } else {
             delegate->receivedSpeedMultiThrottle(multiThrottle, speed);

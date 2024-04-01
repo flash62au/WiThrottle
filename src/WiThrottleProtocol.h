@@ -29,6 +29,7 @@
 /*
 Version information:
 
+1.1.15   - fix a bug where the speeds were not being updated when changed on another device
 1.1.14   - addition of 'sendCommand(String cmd);
 1.1.13   - Bug fix for ESTOP
 1.1.12   - Add support for broadcast messages and alerts
