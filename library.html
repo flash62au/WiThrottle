@@ -563,12 +563,12 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol13addLocomotiveEc6String">
 <span id="_CPPv3N18WiThrottleProtocol13addLocomotiveEc6String"></span><span id="_CPPv2N18WiThrottleProtocol13addLocomotiveEc6String"></span><span id="WiThrottleProtocol::addLocomotive__c.String"></span><span class="target" id="classWiThrottleProtocol_1afe0958209952254e8635e0f180c3abe2"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addLocomotive</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">address</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol13addLocomotiveEc6String" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Add a specfied loco to a specified throttle. Will be added to the end of the consist of one or more locos are currently assigned to that Throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
-<li><p><strong>address</strong> – TBA </p></li>
+<li><p><strong>address</strong> – Address of the loco to add. </p></li>
 </ul>
 </dd>
 </dl>
@@ -577,12 +577,12 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol15stealLocomotiveEc6String">
 <span id="_CPPv3N18WiThrottleProtocol15stealLocomotiveEc6String"></span><span id="_CPPv2N18WiThrottleProtocol15stealLocomotiveEc6String"></span><span id="WiThrottleProtocol::stealLocomotive__c.String"></span><span class="target" id="classWiThrottleProtocol_1a130cf78596a86cc9f4f7987a5608757b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stealLocomotive</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">address</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol15stealLocomotiveEc6String" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Steal a specified loco. Only relevant to DigiTrax system. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
-<li><p><strong>address</strong> – TBA </p></li>
+<li><p><strong>address</strong> – Address of the Loco to steal </p></li>
 </ul>
 </dd>
 </dl>
@@ -591,12 +591,12 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol17releaseLocomotiveEc6String">
 <span id="_CPPv3N18WiThrottleProtocol17releaseLocomotiveEc6String"></span><span id="_CPPv2N18WiThrottleProtocol17releaseLocomotiveEc6String"></span><span id="WiThrottleProtocol::releaseLocomotive__c.String"></span><span class="target" id="classWiThrottleProtocol_1ad8f9d75324d18e0efa84f07c013bd858"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">releaseLocomotive</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">address</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;*&quot;</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol17releaseLocomotiveEc6String" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Release one or all locos from a specied throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
-<li><p><strong>address</strong> – TBA </p></li>
+<li><p><strong>address</strong> – Address of the loco to release. Default is to release all locos from the Throttle </p></li>
 </ul>
 </dd>
 </dl>
@@ -605,7 +605,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol17getLeadLocomotiveEc">
 <span id="_CPPv3N18WiThrottleProtocol17getLeadLocomotiveEc"></span><span id="_CPPv2N18WiThrottleProtocol17getLeadLocomotiveEc"></span><span id="WiThrottleProtocol::getLeadLocomotive__c"></span><span class="target" id="classWiThrottleProtocol_1a1013804e6c2283f0252e5793a2a68e0d"></span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getLeadLocomotive</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol17getLeadLocomotiveEc" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Get the address of the loco in the lead positon, currently assigned to a specified Throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p>
@@ -616,12 +616,12 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol23getLocomotiveAtPositionEci">
 <span id="_CPPv3N18WiThrottleProtocol23getLocomotiveAtPositionEci"></span><span id="_CPPv2N18WiThrottleProtocol23getLocomotiveAtPositionEci"></span><span id="WiThrottleProtocol::getLocomotiveAtPosition__c.i"></span><span class="target" id="classWiThrottleProtocol_1af08862c721dcb06d72c202c1bc492251"></span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getLocomotiveAtPosition</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">position</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol23getLocomotiveAtPositionEci" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Get the address of the loco at a specified positon, currently assigned to a specified Throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
-<li><p><strong>position</strong> – TBA </p></li>
+<li><p><strong>position</strong> – Postion of the loco to retrieve </p></li>
 </ul>
 </dd>
 </dl>
@@ -630,7 +630,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol22getNumberOfLocomotivesEc">
 <span id="_CPPv3N18WiThrottleProtocol22getNumberOfLocomotivesEc"></span><span id="_CPPv2N18WiThrottleProtocol22getNumberOfLocomotivesEc"></span><span id="WiThrottleProtocol::getNumberOfLocomotives__c"></span><span class="target" id="classWiThrottleProtocol_1a3084b9c63b8c31586b12b5dd78494ab7"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getNumberOfLocomotives</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol22getNumberOfLocomotivesEc" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Get the number of locos currently assigned to a specified Throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p>
@@ -641,11 +641,11 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol11setFunctionEib">
 <span id="_CPPv3N18WiThrottleProtocol11setFunctionEib"></span><span id="_CPPv2N18WiThrottleProtocol11setFunctionEib"></span><span id="WiThrottleProtocol::setFunction__i.b"></span><span class="target" id="classWiThrottleProtocol_1a582ab3f0200a274ce5c0d51a538585b6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setFunction</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">funcnum</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pressed</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol11setFunctionEib" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Set a Function on the default (first) Throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>funcnum</strong> – TBA </p></li>
+<li><p><strong>funcnum</strong> – Function Number </p></li>
 <li><p><strong>pressed</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -655,12 +655,12 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol11setFunctionEcib">
 <span id="_CPPv3N18WiThrottleProtocol11setFunctionEcib"></span><span id="_CPPv2N18WiThrottleProtocol11setFunctionEcib"></span><span id="WiThrottleProtocol::setFunction__c.i.b"></span><span class="target" id="classWiThrottleProtocol_1a9c75834b468bb4245680485bfb21117f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setFunction</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">funcnum</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pressed</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol11setFunctionEcib" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Set a Function on the a specified Throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
-<li><p><strong>funcnum</strong> – TBA </p></li>
+<li><p><strong>funcnum</strong> – Function Number </p></li>
 <li><p><strong>pressed</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -670,13 +670,13 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol11setFunctionEc6Stringib">
 <span id="_CPPv3N18WiThrottleProtocol11setFunctionEc6Stringib"></span><span id="_CPPv2N18WiThrottleProtocol11setFunctionEc6Stringib"></span><span id="WiThrottleProtocol::setFunction__c.String.i.b"></span><span class="target" id="classWiThrottleProtocol_1aaa446b823ead5d46a52a9523c831875b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setFunction</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">address</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">funcnum</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pressed</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol11setFunctionEc6Stringib" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Set a Function on a specified Loco only, on a specified Throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
-<li><p><strong>address</strong> – TBA </p></li>
-<li><p><strong>funcnum</strong> – TBA </p></li>
+<li><p><strong>address</strong> – DCC Address of the loco to set </p></li>
+<li><p><strong>funcnum</strong> – Function Number </p></li>
 <li><p><strong>pressed</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -686,10 +686,10 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol8setSpeedEi">
 <span id="_CPPv3N18WiThrottleProtocol8setSpeedEi"></span><span id="_CPPv2N18WiThrottleProtocol8setSpeedEi"></span><span id="WiThrottleProtocol::setSpeed__i"></span><span class="target" id="classWiThrottleProtocol_1a9789210de4390db43c12e6ea37b212d9"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setSpeed</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">speed</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol8setSpeedEi" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Set the speed of the default (first) Throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>speed</strong> – TBA </p>
+<dd class="field-odd"><p><strong>speed</strong> – Speed 0-126 </p>
 </dd>
 </dl>
 </dd></dl>
@@ -697,13 +697,13 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol8getSpeedEv">
 <span id="_CPPv3N18WiThrottleProtocol8getSpeedEv"></span><span id="_CPPv2N18WiThrottleProtocol8getSpeedEv"></span><span id="WiThrottleProtocol::getSpeed"></span><span class="target" id="classWiThrottleProtocol_1a046c15134e76b360559cbf97afa5bba4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSpeed</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol8getSpeedEv" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Get the speed of the default (first) Throttle. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol12setDirectionE9Direction">
 <span id="_CPPv3N18WiThrottleProtocol12setDirectionE9Direction"></span><span id="_CPPv2N18WiThrottleProtocol12setDirectionE9Direction"></span><span id="WiThrottleProtocol::setDirection__Direction"></span><span class="target" id="classWiThrottleProtocol_1aba826a71434014a21d0f463219bef3bd"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setDirection</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49Direction" title="Direction"><span class="n"><span class="pre">Direction</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">direction</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol12setDirectionE9Direction" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Set the direction of the default (first) Throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>direction</strong> – TBA </p>
@@ -714,13 +714,13 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol12getDirectionEv">
 <span id="_CPPv3N18WiThrottleProtocol12getDirectionEv"></span><span id="_CPPv2N18WiThrottleProtocol12getDirectionEv"></span><span id="WiThrottleProtocol::getDirection"></span><span class="target" id="classWiThrottleProtocol_1abdd0bf93ddd4f0085b0f5b8e1d9af1f1"></span><a class="reference internal" href="#_CPPv49Direction" title="Direction"><span class="n"><span class="pre">Direction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getDirection</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol12getDirectionEv" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Get the direction of the default (first) Throttle. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol8setSpeedEci">
 <span id="_CPPv3N18WiThrottleProtocol8setSpeedEci"></span><span id="_CPPv2N18WiThrottleProtocol8setSpeedEci"></span><span id="WiThrottleProtocol::setSpeed__c.i"></span><span class="target" id="classWiThrottleProtocol_1ac370db3d3164fda271e2f9cefc032946"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setSpeed</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">speed</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol8setSpeedEci" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Set the speed of the a specified Throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -734,13 +734,13 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol8setSpeedEcib">
 <span id="_CPPv3N18WiThrottleProtocol8setSpeedEcib"></span><span id="_CPPv2N18WiThrottleProtocol8setSpeedEcib"></span><span id="WiThrottleProtocol::setSpeed__c.i.b"></span><span class="target" id="classWiThrottleProtocol_1a40d3857eace3f708f6628897686a4a04"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setSpeed</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">speed</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">forceSend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol8setSpeedEcib" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Set the speed of the a specified Throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>multiThrottle</strong> – TBA </p></li>
 <li><p><strong>speed</strong> – TBA </p></li>
-<li><p><strong>forceSend</strong> – TBA </p></li>
+<li><p><strong>forceSend</strong> – Option to force the command to be sent, even if the protocol thinks it is at that speed </p></li>
 </ul>
 </dd>
 </dl>
@@ -749,7 +749,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol8getSpeedEc">
 <span id="_CPPv3N18WiThrottleProtocol8getSpeedEc"></span><span id="_CPPv2N18WiThrottleProtocol8getSpeedEc"></span><span id="WiThrottleProtocol::getSpeed__c"></span><span class="target" id="classWiThrottleProtocol_1a2bfaf75586a7b9f25a9cbfd9c86167d5"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSpeed</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol8getSpeedEc" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
+<dd><p>Get the speed of the a specified Throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>multiThrottle</strong> – TBA </p>
@@ -764,7 +764,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>multiThrottle</strong> – TBA </p></li>
+<li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
 <li><p><strong>direction</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -778,7 +778,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>multiThrottle</strong> – TBA </p></li>
+<li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
 <li><p><strong>direction</strong> – TBA </p></li>
 <li><p><strong>forceSend</strong> – TBA </p></li>
 </ul>
@@ -793,7 +793,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>multiThrottle</strong> – TBA </p></li>
+<li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
 <li><p><strong>address</strong> – TBA </p></li>
 <li><p><strong>direction</strong> – TBA </p></li>
 </ul>
@@ -808,7 +808,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>multiThrottle</strong> – TBA </p></li>
+<li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
 <li><p><strong>address</strong> – TBA </p></li>
 <li><p><strong>direction</strong> – TBA </p></li>
 <li><p><strong>ForceSend</strong> – TBA </p></li>
@@ -835,7 +835,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>multiThrottle</strong> – TBA </p></li>
+<li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
 <li><p><strong>address</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -848,7 +848,7 @@
 <dd><p>Emergency Stop all locomotives on a specific throttle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>multiThrottle</strong> – TBA </p>
+<dd class="field-odd"><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -860,7 +860,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>multiThrottle</strong> – TBA </p></li>
+<li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
 <li><p><strong>address</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -915,7 +915,7 @@
 <dd><p>Get the Throttle index number from a char Throttle Id. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>multiThrottle</strong> – TBA </p>
+<dd class="field-odd"><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1582,7 +1582,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>address</strong> – TBA </p></li>
+<li><p><strong>address</strong> – DCC Address </p></li>
 <li><p><strong>entry</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -1596,7 +1596,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>address</strong> – TBA </p></li>
+<li><p><strong>address</strong> – DCC Address </p></li>
 <li><p><strong>command</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -1610,7 +1610,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>address</strong> – TBA </p></li>
+<li><p><strong>address</strong> – DCC Address </p></li>
 <li><p><strong>entry</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -1625,7 +1625,7 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
-<li><p><strong>address</strong> – TBA </p></li>
+<li><p><strong>address</strong> – DCC Address </p></li>
 <li><p><strong>entry</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -1640,7 +1640,7 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
-<li><p><strong>address</strong> – TBA </p></li>
+<li><p><strong>address</strong> – DCC Address </p></li>
 <li><p><strong>command</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -1655,7 +1655,7 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
-<li><p><strong>address</strong> – TBA </p></li>
+<li><p><strong>address</strong> – DCC Address </p></li>
 <li><p><strong>entry</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -1669,7 +1669,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>systemName</strong> – TBA </p></li>
+<li><p><strong>systemName</strong> – System name of the Turnout/Point </p></li>
 <li><p><strong>state</strong> – TBA </p></li>
 </ul>
 </dd>
@@ -1683,7 +1683,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>systemName</strong> – TBA </p></li>
+<li><p><strong>systemName</strong> – System name of the Route </p></li>
 <li><p><strong>state</strong> – TBA </p></li>
 </ul>
 </dd>
