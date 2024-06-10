@@ -71,32 +71,32 @@ Version information:
 typedef enum Direction {
     Reverse = 0,
     Forward = 1
-} Direction;
+};
 
 typedef enum TrackPower {
     PowerOff = 0,
     PowerOn = 1,
     PowerUnknown = 2
-} TrackPower;
+};
 
 typedef enum TurnoutState {
     TurnoutClosed = 2,
     TurnoutThrown = 4,
     TurnoutUnknown = 1,
     TurnoutInconsistent = 8
-} TurnoutState;
+};
 
 typedef enum TurnoutAction {
     TurnoutClose = 0,
     TurnoutThrow = 1,
     TurnoutToggle = 2
-} TurnoutAction;
+};
 
 typedef enum RouteState {
     RouteActive = 2,
     RouteInactive = 4,
     RouteInconsistent = 8
-} RouteState;
+};
 
 /// @brief TBA
 class NullStream : public Stream {
