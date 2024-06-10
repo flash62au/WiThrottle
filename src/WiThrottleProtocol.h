@@ -98,6 +98,7 @@ typedef enum RouteState {
     RouteInconsistent = 8
 } RouteState;
 
+/// @brief TBA
 class NullStream : public Stream {
   
   public:
@@ -275,7 +276,7 @@ class WiThrottleProtocolDelegate
     virtual void receivedRouteAction(String systemName, RouteState state) { } //  PTAturnoutstatesystemname
 };
 
-
+/// @brief TBA
 class WiThrottleProtocol
 {
   public:
@@ -329,12 +330,14 @@ class WiThrottleProtocol
 	double getCurrentFastTime();
     /// @brief TBA
     float getFastTimeRate();
+    /// @brief TBA
     bool clockChanged;
 
     String currentDeviceName;
     /// @brief TBA
     /// @param needed TBA
     void requireHeartbeat(bool needed=true);
+    /// @brief TBA
     bool heartbeatChanged;
 
     /// @brief TBA
@@ -351,6 +354,7 @@ class WiThrottleProtocol
     /// @brief TBA
     /// @param position TBA
     String getLocomotiveAtPosition(int position);
+    /// @brief TBA
     int getNumberOfLocomotives();
 
     // multiThrottle support
@@ -412,6 +416,7 @@ class WiThrottleProtocol
     bool setSpeed(char multiThrottle, int speed);
     /// @brief TBA
     /// @param multiThrottle TBA
+    /// @param speed TBA
     /// @param forceSend TBA
     bool setSpeed(char multiThrottle, int speed, bool forceSend);
     /// @brief TBA
@@ -424,7 +429,7 @@ class WiThrottleProtocol
     /// @brief TBA
     /// @param multiThrottle TBA
     /// @param direction TBA
-    /// @param ForceSend TBA
+    /// @param forceSend TBA
     bool setDirection(char multiThrottle, Direction direction, bool forceSend);
     /// @brief TBA
     /// @param multiThrottle TBA
@@ -467,11 +472,16 @@ class WiThrottleProtocol
     /// @param address TBA
     bool setRoute(String address);   // address is turnout system name e.g. IO:AUTO:0008
 
+    /// @brief TBA
     std::vector<String> locomotives[6];
+    /// @brief TBA
     std::vector<Direction> locomotivesFacing[6];
 
+    /// @brief TBA
+    /// @param multiThrottle TBA
     int getMultiThrottleIndex(char multiThrottle);
     
+    /// @brief TBA
     long getLastServerResponseTime();  // seconds since Arduino start
     
 
