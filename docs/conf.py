@@ -13,9 +13,9 @@ subprocess.call('doxygen Doxyfile.in', shell=True)
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'DCCEXProtocol'
-copyright = '2023 - Peter Cole, Peter Akers'
-author = 'Peter Cole, Peter Akers'
+project = 'WithrottleProtocol'
+copyright = '2023 - lucadentella, Peter Akers'
+author = 'Peter Akers'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -70,8 +70,8 @@ html_theme_options = {
 
 html_context = {
     'display_github': True,
-    'github_user': 'DCC-EX',
-    'github_repo': 'dccexprotocol',
+    'github_user': 'flash62au',
+    'github_repo': 'WiThrottleProtocol',
     'github_version': 'sphinx/docs/',
 }
 
@@ -81,7 +81,7 @@ html_css_files = [
 ]
 
 # Sphinx sitemap
-html_baseurl = 'https://dcc-ex.com/DCCEXProtocol/'
+html_baseurl = 'https://flash62au.github.io/WiThrottleProtocol/'
 html_extra_path = [
   'robots.txt',
 ]
@@ -89,7 +89,7 @@ html_extra_path = [
 # -- Breathe configuration -------------------------------------------------
 
 breathe_projects = {
-  "DCCEXProtocol": "_build/xml/"
+  "WiThrottleProtocol": "./_build/xml/"
 }
-breathe_default_project = "DCCEXProtocol"
+breathe_default_project = "WiThrottleProtocol"
 breathe_default_members = ()

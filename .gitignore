@@ -15,3 +15,6 @@
 # Emacs backup files
 *~
 .vscode/c_cpp_properties.json
+
+#doco
+docs/_build/*
