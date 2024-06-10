@@ -13,7 +13,7 @@ subprocess.call('doxygen Doxyfile.in', shell=True)
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'WithrottleProtocol'
+project = 'WiThrottleProtocol'
 copyright = '2023 - lucadentella, Peter Akers'
 author = 'Peter Akers'
 

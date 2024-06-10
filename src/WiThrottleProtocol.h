@@ -110,17 +110,32 @@ class NullStream : public Stream {
 	size_t write(const uint8_t *buffer, size_t size) { return size; }
 };
 
-/// @brief Class for the 
+/// @brief Class for the Delegate methods
 class WiThrottleProtocolDelegate
 {
   public:
-    /// @brief Constructor
-    /// @param id Route ID
+    /// @brief Delegate method to receive the WiThrottle version
+    /// @param version Version Number
     virtual void receivedVersion(String version) {}
+
+    /// @brief Delegate method to receive the Server Type
+    /// @param type Server Type
     virtual void receivedServerType(String type) {}
+
+    /// @brief Delegate method to receive the Server Decription
+    /// @param type Server Description
     virtual void receivedServerDescription(String description) {}
+
+    /// @brief Delegate method to receive a message from the Withrottle Server
+    /// @param message Message Content
     virtual void receivedMessage(String message) {}
+
+    /// @brief Delegate method to receive a broadcast Alert from the Withrottle Server
+    /// @param alert Broadcast Alert content
     virtual void receivedAlert(String alert) {}
+
+    /// @brief Delegate method to receive the total number of Roster Entries from the Withrottle Server
+    /// @param rosterSize total number of Roster Entries from the Withrottle Server
     virtual void receivedRosterEntries(int rosterSize) {}
     virtual void receivedRosterEntry(int index, String name, int address, char length) {}
 
