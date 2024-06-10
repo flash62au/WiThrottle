@@ -123,7 +123,7 @@ class WiThrottleProtocolDelegate
     virtual void receivedServerType(String type) {}
 
     /// @brief Delegate method to receive the Server Decription
-    /// @param type Server Description
+    /// @param description Server Description
     virtual void receivedServerDescription(String description) {}
 
     /// @brief Delegate method to receive a message from the Withrottle Server
@@ -156,7 +156,15 @@ class WiThrottleProtocolDelegate
     /// @param state current state of the Turnout/Point
     virtual void receivedTurnoutEntry(int index, String sysName, String userName, int state) {}
 
+    /// @brief Delegate method to receive the total number of Routes Entries from the Withrottle Server
+    /// @param routeListSize total number of Route Entries in the Withrottle Server
     virtual void receivedRouteEntries(int routeListSize) {}
+
+    /// @brief Delegate method to receive the a single Route Entry from the Withrottle Server
+    /// @param index sequence number
+    /// @param sysName Route system name
+    /// @param userName Route entry name
+    /// @param state current state of the Route
     virtual void receivedRouteEntry(int index, String sysName, String userName, int state) {}
 
     virtual void fastTimeChanged(uint32_t time) { }

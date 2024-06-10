@@ -7,6 +7,8 @@
 import subprocess
 # import os
 
+import sphinx_rtd_theme
+
 # Doxygen
 subprocess.call('doxygen Doxyfile.in', shell=True)
 
@@ -81,10 +83,10 @@ html_css_files = [
 ]
 
 # Sphinx sitemap
-html_baseurl = 'https://flash62au.github.io/WiThrottleProtocol/'
-html_extra_path = [
-  'robots.txt',
-]
+# html_baseurl = 'https://flash62au.github.io/WiThrottleProtocol/'
+# html_extra_path = [
+#  'robots.txt',
+# ]
 
 # -- Breathe configuration -------------------------------------------------
 
