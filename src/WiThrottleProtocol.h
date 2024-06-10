@@ -137,6 +137,12 @@ class WiThrottleProtocolDelegate
     /// @brief Delegate method to receive the total number of Roster Entries from the Withrottle Server
     /// @param rosterSize total number of Roster Entries from the Withrottle Server
     virtual void receivedRosterEntries(int rosterSize) {}
+
+    /// @brief Delegate method to receive the a single Roster Entry from the Withrottle Server
+    /// @param index sequence number
+    /// @param name Roster entry name
+    /// @param address DCC Address
+    /// @param length S|L Short or Long address
     virtual void receivedRosterEntry(int index, String name, int address, char length) {}
 
     virtual void receivedTurnoutEntries(int turnoutListSize) {}    
