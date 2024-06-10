@@ -110,10 +110,12 @@ class NullStream : public Stream {
 	size_t write(const uint8_t *buffer, size_t size) { return size; }
 };
 
+/// @brief Class for the 
 class WiThrottleProtocolDelegate
 {
   public:
-  
+    /// @brief Constructor
+    /// @param id Route ID
     virtual void receivedVersion(String version) {}
     virtual void receivedServerType(String type) {}
     virtual void receivedServerDescription(String description) {}
