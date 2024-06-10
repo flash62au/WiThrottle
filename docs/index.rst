@@ -13,15 +13,21 @@ Documentation for the WiThrotle protocol library - WiThrottleProtocol
 WiThrottle protocol library
 ---------------------------
 
-This library implements the WiThrottleProtocol (as used in JMRI, the |DCC-EX| |EX-CS| and manya other DCc Command Stations), allowing a device to connect to the server and act as a client (such as a hardware based throttle).
+This library implements the WiThrottleProtocol (as used in JMRI, the |DCC-EX| |EX-CS| and many other DCC Command Stations), allowing a device to connect to the server and act as a client (such as a hardware based throttle).
 
 The implementation of this library is tested on ESP32 based devices running the Arduino framework. There's nothing in here that's specific to the ESP32, and little of Arduino that couldn't be replaced as needed.
 
 Credits
 -------
 
-The original version of the code in this library is taken directly from the WiThrottle library by **Copyright © 2018-2019 Blue Knobby Systems Inc.** and additioanl changes by lucadentella.
-The rest of the code has been developed by Peter Akers (Flash62au).
+* Peter Akers <akersp62@gmail.com>
+* David Zuhn <zoo@statebeltrailway.org>
+* Luca Dentella <luca@dentella.it>
+
+The original version of the code in this library was written by David Zuhn with changes by Luca Dentella. The rest of the code has been developed by Peter Akers (Flash62au).
+
+* https://github.com/davidzuhn/WiThrottleProtocol
+* https://github.com/lucadentella/WiThrottle
 
 -----
 

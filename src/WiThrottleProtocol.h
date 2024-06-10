@@ -98,6 +98,11 @@ typedef enum RouteState {
     RouteInconsistent = 8
 };
 
+///
+/// ---------------------------------------------------------------------
+/// ---------------------------------------------------------------------
+///
+
 /// @brief TBA
 class NullStream : public Stream {
   
@@ -120,6 +125,11 @@ class NullStream : public Stream {
     /// @param size TBA
 	size_t write(const uint8_t *buffer, size_t size) { return size; }
 };
+
+///
+/// ---------------------------------------------------------------------
+/// ---------------------------------------------------------------------
+///
 
 /// @brief Class for the Delegate methods
 class WiThrottleProtocolDelegate
@@ -238,43 +248,48 @@ class WiThrottleProtocolDelegate
     virtual void receivedTrackPower(TrackPower state) { } // PPAn
 
     /// @brief Delegate method to receive  from the Withrottle Server
-    /// @param address TBA
+    /// @param address DCC Address
     /// @param entry TBA
     virtual void addressAdded(String address, String entry) { }  // MT+addr<;>roster entry
     /// @brief Delegate method to receive  from the Withrottle Server
-    /// @param address TBA
+    /// @param address DCC Address
     /// @param command TBA
     virtual void addressRemoved(String address, String command) { } // MT-addr<;>[dr]
     /// @brief Delegate method to receive  from the Withrottle Server
-    /// @param address TBA
+    /// @param address DCC Address
     /// @param entry TBA
     virtual void addressStealNeeded(String address, String entry) { } // MTSaddr<;>addr
 
     /// @brief Delegate method to receive  from the Withrottle Server
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address TBA
+    /// @param address DCC Address
     /// @param entry TBA
     virtual void addressAddedMultiThrottle(char multiThrottle, String address, String entry) { }  // M0+addr<;>roster entry
     /// @brief Delegate method to receive  from the Withrottle Server
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address TBA
+    /// @param address DCC Address
     /// @param command TBA
     virtual void addressRemovedMultiThrottle(char multiThrottle, String address, String command) { } // M0-addr<;>[dr]
     /// @brief Delegate method to receive  from the Withrottle Server
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address TBA
+    /// @param address DCC Address
     /// @param entry TBA
     virtual void addressStealNeededMultiThrottle(char multiThrottle, String address, String entry) { } // MTSaddr<;>addr
 
     /// @brief Delegate method to receive  from the Withrottle Server
-    /// @param systemName TBA
+    /// @param systemName System name of the Turnout/Point
     /// @param state TBA
     virtual void receivedTurnoutAction(String systemName, TurnoutState state) { } //  PTAturnoutstatesystemname
     /// @brief Delegate method to receive  from the Withrottle Server
-    /// @param systemName TBA
+    /// @param systemName System name of the Route
     /// @param state TBA
     virtual void receivedRouteAction(String systemName, RouteState state) { } //  PTAturnoutstatesystemname
 };
+
+///
+/// ---------------------------------------------------------------------
+/// ---------------------------------------------------------------------
+///
 
 /// @brief TBA
 class WiThrottleProtocol
@@ -358,86 +373,86 @@ class WiThrottleProtocol
     int getNumberOfLocomotives();
 
     // multiThrottle support
-    /// @brief TBA
+    /// @brief Add a specfied loco to a specified throttle. Will be added to the end of the consist of one or more locos are currently assigned to that Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address TBA
+    /// @param address Address of the loco to add.
     bool addLocomotive(char multiThrottle, String address);  // address is [S|L]nnnn (where n is 0-10000)
-    /// @brief TBA
+    /// @brief Steal a specified loco. Only relevant to DigiTrax system
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address TBA
+    /// @param address Address of the Loco to steal
     bool stealLocomotive(char multiThrottle, String address);   // address is [S|L]nnnn (where n is 0-10000)
-    /// @brief TBA
+    /// @brief Release one or all locos from a specied throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address TBA
+    /// @param address Address of the loco to release. Default is to release all locos from the Throttle
     bool releaseLocomotive(char multiThrottle, String address = "*");
-    /// @brief TBA
+    /// @brief Get the address of the loco in the lead positon, currently assigned to a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     String getLeadLocomotive(char multiThrottle);
-    /// @brief TBA
+    /// @brief Get the address of the loco at a specified positon, currently assigned to a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param position TBA
+    /// @param position Postion of the loco to retrieve
     String getLocomotiveAtPosition(char multiThrottle, int position);
-    /// @brief TBA
+    /// @brief Get the number of locos currently assigned to a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     int getNumberOfLocomotives(char multiThrottle);
 
-    /// @brief TBA
-    /// @param funcnum TBA
+    /// @brief Set a Function on the default (first) Throttle
+    /// @param funcnum Function Number
     /// @param pressed TBA
     void setFunction(int funcnum, bool pressed);
     // multiThrottle support
-    /// @brief TBA
+    /// @brief Set a Function on the a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param funcnum TBA
+    /// @param funcnum Function Number
     /// @param pressed TBA
     void setFunction(char multiThrottle, int funcnum, bool pressed);
-    /// @brief TBA
+    /// @brief Set a Function on a specified Loco only, on a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address TBA
-    /// @param funcnum TBA
+    /// @param address DCC Address of the loco to set
+    /// @param funcnum Function Number
     /// @param pressed TBA
     void setFunction(char multiThrottle, String address, int funcnum, bool pressed);
 
-    /// @brief TBA
-    /// @param speed TBA
+    /// @brief Set the speed of the default (first) Throttle
+    /// @param speed Speed 0-126
     bool setSpeed(int speed);
-    /// @brief TBA
+    /// @brief Get the speed of the default (first) Throttle
     int getSpeed();
-    /// @brief TBA
+    /// @brief Set the direction of the default (first) Throttle
     /// @param direction TBA
     bool setDirection(Direction direction);
-    /// @brief TBA
+    /// @brief Get the direction of the default (first) Throttle
     Direction getDirection();
 
     // multiThrottle support
-    /// @brief TBA
+    /// @brief Set the speed of the a specified Throttle
     /// @param multiThrottle TBA
     /// @param speed TBA
     bool setSpeed(char multiThrottle, int speed);
-    /// @brief TBA
+    /// @brief Set the speed of the a specified Throttle
     /// @param multiThrottle TBA
     /// @param speed TBA
-    /// @param forceSend TBA
+    /// @param forceSend Option to force the command to be sent, even if the protocol thinks it is at that speed
     bool setSpeed(char multiThrottle, int speed, bool forceSend);
-    /// @brief TBA
+    /// @brief Get the speed of the a specified Throttle
     /// @param multiThrottle TBA
     int getSpeed(char multiThrottle);
     /// @brief TBA
-    /// @param multiThrottle TBA
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param direction TBA
     bool setDirection(char multiThrottle, Direction direction);
     /// @brief TBA
-    /// @param multiThrottle TBA
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param direction TBA
     /// @param forceSend TBA
     bool setDirection(char multiThrottle, Direction direction, bool forceSend);
     /// @brief TBA
-    /// @param multiThrottle TBA
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address TBA
     /// @param direction TBA
     bool setDirection(char multiThrottle, String address, Direction direction);
     /// @brief TBA
-    /// @param multiThrottle TBA
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address TBA
     /// @param direction TBA
     /// @param ForceSend TBA
@@ -446,14 +461,14 @@ class WiThrottleProtocol
     /// @param multiThrottle TBA
     Direction getDirection(char multiThrottle);
     /// @brief TBA
-    /// @param multiThrottle TBA
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address TBA
     Direction getDirection(char multiThrottle, String address);
     /// @brief Emergency Stop all locomotives on a specific throttle
-    /// @param multiThrottle TBA
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     void emergencyStop(char multiThrottle);
     /// @brief Emergency Stop a specific locomotives on a specific throttle
-    /// @param multiThrottle TBA
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address TBA
     void emergencyStop(char multiThrottle, String address);
 	
@@ -478,12 +493,17 @@ class WiThrottleProtocol
     std::vector<Direction> locomotivesFacing[6];
 
     /// @brief Get the Throttle index number from a char Throttle Id. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param multiThrottle TBA
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     int getMultiThrottleIndex(char multiThrottle);
     
     /// @brief Get the last time that the server sent a resonse to the client 
     long getLastServerResponseTime();  
     
+///
+/// ---------------------------------------------------------------------
+/// ---------------------------------------------------------------------
+///
+
 
   private:
   
