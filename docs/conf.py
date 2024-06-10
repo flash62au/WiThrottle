@@ -7,8 +7,6 @@
 import subprocess
 # import os
 
-import sphinx_rtd_theme
-
 # Doxygen
 subprocess.call('doxygen Doxyfile.in', shell=True)
 
@@ -24,7 +22,7 @@ author = 'Peter Akers'
 
 extensions = [
   "sphinx.ext.githubpages",
-  'sphinxcontrib.spelling',
+  # 'sphinxcontrib.spelling',
   'sphinx_rtd_dark_mode',
   'breathe'
 ]
