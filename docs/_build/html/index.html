@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="DCC-EX DCC DCC++ EX DCC++EX" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation for the WiThrotle protocol library - WiThrottleProtocol &mdash; WiThrottleProtocol  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/dccex_theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/sphinx_design_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://flash62au.github.io/WiThrottleProtocol/index.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/dark_mode_js/default_light.js"></script>
+        <script src="_static/dark_mode_js/theme_switcher.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Library" href="library.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="#">
+            
+              <img src="_static/product-logo-native-protocol-library.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">WiThrottle protocol library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library.html">Library</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">WiThrottleProtocol</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Documentation for the WiThrotle protocol library - WiThrottleProtocol</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/flash62au/WiThrottleProtocol/blob/sphinx/docs/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="documentation-for-the-withrotle-protocol-library-withrottleprotocol">
+<h1>Documentation for the WiThrotle protocol library - WiThrottleProtocol<a class="headerlink" href="#documentation-for-the-withrotle-protocol-library-withrottleprotocol" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<section id="withrottle-protocol-library">
+<h2>WiThrottle protocol library<a class="headerlink" href="#withrottle-protocol-library" title="Permalink to this heading"></a></h2>
+<p>This library implements the WiThrottleProtocol (as used in JMRI, the <a href="https://dcc-ex.com/"><span class="dccex-suffix">DCC-</span><span class="dccex-prefix">EX</span></a> <a href="https://dcc-ex.com/"><span class="ex-prefix">EX</span><span class="ex-suffix">&#8209;CommandStation</span></a> and manya other DCc Command Stations), allowing a device to connect to the server and act as a client (such as a hardware based throttle).</p>
+<p>The implementation of this library is tested on ESP32 based devices running the Arduino framework. There’s nothing in here that’s specific to the ESP32, and little of Arduino that couldn’t be replaced as needed.</p>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading"></a></h2>
+<p>The original version of the code in this library is taken directly from the WiThrottle library by <strong>Copyright © 2018-2019 Blue Knobby Systems Inc.</strong> and additioanl changes by lucadentella.
+The rest of the code has been developed by Peter Akers (Flash62au).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="differences-from-the-original-library">
+<h1>Differences from the original library<a class="headerlink" href="#differences-from-the-original-library" title="Permalink to this heading"></a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p>Removed dependencies with external libraries (Chrono.h, ArduinoTime.h, TimeLib.h)</p></li>
+<li><p>Added NullStream class to disable (by default) logging</p></li>
+<li><p>Changed begin() method to setLogStream()</p></li>
+<li><p>Added a setter method for delegate class: setDelegate()</p></li>
+<li><p>Added the ability to parse roster messages and to receive the roster list via delegate class</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="differences-from-the-lucadentella-version-of-the-library">
+<h1>Differences from the lucadentella version of the library<a class="headerlink" href="#differences-from-the-lucadentella-version-of-the-library" title="Permalink to this heading"></a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added the trademark changes from the original library</p></li>
+<li><p>supports multi-throttle commands (max 6)  (Added in version 1.1.0)</p></li>
+<li><p>Support added for on-the-fly consists</p></li>
+<li><p>Support added for turnouts/points</p></li>
+<li><p>Support added for routes</p></li>
+<li><p>Heartbeat sends the device name, which forces the WiThrottle server to respond (used to confirm it is still connected)</p></li>
+<li><p>minimum time separation/delay between commands sent (introduced in v1.1.7)</p></li>
+<li><p>bug fixes</p></li>
+</ul>
+</div></blockquote>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="library.html" class="btn btn-neutral float-right" title="Library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 - lucadentella, Peter Akers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5X0KNBF0W"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-L5X0KNBF0W', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
