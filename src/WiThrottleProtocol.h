@@ -145,7 +145,15 @@ class WiThrottleProtocolDelegate
     /// @param length S|L Short or Long address
     virtual void receivedRosterEntry(int index, String name, int address, char length) {}
 
-    virtual void receivedTurnoutEntries(int turnoutListSize) {}    
+    /// @brief Delegate method to receive the total number of Turnouts/Points Entries from the Withrottle Server
+    /// @param turnoutListSize total number of Turnout/Point Entries in the Withrottle Server
+    virtual void receivedTurnoutEntries(int turnoutListSize) {}
+
+    /// @brief Delegate method to receive the a single Turnout/Point Entry from the Withrottle Server
+    /// @param index sequence number
+    /// @param sysName Turnout/Point system name
+    /// @param userName Turnout/Point entry name
+    /// @param state current state of the Turnout/Point
     virtual void receivedTurnoutEntry(int index, String sysName, String userName, int state) {}
 
     virtual void receivedRouteEntries(int routeListSize) {}

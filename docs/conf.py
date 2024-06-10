@@ -21,7 +21,6 @@ author = 'Peter Akers'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-  'sphinx_sitemap',
   'sphinxcontrib.spelling',
   'sphinx_rtd_dark_mode',
   'breathe'
