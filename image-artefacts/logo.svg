@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="40.413082"
+   viewBox="0 0 35.040833 40.413082"
+   width="35.040833"
+   fill="#e8eaed"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="..\docs\_static\images\logo.png"
+   inkscape:export-xdpi="1200"
+   inkscape:export-ydpi="1200"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="6.7604165"
+     inkscape:cx="25.516179"
+     inkscape:cy="24.85054"
+     inkscape:window-width="1280"
+     inkscape:window-height="649"
+     inkscape:window-x="1781"
+     inkscape:window-y="1077"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <path
+     d="M 0,0 H 24 V 24 H 0 Z"
+     fill="none"
+     id="path2" />
+  <path
+     d="M 29.586706,15.447682 H 27.451324 V 9.7533266 c 0,-1.5659481 -1.281231,-2.8471777 -2.847178,-2.8471777 H 18.909791 V 4.7707662 c 0,-1.9645531 -1.594421,-3.558972 -3.558973,-3.558972 -1.964552,0 -3.55897,1.5944189 -3.55897,3.558972 V 6.9061489 H 6.0974923 c -1.565947,0 -2.832941,1.2812296 -2.832941,2.8471777 v 5.4096374 h 2.121147 c 2.121147,0 3.8436893,1.722542 3.8436893,3.843689 0,2.121149 -1.7225423,3.843691 -3.8436893,3.843691 h -2.135383 v 5.409637 c 0,1.565948 1.28123,2.847178 2.847177,2.847178 H 11.50713 v -2.135383 c 0,-2.121147 1.722542,-3.843691 3.843688,-3.843691 2.121148,0 3.84369,1.722544 3.84369,3.843691 v 2.135383 h 5.409638 c 1.565947,0 2.847178,-1.28123 2.847178,-2.847178 v -5.694355 h 2.135382 c 1.964552,0 3.558972,-1.594421 3.558972,-3.558973 0,-1.964552 -1.59442,-3.558971 -3.558972,-3.558971 z"
+     id="path4"
+     style="fill:none;stroke:#ff00ff;stroke-width:1.42359;stroke-opacity:1" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:100;font-stretch:normal;font-size:3.13511px;line-height:1.25;font-family:Vagabond;-inkscape-font-specification:'Vagabond, Thin';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;white-space:pre;fill:#ff00ff;stroke:#ff00ff;stroke-width:0;stroke-dasharray:none;stop-color:#000000"
+     x="2.7508907"
+     y="35.779388"
+     id="text480"><tspan
+       sodipodi:role="line"
+       id="tspan1094"
+       x="2.7508907"
+       y="35.779388">WiThtottleProtocol</tspan><tspan
+       sodipodi:role="line"
+       id="tspan1096"
+       x="2.7508907"
+       y="39.698277">           library</tspan></text>
+</svg>
