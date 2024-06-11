@@ -336,23 +336,25 @@ class WiThrottleProtocol
     bool check();
 
     /// @brief Send command to the Command Station
-    /// @param cmd Command
+    /// @param cmd Command to send
     void sendCommand(String cmd);
     
     //int fastTimeHours();
     //int fastTimeMinutes();
-    /// @brief TBA
+
+    /// @brief Get the current Fast Time value
 	double getCurrentFastTime();
-    /// @brief TBA
+    /// @brief Get the current Fast Time rate
     float getFastTimeRate();
     /// @brief TBA
     bool clockChanged;
 
+    /// @brief TBA
     String currentDeviceName;
     /// @brief TBA
     /// @param needed TBA
     void requireHeartbeat(bool needed=true);
-    /// @brief TBA
+    /// @brief Recrdes if the server heatbeat value has changed
     bool heartbeatChanged;
 
     /// @brief TBA
@@ -419,77 +421,77 @@ class WiThrottleProtocol
     /// @brief Get the speed of the default (first) Throttle
     int getSpeed();
     /// @brief Set the direction of the default (first) Throttle
-    /// @param direction TBA
+    /// @param direction Direction. One of - Reverse = 0, Forward = 1
     bool setDirection(Direction direction);
     /// @brief Get the direction of the default (first) Throttle
     Direction getDirection();
 
     // multiThrottle support
     /// @brief Set the speed of the a specified Throttle
-    /// @param multiThrottle TBA
-    /// @param speed TBA
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param speed Speed 0-126
     bool setSpeed(char multiThrottle, int speed);
     /// @brief Set the speed of the a specified Throttle
-    /// @param multiThrottle TBA
-    /// @param speed TBA
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param speed Speed 0-126
     /// @param forceSend Option to force the command to be sent, even if the protocol thinks it is at that speed
     bool setSpeed(char multiThrottle, int speed, bool forceSend);
     /// @brief Get the speed of the a specified Throttle
-    /// @param multiThrottle TBA
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     int getSpeed(char multiThrottle);
-    /// @brief TBA
+    /// @brief Set the direction of the a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param direction TBA
+    /// @param direction Direction. One of - Reverse = 0, Forward = 1
     bool setDirection(char multiThrottle, Direction direction);
-    /// @brief TBA
+    /// @brief Set the direction of the a specified Throttle, with the option to force the send
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param direction TBA
-    /// @param forceSend TBA
+    /// @param direction Direction. One of - Reverse = 0, Forward = 1
+    /// @param forceSend Option to force the command to be sent, even if the protocol thinks it is in that Direction
     bool setDirection(char multiThrottle, Direction direction, bool forceSend);
-    /// @brief TBA
+    /// @brief Set the direction of a specific locomotive on a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address TBA
-    /// @param direction TBA
+    /// @param address DCC Address of the loco to set
+    /// @param direction Direction. One of - Reverse = 0, Forward = 1
     bool setDirection(char multiThrottle, String address, Direction direction);
-    /// @brief TBA
+    /// @brief et the direction of a specific locomotive on a specified Throttle, with the option to force the send
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address TBA
-    /// @param direction TBA
-    /// @param ForceSend TBA
+    /// @param address DCC Address of the loco to set
+    /// @param direction Direction. One of - Reverse = 0, Forward = 1
+    /// @param ForceSend Option to force the command to be sent, even if the protocol thinks it is in that Direction
     bool setDirection(char multiThrottle, String address, Direction direction, bool ForceSend);
-    /// @brief TBA
-    /// @param multiThrottle TBA
-    Direction getDirection(char multiThrottle);
-    /// @brief TBA
+    /// @brief Get the direction of a specific throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address TBA
+    Direction getDirection(char multiThrottle);
+    /// @brief Get the direction of a specific locomotives on a specific throttle
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param address DCC Address of the loco to get
     Direction getDirection(char multiThrottle, String address);
     /// @brief Emergency Stop all locomotives on a specific throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     void emergencyStop(char multiThrottle);
     /// @brief Emergency Stop a specific locomotives on a specific throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address TBA
+    /// @param address DCC Address of the loco to stop
     void emergencyStop(char multiThrottle, String address);
 	
     /// @brief Set the state of a Track Power
-    /// @param state TBA
+    /// @param state State required. One of - PowerOff = 0, PowerOn = 1
 	void setTrackPower(TrackPower state);
 
     /// @brief Emergency Stop all locomotives on the default (first) throttle
     void emergencyStop();
 
     /// @brief Set the state of a Turnout/Point 
-    /// @param address Address of the Turnout/Point
-    /// @param action TBA
+    /// @param address Identifier of the Turnout/Point
+    /// @param action Action to perform on the Turnout/Point. one of - TurnoutClose = 0, TurnoutThrow = 1, TurnoutToggle = 2
     bool setTurnout(String address, TurnoutAction action);   // address is turnout system name e.g. LT92
-    /// @brief TBA
-    /// @param address TBA
+    /// @brief Set (activate) a Route
+    /// @param address Identifier of the Route to activate
     bool setRoute(String address);   // address is turnout system name e.g. IO:AUTO:0008
 
-    /// @brief TBA
+    /// @brief Used to record the locos in a consist (on each Throttle)
     std::vector<String> locomotives[6];
-    /// @brief TBA
+    /// @brief Used to record the direction the locos in a consist (on each Throttle) are facing
     std::vector<Direction> locomotivesFacing[6];
 
     /// @brief Get the Throttle index number from a char Throttle Id. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
