@@ -266,6 +266,20 @@ html[data-theme='dark'] .sd-card {
   box-shadow: 0 0.5rem 1rem rgb(32 88 91 / 25%) !important;
 }
 
+/* *************************************** */
+
+html[data-theme='dark'] dt.py {
+  background-color: #191919 !important;
+  color: #007dce !important;
+}
+
+html[data-theme='dark'] .sig-prename {
+  color: #525252 !important;
+}
+
+html[data-theme='dark'] .sig-name {
+  color: #ffffff !important;
+}
 
 /* *************************************** */
 
