@@ -76,7 +76,7 @@ html_context = {
 }
 
 html_css_files = [
-    'css/dccex_theme.css',
+    'css/withrottleprotocol_theme.css',
     'css/sphinx_design_overrides.css',
 ]
 
