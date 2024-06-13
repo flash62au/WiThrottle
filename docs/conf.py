@@ -89,7 +89,7 @@ html_css_files = [
 # -- Breathe configuration -------------------------------------------------
 
 # breathe_projects = {
-#   "WiThrottleProtocol": "./_build/xml/"
+#   "WiThrottleProtocol": "_build/xml/"
 # }
 # breathe_default_project = "WiThrottleProtocol"
 # breathe_default_members = ()
