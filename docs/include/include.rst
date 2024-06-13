@@ -9,24 +9,6 @@
 
   <a href="https://dcc-ex.com/"><span class="ex-prefix">EX</span><span class="ex-suffix">&#8209;CommandStation</span></a>
 ..
-.. |EX-NCL| raw:: html
-
-  <span class="dccex-suffix">DCC-</span><span class="dccex-prefix">EX</span>
-  <span class="ex-suffix">Native command protocol library</span>
-..
-.. |EX-P| raw:: html
-
-  <span class="ex-prefix">DCCEX</span><span class="ex-suffix">Protocol</span>
-..
-.. |EX-PL| raw:: html
-
-  <span class="ex-prefix">DCCEX</span><span class="ex-suffix">Protocol library</span>
-..
-.. |EX-NCP| raw:: html
-
-  <span class="dccex-suffix">DCC-</span><span class="dccex-prefix">EX</span>
-  <span class="ex-suffix"> native command protocol</span>
-..
 .. |br| raw:: html
 
   <br />

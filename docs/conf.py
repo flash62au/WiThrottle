@@ -14,7 +14,7 @@ subprocess.call('doxygen Doxyfile.in', shell=True)
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'WiThrottleProtocol'
-copyright = '2023 - lucadentella, Peter Akers'
+copyright = '2023 - David Zuhn, Luca Dentella, Peter Akers'
 author = 'Peter Akers'
 
 # -- General configuration ---------------------------------------------------
@@ -23,8 +23,8 @@ author = 'Peter Akers'
 extensions = [
   "sphinx.ext.githubpages",
   # 'sphinxcontrib.spelling',
-  'sphinx_rtd_dark_mode',
-  'breathe'
+  'sphinx_rtd_dark_mode'
+  # 'breathe'
 ]
 
 autosectionlabel_prefix_document = True
@@ -88,8 +88,8 @@ html_css_files = [
 
 # -- Breathe configuration -------------------------------------------------
 
-breathe_projects = {
-  "WiThrottleProtocol": "./_build/xml/"
-}
-breathe_default_project = "WiThrottleProtocol"
-breathe_default_members = ()
+# breathe_projects = {
+#   "WiThrottleProtocol": "./_build/xml/"
+# }
+# breathe_default_project = "WiThrottleProtocol"
+# breathe_default_members = ()
