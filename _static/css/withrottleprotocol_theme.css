@@ -281,6 +281,11 @@ html[data-theme='dark'] .sig-name {
   color: #ffffff !important;
 }
 
+html[data-theme='dark'] .sig-object {
+  background-color: #191919 !important;
+}
+
+
 /* *************************************** */
 
 .dcclink a {
