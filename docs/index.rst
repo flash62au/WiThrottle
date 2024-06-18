@@ -24,15 +24,15 @@ Credits
 * David Zuhn <zoo@statebeltrailway.org>
 * Luca Dentella <luca@dentella.it>
 
-The original version of the code in this library was written by David Zuhn with changes by Luca Dentella. The rest of the code has been developed by Peter Akers (Flash62au).
+The original version of the code in this library was written by David Zuhn with changes by Luca Dentella. Subsequent development of the code has been by Peter Akers (Flash62au).
 
-* https://github.com/davidzuhn/WiThrottleProtocol
-* https://github.com/lucadentella/WiThrottle
+* https://github.com/davidzuhn/WiThrottleProtocol  Original Version
+* https://github.com/lucadentella/WiThrottle   Updated Version
 
 -----
 
-Differences from the original library
-=====================================
+Differences from the original library to Luca Dentella's version
+================================================================
 
  - Removed dependencies with external libraries (Chrono.h, ArduinoTime.h, TimeLib.h) 
  - Added NullStream class to disable (by default) logging
@@ -40,8 +40,8 @@ Differences from the original library
  - Added a setter method for delegate class: setDelegate()
  - Added the ability to parse roster messages and to receive the roster list via delegate class
  
-Differences from the lucadentella version of the library
-========================================================
+Differences from the Luca Dentella's version version of the library
+===================================================================
 
  - Added the trademark changes from the original library
  - supports multi-throttle commands (max 6)  (Added in version 1.1.0)
