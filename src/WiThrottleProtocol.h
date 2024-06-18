@@ -104,8 +104,7 @@ enum RouteState {
 };
 
 ///
-/// ---------------------------------------------------------------------
-/// ---------------------------------------------------------------------
+/// ----
 ///
 
 /// @brief TBA
@@ -138,8 +137,7 @@ class NullStream : public Stream {
 };
 
 ///
-/// ---------------------------------------------------------------------
-/// ---------------------------------------------------------------------
+/// ----
 ///
 
 /// @brief Class for the Delegate methods
@@ -311,8 +309,7 @@ class WiThrottleProtocolDelegate
 };
 
 ///
-/// ---------------------------------------------------------------------
-/// ---------------------------------------------------------------------
+/// ----
 ///
 
 /// @brief TBA
@@ -562,8 +559,7 @@ class WiThrottleProtocol
     long getLastServerResponseTime();  
     
 ///
-/// ---------------------------------------------------------------------
-/// ---------------------------------------------------------------------
+/// ----
 ///
 
 
@@ -581,37 +577,147 @@ class WiThrottleProtocol
 	
 	WiThrottleProtocolDelegate *delegate = NULL;
 
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
     bool processCommand(char *c, int len);
-    bool processLocomotiveAction(char multiThrottle, char *c, int len);
-    bool processFastTime(char *c, int len);
-    bool processHeartbeat(char *c, int len);
-    bool processRosterFunctionList(char multiThrottle, char *c, int len);
-    void processProtocolVersion(char *c, int len);
-    void processServerType(char *c, int len);
-    void processServerDescription(char *c, int len);	
-    void processMessage(char *c, int len);	
-    void processAlert(char *c, int len);	
-    void processWebPort(char *c, int len);
-	void processRosterList(char *c, int len);
-    void processTurnoutList(char *c, int len);
-    void processRouteList(char *c, int len);
-    void processTrackPower(char *c, int len);
-    void processFunctionState(char multiThrottle, const String& functionData);
-    void processRosterFunctionListEntries(char multiThrottle, const String& s);
-    void processSpeedSteps(char multiThrottle, const String& speedStepData);
-    void processDirection(char multiThrottle, const String& speedStepData);
-    void processSpeed(char multiThrottle, const String& speedData);
-    void processAddRemove(char multiThrottle, char *c, int len);
-    void processStealNeeded(char multiThrottle, char *c, int len);
-    void processTurnoutAction(char *c, int len);
-    void processRouteAction(char *c, int len);
-    void processUnknownCommand(const String& unknownCommand);
 
+    /// @brief TBA
+    /// @param multithrottle TBA
+    /// @param c TBA
+    /// @param len TBA
+    bool processLocomotiveAction(char multiThrottle, char *c, int len);
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    bool processFastTime(char *c, int len);
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    bool processHeartbeat(char *c, int len);
+
+    /// @brief TBA
+    /// @param multithrottle TBA
+    /// @param c TBA
+    /// @param len TBA
+    bool processRosterFunctionList(char multiThrottle, char *c, int len);
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processProtocolVersion(char *c, int len);
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processServerType(char *c, int len);
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processServerDescription(char *c, int len);	
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processMessage(char *c, int len);	
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processAlert(char *c, int len);	
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processWebPort(char *c, int len);
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+	void processRosterList(char *c, int len);
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processTurnoutList(char *c, int len);
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processRouteList(char *c, int len);
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processTrackPower(char *c, int len);
+
+    /// @brief TBA
+    /// @param multithrottle TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processFunctionState(char multiThrottle, const String& functionData);
+
+    /// @brief TBA
+    /// @param multithrottle TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processRosterFunctionListEntries(char multiThrottle, const String& s);
+
+    /// @brief TBA
+    /// @param multithrottle TBA
+    /// @param speedStepData TBA
+    void processSpeedSteps(char multiThrottle, const String& speedStepData);
+
+    /// @brief TBA
+    /// @param multithrottle TBA
+    /// @param speedStepData TBA
+    void processDirection(char multiThrottle, const String& speedStepData);
+
+    /// @brief TBA
+    /// @param speedDate TBA
+    void processSpeed(char multiThrottle, const String& speedData);
+
+    /// @brief TBA
+    /// @param multithrottle TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processAddRemove(char multiThrottle, char *c, int len);
+
+    /// @brief TBA
+    /// @param multithrottle TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processStealNeeded(char multiThrottle, char *c, int len);
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processTurnoutAction(char *c, int len);
+
+    /// @brief TBA
+    /// @param c TBA
+    /// @param len TBA
+    void processRouteAction(char *c, int len);
+
+    // /// @brief TBA
+    // /// @param unknownCommand TBA
+    // void processUnknownCommand(const String& unknownCommand);
+
+    /// @brief TBA
     bool checkFastTime();
+
+    /// @brief TBA    
     bool checkHeartbeat();
 
+    /// @brief TBA
+    /// @param cmd TBA
     void sendDelayedCommand(String cmd);
 
+    /// @brief TBA
+    /// @param s TBA
     void setCurrentFastTime(const String& s);
 
     char inputbuffer[32767];
