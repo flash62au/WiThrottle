@@ -138,7 +138,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a505f62081b00f1f24ca1c639fa9191bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive the direction for the default (first) throttle from the Withrottle Server.  <a href="classWiThrottleProtocolDelegate.html#a505f62081b00f1f24ca1c639fa9191bf">More...</a><br /></td></tr>
 <tr class="separator:a505f62081b00f1f24ca1c639fa9191bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa83d88f6ff60be29e73e670cb08e0413"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocolDelegate.html#aa83d88f6ff60be29e73e670cb08e0413">receivedSpeedSteps</a> (int steps)</td></tr>
-<tr class="memdesc:aa83d88f6ff60be29e73e670cb08e0413"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive the speed steps for the default (first) throttle from the Withrottle Server.  <a href="classWiThrottleProtocolDelegate.html#aa83d88f6ff60be29e73e670cb08e0413">More...</a><br /></td></tr>
+<tr class="memdesc:aa83d88f6ff60be29e73e670cb08e0413"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive the number of speed steps for the default (first) throttle from the Withrottle Server.  <a href="classWiThrottleProtocolDelegate.html#aa83d88f6ff60be29e73e670cb08e0413">More...</a><br /></td></tr>
 <tr class="separator:aa83d88f6ff60be29e73e670cb08e0413"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d196f3446713b393d2e217b26498c76"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocolDelegate.html#a4d196f3446713b393d2e217b26498c76">receivedSpeedMultiThrottle</a> (char multiThrottle, int speed)</td></tr>
 <tr class="memdesc:a4d196f3446713b393d2e217b26498c76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive the speed for a specific throttle from the Withrottle Server.  <a href="classWiThrottleProtocolDelegate.html#a4d196f3446713b393d2e217b26498c76">More...</a><br /></td></tr>
@@ -1303,10 +1303,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Delegate method to receive the speed steps for the default (first) throttle from the Withrottle Server. </p>
+<p>Delegate method to receive the number of speed steps for the default (first) throttle from the Withrottle Server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">steps</td><td>TBA </td></tr>
+    <tr><td class="paramname">steps</td><td>28 or 128 </td></tr>
   </table>
   </dd>
 </dl>
@@ -1351,7 +1351,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
-    <tr><td class="paramname">steps</td><td>TBA </td></tr>
+    <tr><td class="paramname">steps</td><td>28 or 128 </td></tr>
   </table>
   </dd>
 </dl>

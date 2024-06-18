@@ -67,7 +67,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv418WiThrottleProtocol"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol18WiThrottleProtocolEb"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::WiThrottleProtocol()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol11setDelegateEP26WiThrottleProtocolDelegate"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::setDelegate()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol11setDelegateEP26WiThrottleProtocolDelegatei"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::setDelegate()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol12setLogStreamEP6Stream"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::setLogStream()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol26setCommandsNeedLeadingCrLfEb"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::setCommandsNeedLeadingCrLf()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol7connectEP6Stream"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::connect()</span></code></a></li>
@@ -371,20 +370,6 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>delegate</strong> – TBA </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol11setDelegateEP26WiThrottleProtocolDelegatei">
-<span id="_CPPv3N18WiThrottleProtocol11setDelegateEP26WiThrottleProtocolDelegatei"></span><span id="_CPPv2N18WiThrottleProtocol11setDelegateEP26WiThrottleProtocolDelegatei"></span><span id="WiThrottleProtocol::setDelegate__WiThrottleProtocolDelegateP.i"></span><span class="target" id="classWiThrottleProtocol_1a8a93cb4288a968ef0bfa485e45c52bd5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setDelegate</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv426WiThrottleProtocolDelegate" title="WiThrottleProtocolDelegate"><span class="n"><span class="pre">WiThrottleProtocolDelegate</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">delegate</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">delayBetweenCommandsSent</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol11setDelegateEP26WiThrottleProtocolDelegatei" title="Link to this definition"></a><br /></dt>
-<dd><p>TBA. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>delegate</strong> – TBA </p></li>
-<li><p><strong>delayBetweenCommandsSent</strong> – TBA </p></li>
-</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1504,10 +1489,10 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N26WiThrottleProtocolDelegate18receivedSpeedStepsEi">
 <span id="_CPPv3N26WiThrottleProtocolDelegate18receivedSpeedStepsEi"></span><span id="_CPPv2N26WiThrottleProtocolDelegate18receivedSpeedStepsEi"></span><span id="WiThrottleProtocolDelegate::receivedSpeedSteps__i"></span><span class="target" id="classWiThrottleProtocolDelegate_1aa83d88f6ff60be29e73e670cb08e0413"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">receivedSpeedSteps</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">steps</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N26WiThrottleProtocolDelegate18receivedSpeedStepsEi" title="Link to this definition"></a><br /></dt>
-<dd><p>Delegate method to receive the speed steps for the default (first) throttle from the Withrottle Server. </p>
+<dd><p>Delegate method to receive the number of speed steps for the default (first) throttle from the Withrottle Server. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>steps</strong> – TBA </p>
+<dd class="field-odd"><p><strong>steps</strong> – 28 or 128 </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1548,7 +1533,7 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>multiThrottle</strong> – Which Throttle. Supported multiThrottle codes are ‘T’ ‘0’ ‘1’ ‘2’ ‘3’ ‘4’ ‘5’ only. </p></li>
-<li><p><strong>steps</strong> – TBA </p></li>
+<li><p><strong>steps</strong> – 28 or 128 </p></li>
 </ul>
 </dd>
 </dl>
@@ -1776,7 +1761,8 @@
 <dl class="cpp enum">
 <dt class="sig sig-object cpp" id="_CPPv49Direction">
 <span id="_CPPv39Direction"></span><span id="_CPPv29Direction"></span><span class="target" id="WiThrottleProtocol_8h_1a224b9163917ac32fc95a60d8c1eec3aa"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Direction</span></span></span><a class="headerlink" href="#_CPPv49Direction" title="Link to this definition"></a><br /></dt>
-<dd><p><em>Values:</em></p>
+<dd><p>Loco/Throttle Direction options. </p>
+<p><em>Values:</em></p>
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N9Direction7ReverseE">
 <span id="_CPPv3N9Direction7ReverseE"></span><span id="_CPPv2N9Direction7ReverseE"></span><span class="target" id="WiThrottleProtocol_8h_1a224b9163917ac32fc95a60d8c1eec3aaa1dca99473fea7a2f11c69a68a779c9f2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Reverse</span></span></span><a class="headerlink" href="#_CPPv4N9Direction7ReverseE" title="Link to this definition"></a><br /></dt>
@@ -1792,7 +1778,8 @@
 <dl class="cpp enum">
 <dt class="sig sig-object cpp" id="_CPPv410TrackPower">
 <span id="_CPPv310TrackPower"></span><span id="_CPPv210TrackPower"></span><span class="target" id="WiThrottleProtocol_8h_1a1a734a0923f17ca185591f4fe8dfff04"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TrackPower</span></span></span><a class="headerlink" href="#_CPPv410TrackPower" title="Link to this definition"></a><br /></dt>
-<dd><p><em>Values:</em></p>
+<dd><p>Track Power options. </p>
+<p><em>Values:</em></p>
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N10TrackPower8PowerOffE">
 <span id="_CPPv3N10TrackPower8PowerOffE"></span><span id="_CPPv2N10TrackPower8PowerOffE"></span><span class="target" id="WiThrottleProtocol_8h_1a1a734a0923f17ca185591f4fe8dfff04a015000f123643bed2f55db3d37ea7268"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PowerOff</span></span></span><a class="headerlink" href="#_CPPv4N10TrackPower8PowerOffE" title="Link to this definition"></a><br /></dt>
@@ -1813,7 +1800,8 @@
 <dl class="cpp enum">
 <dt class="sig sig-object cpp" id="_CPPv412TurnoutState">
 <span id="_CPPv312TurnoutState"></span><span id="_CPPv212TurnoutState"></span><span class="target" id="WiThrottleProtocol_8h_1aaf453b54a68a7675a75e9149251d2570"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TurnoutState</span></span></span><a class="headerlink" href="#_CPPv412TurnoutState" title="Link to this definition"></a><br /></dt>
-<dd><p><em>Values:</em></p>
+<dd><p>Turnout/Point state options. </p>
+<p><em>Values:</em></p>
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N12TurnoutState13TurnoutClosedE">
 <span id="_CPPv3N12TurnoutState13TurnoutClosedE"></span><span id="_CPPv2N12TurnoutState13TurnoutClosedE"></span><span class="target" id="WiThrottleProtocol_8h_1aaf453b54a68a7675a75e9149251d2570aef0c0940bd4077dba69e683225439d4a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TurnoutClosed</span></span></span><a class="headerlink" href="#_CPPv4N12TurnoutState13TurnoutClosedE" title="Link to this definition"></a><br /></dt>
@@ -1839,7 +1827,8 @@
 <dl class="cpp enum">
 <dt class="sig sig-object cpp" id="_CPPv413TurnoutAction">
 <span id="_CPPv313TurnoutAction"></span><span id="_CPPv213TurnoutAction"></span><span class="target" id="WiThrottleProtocol_8h_1a75ea6dee3007d6f138df9651242a5a70"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TurnoutAction</span></span></span><a class="headerlink" href="#_CPPv413TurnoutAction" title="Link to this definition"></a><br /></dt>
-<dd><p><em>Values:</em></p>
+<dd><p>Turnout/Point action options. </p>
+<p><em>Values:</em></p>
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N13TurnoutAction12TurnoutCloseE">
 <span id="_CPPv3N13TurnoutAction12TurnoutCloseE"></span><span id="_CPPv2N13TurnoutAction12TurnoutCloseE"></span><span class="target" id="WiThrottleProtocol_8h_1a75ea6dee3007d6f138df9651242a5a70a5eb6a40be9f97082d3ec0ae467410863"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TurnoutClose</span></span></span><a class="headerlink" href="#_CPPv4N13TurnoutAction12TurnoutCloseE" title="Link to this definition"></a><br /></dt>
@@ -1860,7 +1849,8 @@
 <dl class="cpp enum">
 <dt class="sig sig-object cpp" id="_CPPv410RouteState">
 <span id="_CPPv310RouteState"></span><span id="_CPPv210RouteState"></span><span class="target" id="WiThrottleProtocol_8h_1ac959b0c30be371532a604a1258ba5b63"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RouteState</span></span></span><a class="headerlink" href="#_CPPv410RouteState" title="Link to this definition"></a><br /></dt>
-<dd><p><em>Values:</em></p>
+<dd><p>Route states. </p>
+<p><em>Values:</em></p>
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N10RouteState11RouteActiveE">
 <span id="_CPPv3N10RouteState11RouteActiveE"></span><span id="_CPPv2N10RouteState11RouteActiveE"></span><span class="target" id="WiThrottleProtocol_8h_1ac959b0c30be371532a604a1258ba5b63ae4516024823b8c8acebc160903d73414"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RouteActive</span></span></span><a class="headerlink" href="#_CPPv4N10RouteState11RouteActiveE" title="Link to this definition"></a><br /></dt>
