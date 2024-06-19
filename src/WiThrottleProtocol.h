@@ -309,12 +309,19 @@ class WiThrottleProtocolDelegate
 };
 
 ///
-/// ----
+/// WiThrottleProtocol
+/// ==================
 ///
 
 /// @brief TBA
 class WiThrottleProtocol
 {
+
+    ///
+    /// Public
+    /// ------
+    ///
+
   public:
     
     /// @brief TBA
@@ -558,9 +565,10 @@ class WiThrottleProtocol
     /// @brief Get the last time that the server sent a resonse to the client 
     long getLastServerResponseTime();  
     
-///
-/// ----
-///
+    ///
+    /// Private
+    /// =======
+    ///
 
 
   private:
@@ -579,7 +587,7 @@ class WiThrottleProtocol
 
     ///
     /// Inbound Command processing
-    /// ==========================
+    /// --------------------------
     ///
 
     /// @brief Process an incomming command from the Command Station
