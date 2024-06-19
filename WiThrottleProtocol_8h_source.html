@@ -262,242 +262,244 @@ $(function() {
 <div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="classWiThrottleProtocolDelegate.html#a0f38088bf601a225771a9c5c03458397">  308</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocolDelegate.html#a0f38088bf601a225771a9c5c03458397">receivedRouteAction</a>(String systemName, RouteState state) { } <span class="comment">//  PTAturnoutstatesystemname</span></div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;};</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
-<div class="line"><a name="l00316"></a><span class="lineno"><a class="line" href="classWiThrottleProtocol.html">  316</a></span>&#160;<span class="keyword">class </span><a class="code" href="classWiThrottleProtocol.html">WiThrottleProtocol</a></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;{</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    </div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <a class="code" href="classWiThrottleProtocol.html#a0e719e849409d41d201cc3fcc3a15796">WiThrottleProtocol</a>(<span class="keywordtype">bool</span> server = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a04eaa4feeb516240a2a390f82d15b73d">setDelegate</a>(<a class="code" href="classWiThrottleProtocolDelegate.html">WiThrottleProtocolDelegate</a> *delegate);</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="comment">// /// @brief TBA</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="comment">// /// @param delegate TBA</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="comment">// /// @param delayBetweenCommandsSent TBA</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="comment">// void setDelegate(WiThrottleProtocolDelegate *delegate, int delayBetweenCommandsSent);</span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a79f872946a27aeed7ed38260bd8d7ec3">setLogStream</a>(Stream *console);</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#ac62f2cd69c10b9628fa342b99f813180">setCommandsNeedLeadingCrLf</a>(<span class="keywordtype">bool</span> needed);</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#ae686ec6f02c4a8fb691fc499d82aab5b">connect</a>(Stream *stream);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#ae686ec6f02c4a8fb691fc499d82aab5b">connect</a>(Stream *stream, <span class="keywordtype">int</span> delayBetweenCommandsSent);</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#ac8361bd341f016537d7844a660ca084c">disconnect</a>();</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a041d135e1d8ab071c043fe213ad142da">setDeviceName</a>(String deviceName);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno"><a class="line" href="classWiThrottleProtocol.html">  317</a></span>&#160;<span class="keyword">class </span><a class="code" href="classWiThrottleProtocol.html">WiThrottleProtocol</a></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;{</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <a class="code" href="classWiThrottleProtocol.html#a0e719e849409d41d201cc3fcc3a15796">WiThrottleProtocol</a>(<span class="keywordtype">bool</span> server = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a04eaa4feeb516240a2a390f82d15b73d">setDelegate</a>(<a class="code" href="classWiThrottleProtocolDelegate.html">WiThrottleProtocolDelegate</a> *delegate);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="comment">// /// @brief TBA</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="comment">// /// @param delegate TBA</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="comment">// /// @param delayBetweenCommandsSent TBA</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="comment">// void setDelegate(WiThrottleProtocolDelegate *delegate, int delayBetweenCommandsSent);</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a79f872946a27aeed7ed38260bd8d7ec3">setLogStream</a>(Stream *console);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#ac62f2cd69c10b9628fa342b99f813180">setCommandsNeedLeadingCrLf</a>(<span class="keywordtype">bool</span> needed);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#ae686ec6f02c4a8fb691fc499d82aab5b">connect</a>(Stream *stream);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#ae686ec6f02c4a8fb691fc499d82aab5b">connect</a>(Stream *stream, <span class="keywordtype">int</span> delayBetweenCommandsSent);</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a118a5175c5e911f715e3a611e43541aa">setDeviceID</a>(String deviceId);</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a64dfaad3f82d2d3b338cce722ab1b06d">check</a>();</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#ac8361bd341f016537d7844a660ca084c">disconnect</a>();</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a041d135e1d8ab071c043fe213ad142da">setDeviceName</a>(String deviceName);</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a5aca71ce61e4d0590c214b627c50844a">sendCommand</a>(String cmd);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    </div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="comment">//int fastTimeHours();</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="comment">//int fastTimeMinutes();</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a118a5175c5e911f715e3a611e43541aa">setDeviceID</a>(String deviceId);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a64dfaad3f82d2d3b338cce722ab1b06d">check</a>();</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classWiThrottleProtocol.html#aaf66736df751a0d283aca631bcd20fad">getCurrentFastTime</a>();</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keywordtype">float</span> <a class="code" href="classWiThrottleProtocol.html#a300057d03c2c69f1859c67dce33e590d">getFastTimeRate</a>();</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
-<div class="line"><a name="l00378"></a><span class="lineno"><a class="line" href="classWiThrottleProtocol.html#a4fe3c1b2f899dd30c67c9e45f88dacd8">  378</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a4fe3c1b2f899dd30c67c9e45f88dacd8">clockChanged</a>;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
-<div class="line"><a name="l00381"></a><span class="lineno"><a class="line" href="classWiThrottleProtocol.html#a5d2a2c50fce110c71678bb6d82ca1598">  381</a></span>&#160;    String <a class="code" href="classWiThrottleProtocol.html#a5d2a2c50fce110c71678bb6d82ca1598">currentDeviceName</a>;</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a66d44b552feb3e1afc3f5bb0f3be7f98">requireHeartbeat</a>(<span class="keywordtype">bool</span> needed=<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a5aca71ce61e4d0590c214b627c50844a">sendCommand</a>(String cmd);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="comment">//int fastTimeHours();</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="comment">//int fastTimeMinutes();</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classWiThrottleProtocol.html#aaf66736df751a0d283aca631bcd20fad">getCurrentFastTime</a>();</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keywordtype">float</span> <a class="code" href="classWiThrottleProtocol.html#a300057d03c2c69f1859c67dce33e590d">getFastTimeRate</a>();</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno"><a class="line" href="classWiThrottleProtocol.html#a4fe3c1b2f899dd30c67c9e45f88dacd8">  385</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a4fe3c1b2f899dd30c67c9e45f88dacd8">clockChanged</a>;</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
-<div class="line"><a name="l00388"></a><span class="lineno"><a class="line" href="classWiThrottleProtocol.html#a3e26cd670490fbdff5764986a57950a5">  388</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a3e26cd670490fbdff5764986a57950a5">heartbeatChanged</a>;</div>
+<div class="line"><a name="l00388"></a><span class="lineno"><a class="line" href="classWiThrottleProtocol.html#a5d2a2c50fce110c71678bb6d82ca1598">  388</a></span>&#160;    String <a class="code" href="classWiThrottleProtocol.html#a5d2a2c50fce110c71678bb6d82ca1598">currentDeviceName</a>;</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a06ece5aa6eb2fddf8a9401b903fb13bf">addLocomotive</a>(String address);  <span class="comment">// address is [S|L]nnnn (where n is 0-10000)</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a66d44b552feb3e1afc3f5bb0f3be7f98">requireHeartbeat</a>(<span class="keywordtype">bool</span> needed=<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a4f0a663e5b83705eb514a5456e712d3b">stealLocomotive</a>(String address);   <span class="comment">// address is [S|L]nnnn (where n is 0-10000)</span></div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160; </div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a772b2cce619d41e5009c116dd176fe50">releaseLocomotive</a>(String address = <span class="stringliteral">&quot;*&quot;</span>);</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    String <a class="code" href="classWiThrottleProtocol.html#a1421028b157234446a47e8a92efae6f9">getLeadLocomotive</a>();</div>
+<div class="line"><a name="l00395"></a><span class="lineno"><a class="line" href="classWiThrottleProtocol.html#a3e26cd670490fbdff5764986a57950a5">  395</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a3e26cd670490fbdff5764986a57950a5">heartbeatChanged</a>;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a06ece5aa6eb2fddf8a9401b903fb13bf">addLocomotive</a>(String address);  <span class="comment">// address is [S|L]nnnn (where n is 0-10000)</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160; </div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a4f0a663e5b83705eb514a5456e712d3b">stealLocomotive</a>(String address);   <span class="comment">// address is [S|L]nnnn (where n is 0-10000)</span></div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    String <a class="code" href="classWiThrottleProtocol.html#af4e7d8d0c369fffee45dcb483ba3681a">getLocomotiveAtPosition</a>(<span class="keywordtype">int</span> position);</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a772b2cce619d41e5009c116dd176fe50">releaseLocomotive</a>(String address = <span class="stringliteral">&quot;*&quot;</span>);</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classWiThrottleProtocol.html#a0f56a69a3949b8d01d260146b7e4afd0">getNumberOfLocomotives</a>();</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    String <a class="code" href="classWiThrottleProtocol.html#a1421028b157234446a47e8a92efae6f9">getLeadLocomotive</a>();</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="comment">// multiThrottle support</span></div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="comment"></span>    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a06ece5aa6eb2fddf8a9401b903fb13bf">addLocomotive</a>(<span class="keywordtype">char</span> multiThrottle, String address);  <span class="comment">// address is [S|L]nnnn (where n is 0-10000)</span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a4f0a663e5b83705eb514a5456e712d3b">stealLocomotive</a>(<span class="keywordtype">char</span> multiThrottle, String address);   <span class="comment">// address is [S|L]nnnn (where n is 0-10000)</span></div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a772b2cce619d41e5009c116dd176fe50">releaseLocomotive</a>(<span class="keywordtype">char</span> multiThrottle, String address = <span class="stringliteral">&quot;*&quot;</span>);</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160; </div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    String <a class="code" href="classWiThrottleProtocol.html#a1421028b157234446a47e8a92efae6f9">getLeadLocomotive</a>(<span class="keywordtype">char</span> multiThrottle);</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    String <a class="code" href="classWiThrottleProtocol.html#af4e7d8d0c369fffee45dcb483ba3681a">getLocomotiveAtPosition</a>(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">int</span> position);</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classWiThrottleProtocol.html#a0f56a69a3949b8d01d260146b7e4afd0">getNumberOfLocomotives</a>(<span class="keywordtype">char</span> multiThrottle);</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160; </div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a582ab3f0200a274ce5c0d51a538585b6">setFunction</a>(<span class="keywordtype">int</span> funcnum, <span class="keywordtype">bool</span> pressed);</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="comment">// multiThrottle support</span></div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;<span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a582ab3f0200a274ce5c0d51a538585b6">setFunction</a>(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">int</span> funcnum, <span class="keywordtype">bool</span> pressed);</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    String <a class="code" href="classWiThrottleProtocol.html#af4e7d8d0c369fffee45dcb483ba3681a">getLocomotiveAtPosition</a>(<span class="keywordtype">int</span> position);</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classWiThrottleProtocol.html#a0f56a69a3949b8d01d260146b7e4afd0">getNumberOfLocomotives</a>();</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="comment">// multiThrottle support</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="comment"></span>    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a06ece5aa6eb2fddf8a9401b903fb13bf">addLocomotive</a>(<span class="keywordtype">char</span> multiThrottle, String address);  <span class="comment">// address is [S|L]nnnn (where n is 0-10000)</span></div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160; </div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a4f0a663e5b83705eb514a5456e712d3b">stealLocomotive</a>(<span class="keywordtype">char</span> multiThrottle, String address);   <span class="comment">// address is [S|L]nnnn (where n is 0-10000)</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a772b2cce619d41e5009c116dd176fe50">releaseLocomotive</a>(<span class="keywordtype">char</span> multiThrottle, String address = <span class="stringliteral">&quot;*&quot;</span>);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    String <a class="code" href="classWiThrottleProtocol.html#a1421028b157234446a47e8a92efae6f9">getLeadLocomotive</a>(<span class="keywordtype">char</span> multiThrottle);</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160; </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    String <a class="code" href="classWiThrottleProtocol.html#af4e7d8d0c369fffee45dcb483ba3681a">getLocomotiveAtPosition</a>(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">int</span> position);</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classWiThrottleProtocol.html#a0f56a69a3949b8d01d260146b7e4afd0">getNumberOfLocomotives</a>(<span class="keywordtype">char</span> multiThrottle);</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a582ab3f0200a274ce5c0d51a538585b6">setFunction</a>(<span class="keywordtype">int</span> funcnum, <span class="keywordtype">bool</span> pressed);</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a582ab3f0200a274ce5c0d51a538585b6">setFunction</a>(<span class="keywordtype">char</span> multiThrottle, String address, <span class="keywordtype">int</span> funcnum, <span class="keywordtype">bool</span> pressed);</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    <span class="comment">// multiThrottle support</span></div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;<span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a582ab3f0200a274ce5c0d51a538585b6">setFunction</a>(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">int</span> funcnum, <span class="keywordtype">bool</span> pressed);</div>
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160; </div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a9789210de4390db43c12e6ea37b212d9">setSpeed</a>(<span class="keywordtype">int</span> speed);</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160; </div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classWiThrottleProtocol.html#a046c15134e76b360559cbf97afa5bba4">getSpeed</a>();</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a582ab3f0200a274ce5c0d51a538585b6">setFunction</a>(<span class="keywordtype">char</span> multiThrottle, String address, <span class="keywordtype">int</span> funcnum, <span class="keywordtype">bool</span> pressed);</div>
 <div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160; </div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#aba826a71434014a21d0f463219bef3bd">setDirection</a>(Direction direction);</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a9789210de4390db43c12e6ea37b212d9">setSpeed</a>(<span class="keywordtype">int</span> speed);</div>
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160; </div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    Direction <a class="code" href="classWiThrottleProtocol.html#abdd0bf93ddd4f0085b0f5b8e1d9af1f1">getDirection</a>();</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classWiThrottleProtocol.html#a046c15134e76b360559cbf97afa5bba4">getSpeed</a>();</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160; </div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <span class="comment">// multiThrottle support</span></div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="comment"></span>    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a9789210de4390db43c12e6ea37b212d9">setSpeed</a>(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">int</span> speed);</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160; </div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a9789210de4390db43c12e6ea37b212d9">setSpeed</a>(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">int</span> speed, <span class="keywordtype">bool</span> forceSend);</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160; </div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classWiThrottleProtocol.html#a046c15134e76b360559cbf97afa5bba4">getSpeed</a>(<span class="keywordtype">char</span> multiThrottle);</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#aba826a71434014a21d0f463219bef3bd">setDirection</a>(<span class="keywordtype">char</span> multiThrottle, Direction direction);</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160; </div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#aba826a71434014a21d0f463219bef3bd">setDirection</a>(<span class="keywordtype">char</span> multiThrottle, Direction direction, <span class="keywordtype">bool</span> forceSend);</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160; </div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#aba826a71434014a21d0f463219bef3bd">setDirection</a>(<span class="keywordtype">char</span> multiThrottle, String address, Direction direction);</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160; </div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#aba826a71434014a21d0f463219bef3bd">setDirection</a>(<span class="keywordtype">char</span> multiThrottle, String address, Direction direction, <span class="keywordtype">bool</span> ForceSend);</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#aba826a71434014a21d0f463219bef3bd">setDirection</a>(Direction direction);</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    Direction <a class="code" href="classWiThrottleProtocol.html#abdd0bf93ddd4f0085b0f5b8e1d9af1f1">getDirection</a>();</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160; </div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    <span class="comment">// multiThrottle support</span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="comment"></span>    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a9789210de4390db43c12e6ea37b212d9">setSpeed</a>(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">int</span> speed);</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160; </div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a9789210de4390db43c12e6ea37b212d9">setSpeed</a>(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">int</span> speed, <span class="keywordtype">bool</span> forceSend);</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classWiThrottleProtocol.html#a046c15134e76b360559cbf97afa5bba4">getSpeed</a>(<span class="keywordtype">char</span> multiThrottle);</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160; </div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#aba826a71434014a21d0f463219bef3bd">setDirection</a>(<span class="keywordtype">char</span> multiThrottle, Direction direction);</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160; </div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#aba826a71434014a21d0f463219bef3bd">setDirection</a>(<span class="keywordtype">char</span> multiThrottle, Direction direction, <span class="keywordtype">bool</span> forceSend);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160; </div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#aba826a71434014a21d0f463219bef3bd">setDirection</a>(<span class="keywordtype">char</span> multiThrottle, String address, Direction direction);</div>
 <div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160; </div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    Direction <a class="code" href="classWiThrottleProtocol.html#abdd0bf93ddd4f0085b0f5b8e1d9af1f1">getDirection</a>(<span class="keywordtype">char</span> multiThrottle);</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    Direction <a class="code" href="classWiThrottleProtocol.html#abdd0bf93ddd4f0085b0f5b8e1d9af1f1">getDirection</a>(<span class="keywordtype">char</span> multiThrottle, String address);</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160; </div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#acb8474f1ba6a92180b4ca478f41d8a9d">emergencyStop</a>(<span class="keywordtype">char</span> multiThrottle);</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#acb8474f1ba6a92180b4ca478f41d8a9d">emergencyStop</a>(<span class="keywordtype">char</span> multiThrottle, String address);</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    </div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a6c35567e70938262456875f2448ce6d0">setTrackPower</a>(TrackPower state);</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160; </div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#acb8474f1ba6a92180b4ca478f41d8a9d">emergencyStop</a>();</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160; </div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#aa722b8d221d3b64a70a9c0bc6a8a351b">setTurnout</a>(String address, TurnoutAction action);   <span class="comment">// address is turnout system name e.g. LT92</span></div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160; </div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a9b87c2f87449d2f1c66c28035d54dc6e">setRoute</a>(String address);   <span class="comment">// address is turnout system name e.g. IO:AUTO:0008</span></div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160; </div>
-<div class="line"><a name="l00549"></a><span class="lineno"><a class="line" href="classWiThrottleProtocol.html#a5f20d7c0c1b03b14cb7cd30ee511e341">  549</a></span>&#160;    std::vector&lt;String&gt; <a class="code" href="classWiThrottleProtocol.html#a5f20d7c0c1b03b14cb7cd30ee511e341">locomotives</a>[6];</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#aba826a71434014a21d0f463219bef3bd">setDirection</a>(<span class="keywordtype">char</span> multiThrottle, String address, Direction direction, <span class="keywordtype">bool</span> ForceSend);</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160; </div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    Direction <a class="code" href="classWiThrottleProtocol.html#abdd0bf93ddd4f0085b0f5b8e1d9af1f1">getDirection</a>(<span class="keywordtype">char</span> multiThrottle);</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160; </div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    Direction <a class="code" href="classWiThrottleProtocol.html#abdd0bf93ddd4f0085b0f5b8e1d9af1f1">getDirection</a>(<span class="keywordtype">char</span> multiThrottle, String address);</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160; </div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#acb8474f1ba6a92180b4ca478f41d8a9d">emergencyStop</a>(<span class="keywordtype">char</span> multiThrottle);</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160; </div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#acb8474f1ba6a92180b4ca478f41d8a9d">emergencyStop</a>(<span class="keywordtype">char</span> multiThrottle, String address);</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    </div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#a6c35567e70938262456875f2448ce6d0">setTrackPower</a>(TrackPower state);</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160; </div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWiThrottleProtocol.html#acb8474f1ba6a92180b4ca478f41d8a9d">emergencyStop</a>();</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160; </div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#aa722b8d221d3b64a70a9c0bc6a8a351b">setTurnout</a>(String address, TurnoutAction action);   <span class="comment">// address is turnout system name e.g. LT92</span></div>
 <div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
-<div class="line"><a name="l00552"></a><span class="lineno"><a class="line" href="classWiThrottleProtocol.html#a342cf344eddbc6e262ac9edbaf91009b">  552</a></span>&#160;    std::vector&lt;Direction&gt; <a class="code" href="classWiThrottleProtocol.html#a342cf344eddbc6e262ac9edbaf91009b">locomotivesFacing</a>[6];</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160; </div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classWiThrottleProtocol.html#a984f3a12b2f6569b388da5df1a1def7f">getMultiThrottleIndex</a>(<span class="keywordtype">char</span> multiThrottle);</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    </div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    <span class="keywordtype">long</span> <a class="code" href="classWiThrottleProtocol.html#a254f39cf8abf19f6207ecd057e5af9df">getLastServerResponseTime</a>();  </div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    </div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160; </div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;  </div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    <span class="keywordtype">bool</span> server;</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    </div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    Stream *stream;</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    Stream *console;</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    <a class="code" href="classNullStream.html">NullStream</a> nullStream;</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    String outboundBuffer;</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    <span class="keywordtype">double</span> outboundCmdsTimeLastSent;</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    <span class="keywordtype">int</span> outboundCmdsMininumDelay;</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;    <span class="keywordtype">bool</span> commandsNeedLeadingCrLf = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classWiThrottleProtocol.html#a9b87c2f87449d2f1c66c28035d54dc6e">setRoute</a>(String address);   <span class="comment">// address is turnout system name e.g. IO:AUTO:0008</span></div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160; </div>
+<div class="line"><a name="l00556"></a><span class="lineno"><a class="line" href="classWiThrottleProtocol.html#a5f20d7c0c1b03b14cb7cd30ee511e341">  556</a></span>&#160;    std::vector&lt;String&gt; <a class="code" href="classWiThrottleProtocol.html#a5f20d7c0c1b03b14cb7cd30ee511e341">locomotives</a>[6];</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160; </div>
+<div class="line"><a name="l00559"></a><span class="lineno"><a class="line" href="classWiThrottleProtocol.html#a342cf344eddbc6e262ac9edbaf91009b">  559</a></span>&#160;    std::vector&lt;Direction&gt; <a class="code" href="classWiThrottleProtocol.html#a342cf344eddbc6e262ac9edbaf91009b">locomotivesFacing</a>[6];</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160; </div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classWiThrottleProtocol.html#a984f3a12b2f6569b388da5df1a1def7f">getMultiThrottleIndex</a>(<span class="keywordtype">char</span> multiThrottle);</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;    </div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;    <span class="keywordtype">long</span> <a class="code" href="classWiThrottleProtocol.html#a254f39cf8abf19f6207ecd057e5af9df">getLastServerResponseTime</a>();  </div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    </div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160; </div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160; </div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;  </div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;    <span class="keywordtype">bool</span> server;</div>
 <div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    </div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    <a class="code" href="classWiThrottleProtocolDelegate.html">WiThrottleProtocolDelegate</a> *delegate = NULL;</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160; </div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160; </div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    <span class="keywordtype">bool</span> processCommand(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160; </div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    <span class="keywordtype">bool</span> processLocomotiveAction(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160; </div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    <span class="keywordtype">bool</span> processFastTime(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160; </div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;    <span class="keywordtype">bool</span> processHeartbeat(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160; </div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    <span class="keywordtype">bool</span> processRosterFunctionList(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160; </div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    <span class="keywordtype">void</span> processProtocolVersion(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160; </div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;    <span class="keywordtype">void</span> processServerType(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160; </div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    <span class="keywordtype">void</span> processServerDescription(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);    </div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160; </div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    <span class="keywordtype">void</span> processMessage(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);  </div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160; </div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;    <span class="keywordtype">void</span> processAlert(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);    </div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160; </div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    <span class="keywordtype">void</span> processWebPort(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160; </div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    <span class="keywordtype">void</span> processRosterList(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160; </div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    <span class="keywordtype">void</span> processTurnoutList(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160; </div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;    <span class="keywordtype">void</span> processRouteList(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160; </div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;    <span class="keywordtype">void</span> processTrackPower(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160; </div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <span class="keywordtype">void</span> processFunctionState(<span class="keywordtype">char</span> multiThrottle, <span class="keyword">const</span> String&amp; functionData);</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160; </div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    <span class="keywordtype">void</span> processRosterFunctionListEntries(<span class="keywordtype">char</span> multiThrottle, <span class="keyword">const</span> String&amp; s);</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160; </div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;    <span class="keywordtype">void</span> processSpeedSteps(<span class="keywordtype">char</span> multiThrottle, <span class="keyword">const</span> String&amp; speedStepData);</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160; </div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;    <span class="keywordtype">void</span> processDirection(<span class="keywordtype">char</span> multiThrottle, <span class="keyword">const</span> String&amp; directionStr);</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160; </div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;    <span class="keywordtype">void</span> processSpeed(<span class="keywordtype">char</span> multiThrottle, <span class="keyword">const</span> String&amp; speedData);</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160; </div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;    <span class="keywordtype">void</span> processAddRemove(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160; </div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    <span class="keywordtype">void</span> processStealNeeded(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160; </div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;    <span class="keywordtype">void</span> processTurnoutAction(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160; </div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;    <span class="keywordtype">void</span> processRouteAction(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160; </div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    <span class="comment">// /// @brief TBA</span></div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    <span class="comment">// /// @param unknownCommand TBA</span></div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    <span class="comment">// void processUnknownCommand(const String&amp; unknownCommand);</span></div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160; </div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160; </div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    <span class="keywordtype">bool</span> checkFastTime();</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    Stream *stream;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;    Stream *console;</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    <a class="code" href="classNullStream.html">NullStream</a> nullStream;</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    String outboundBuffer;</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    <span class="keywordtype">double</span> outboundCmdsTimeLastSent;</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    <span class="keywordtype">int</span> outboundCmdsMininumDelay;</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    <span class="keywordtype">bool</span> commandsNeedLeadingCrLf = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    </div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;    <a class="code" href="classWiThrottleProtocolDelegate.html">WiThrottleProtocolDelegate</a> *delegate = NULL;</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160; </div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160; </div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    <span class="keywordtype">bool</span> processCommand(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160; </div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    <span class="keywordtype">bool</span> processLocomotiveAction(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160; </div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    <span class="keywordtype">bool</span> processFastTime(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160; </div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    <span class="keywordtype">bool</span> processHeartbeat(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160; </div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;    <span class="keywordtype">bool</span> processRosterFunctionList(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160; </div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    <span class="keywordtype">void</span> processProtocolVersion(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160; </div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    <span class="keywordtype">void</span> processServerType(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160; </div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    <span class="keywordtype">void</span> processServerDescription(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);    </div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160; </div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;    <span class="keywordtype">void</span> processMessage(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);  </div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160; </div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    <span class="keywordtype">void</span> processAlert(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);    </div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160; </div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    <span class="keywordtype">void</span> processWebPort(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160; </div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;    <span class="keywordtype">void</span> processRosterList(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160; </div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;    <span class="keywordtype">void</span> processTurnoutList(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160; </div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    <span class="keywordtype">void</span> processRouteList(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160; </div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    <span class="keywordtype">void</span> processTrackPower(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160; </div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;    <span class="keywordtype">void</span> processFunctionState(<span class="keywordtype">char</span> multiThrottle, <span class="keyword">const</span> String&amp; functionData);</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160; </div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    <span class="keywordtype">void</span> processRosterFunctionListEntries(<span class="keywordtype">char</span> multiThrottle, <span class="keyword">const</span> String&amp; s);</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160; </div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;    <span class="keywordtype">void</span> processSpeedSteps(<span class="keywordtype">char</span> multiThrottle, <span class="keyword">const</span> String&amp; speedStepData);</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160; </div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;    <span class="keywordtype">void</span> processDirection(<span class="keywordtype">char</span> multiThrottle, <span class="keyword">const</span> String&amp; directionStr);</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160; </div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    <span class="keywordtype">void</span> processSpeed(<span class="keywordtype">char</span> multiThrottle, <span class="keyword">const</span> String&amp; speedData);</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160; </div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    <span class="keywordtype">void</span> processAddRemove(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160; </div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;    <span class="keywordtype">void</span> processStealNeeded(<span class="keywordtype">char</span> multiThrottle, <span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160; </div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    <span class="keywordtype">void</span> processTurnoutAction(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160; </div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    <span class="keywordtype">void</span> processRouteAction(<span class="keywordtype">char</span> *c, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160; </div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;    <span class="comment">// /// @brief TBA</span></div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;    <span class="comment">// /// @param unknownCommand TBA</span></div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    <span class="comment">// void processUnknownCommand(const String&amp; unknownCommand);</span></div>
 <div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160; </div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;    <span class="keywordtype">bool</span> checkHeartbeat();</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160; </div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    <span class="keywordtype">void</span> sendDelayedCommand(String cmd);</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160; </div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;    <span class="keywordtype">void</span> setCurrentFastTime(<span class="keyword">const</span> String&amp; s);</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160; </div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;    <span class="keywordtype">bool</span> checkFastTime();</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160; </div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;    <span class="keywordtype">bool</span> checkHeartbeat();</div>
 <div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160; </div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;    <span class="keywordtype">char</span> inputbuffer[32767];</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;    ssize_t nextChar;  <span class="comment">// where the next character to be read goes in the buffer</span></div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160; </div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;    <span class="comment">//Chrono heartbeatTimer;</span></div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> heartbeatTimer;</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    <span class="keywordtype">int</span> heartbeatPeriod;</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeLastLocoAcquired;</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;    <span class="keywordtype">void</span> sendDelayedCommand(String cmd);</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160; </div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    <span class="keywordtype">void</span> setCurrentFastTime(<span class="keyword">const</span> String&amp; s);</div>
 <div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160; </div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;    <span class="comment">//Chrono fastTimeTimer;</span></div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> fastTimeTimer;</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;    <span class="keywordtype">double</span> currentFastTime;</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;    <span class="keywordtype">float</span> currentFastTimeRate;</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160; </div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;    <span class="keywordtype">void</span> resetChangeFlags();</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160; </div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    <span class="keywordtype">void</span> init();</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160; </div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    <span class="keywordtype">bool</span> locomotiveSelected[6] = {<span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>};</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160; </div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;    String currentAddress[6];</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;    <span class="keywordtype">char</span> inputbuffer[32767];</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;    ssize_t nextChar;  <span class="comment">// where the next character to be read goes in the buffer</span></div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160; </div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;    <span class="comment">//Chrono heartbeatTimer;</span></div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> heartbeatTimer;</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;    <span class="keywordtype">int</span> heartbeatPeriod;</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeLastLocoAcquired;</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160; </div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;    <span class="comment">//Chrono fastTimeTimer;</span></div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> fastTimeTimer;</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;    <span class="keywordtype">double</span> currentFastTime;</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;    <span class="keywordtype">float</span> currentFastTimeRate;</div>
 <div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160; </div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    <span class="keywordtype">int</span> currentSpeed[6];</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;    <span class="keywordtype">int</span> speedSteps[6];  <span class="comment">// 1=128, 2=28, 4=27, 8=14, 16=28Mot</span></div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    Direction currentDirection[6];</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    <span class="keywordtype">void</span> resetChangeFlags();</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160; </div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    <span class="keywordtype">void</span> init();</div>
 <div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160; </div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;    String mostRecentTurnout;</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;    TurnoutState mostRecentTurnoutState;</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160; </div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;    <span class="keywordtype">long</span> lastServerResponseTime;</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;};</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160; </div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// WITHROTTLE_H</span></div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;    <span class="keywordtype">bool</span> locomotiveSelected[6] = {<span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>};</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160; </div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;    String currentAddress[6];</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160; </div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;    <span class="keywordtype">int</span> currentSpeed[6];</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;    <span class="keywordtype">int</span> speedSteps[6];  <span class="comment">// 1=128, 2=28, 4=27, 8=14, 16=28Mot</span></div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;    Direction currentDirection[6];</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160; </div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    String mostRecentTurnout;</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;    TurnoutState mostRecentTurnoutState;</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160; </div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    <span class="keywordtype">long</span> lastServerResponseTime;</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;};</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160; </div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// WITHROTTLE_H</span></div>
 <div class="ttc" id="aclassNullStream_html"><div class="ttname"><a href="classNullStream.html">NullStream</a></div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:111</div></div>
 <div class="ttc" id="aclassNullStream_html_a0112c85ad6172d37f45b76a491907bab"><div class="ttname"><a href="classNullStream.html#a0112c85ad6172d37f45b76a491907bab">NullStream::write</a></div><div class="ttdeci">size_t write(uint8_t c)</div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:131</div></div>
 <div class="ttc" id="aclassNullStream_html_a2c1345c786ff1585d25fd18500d5d785"><div class="ttname"><a href="classNullStream.html#a2c1345c786ff1585d25fd18500d5d785">NullStream::peek</a></div><div class="ttdeci">int peek()</div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:124</div></div>
@@ -541,7 +543,7 @@ $(function() {
 <div class="ttc" id="aclassWiThrottleProtocolDelegate_html_af0ed2d0bf1d41c499de60bde51abbbbc"><div class="ttname"><a href="classWiThrottleProtocolDelegate.html#af0ed2d0bf1d41c499de60bde51abbbbc">WiThrottleProtocolDelegate::receivedTurnoutEntries</a></div><div class="ttdeci">virtual void receivedTurnoutEntries(int turnoutListSize)</div><div class="ttdoc">Delegate method to receive the total number of Turnouts/Points Entries from the Withrottle Server.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:180</div></div>
 <div class="ttc" id="aclassWiThrottleProtocolDelegate_html_af38c493439c488353a57e14ab27d2b86"><div class="ttname"><a href="classWiThrottleProtocolDelegate.html#af38c493439c488353a57e14ab27d2b86">WiThrottleProtocolDelegate::addressStealNeededMultiThrottle</a></div><div class="ttdeci">virtual void addressStealNeededMultiThrottle(char multiThrottle, String address, String entry)</div><div class="ttdoc">Delegate method to receive from the Withrottle Server.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:298</div></div>
 <div class="ttc" id="aclassWiThrottleProtocolDelegate_html_afed314e8d487e46615f11ccda76dad89"><div class="ttname"><a href="classWiThrottleProtocolDelegate.html#afed314e8d487e46615f11ccda76dad89">WiThrottleProtocolDelegate::addressAdded</a></div><div class="ttdeci">virtual void addressAdded(String address, String entry)</div><div class="ttdoc">Delegate method to receive from the Withrottle Server.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:270</div></div>
-<div class="ttc" id="aclassWiThrottleProtocol_html"><div class="ttname"><a href="classWiThrottleProtocol.html">WiThrottleProtocol</a></div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:317</div></div>
+<div class="ttc" id="aclassWiThrottleProtocol_html"><div class="ttname"><a href="classWiThrottleProtocol.html">WiThrottleProtocol</a></div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:318</div></div>
 <div class="ttc" id="aclassWiThrottleProtocol_html_a041d135e1d8ab071c043fe213ad142da"><div class="ttname"><a href="classWiThrottleProtocol.html#a041d135e1d8ab071c043fe213ad142da">WiThrottleProtocol::setDeviceName</a></div><div class="ttdeci">void setDeviceName(String deviceName)</div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.cpp:133</div></div>
 <div class="ttc" id="aclassWiThrottleProtocol_html_a046c15134e76b360559cbf97afa5bba4"><div class="ttname"><a href="classWiThrottleProtocol.html#a046c15134e76b360559cbf97afa5bba4">WiThrottleProtocol::getSpeed</a></div><div class="ttdeci">int getSpeed()</div><div class="ttdoc">Get the speed of the default (first) Throttle.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.cpp:1279</div></div>
 <div class="ttc" id="aclassWiThrottleProtocol_html_a04eaa4feeb516240a2a390f82d15b73d"><div class="ttname"><a href="classWiThrottleProtocol.html#a04eaa4feeb516240a2a390f82d15b73d">WiThrottleProtocol::setDelegate</a></div><div class="ttdeci">void setDelegate(WiThrottleProtocolDelegate *delegate)</div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.cpp:95</div></div>
@@ -552,14 +554,14 @@ $(function() {
 <div class="ttc" id="aclassWiThrottleProtocol_html_a1421028b157234446a47e8a92efae6f9"><div class="ttname"><a href="classWiThrottleProtocol.html#a1421028b157234446a47e8a92efae6f9">WiThrottleProtocol::getLeadLocomotive</a></div><div class="ttdeci">String getLeadLocomotive()</div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.cpp:1197</div></div>
 <div class="ttc" id="aclassWiThrottleProtocol_html_a254f39cf8abf19f6207ecd057e5af9df"><div class="ttname"><a href="classWiThrottleProtocol.html#a254f39cf8abf19f6207ecd057e5af9df">WiThrottleProtocol::getLastServerResponseTime</a></div><div class="ttdeci">long getLastServerResponseTime()</div><div class="ttdoc">Get the last time that the server sent a resonse to the client.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.cpp:1465</div></div>
 <div class="ttc" id="aclassWiThrottleProtocol_html_a300057d03c2c69f1859c67dce33e590d"><div class="ttname"><a href="classWiThrottleProtocol.html#a300057d03c2c69f1859c67dce33e590d">WiThrottleProtocol::getFastTimeRate</a></div><div class="ttdeci">float getFastTimeRate()</div><div class="ttdoc">Get the current Fast Time rate.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.cpp:292</div></div>
-<div class="ttc" id="aclassWiThrottleProtocol_html_a342cf344eddbc6e262ac9edbaf91009b"><div class="ttname"><a href="classWiThrottleProtocol.html#a342cf344eddbc6e262ac9edbaf91009b">WiThrottleProtocol::locomotivesFacing</a></div><div class="ttdeci">std::vector&lt; Direction &gt; locomotivesFacing[6]</div><div class="ttdoc">Used to record the direction the locos in a consist (on each Throttle) are facing.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:552</div></div>
-<div class="ttc" id="aclassWiThrottleProtocol_html_a3e26cd670490fbdff5764986a57950a5"><div class="ttname"><a href="classWiThrottleProtocol.html#a3e26cd670490fbdff5764986a57950a5">WiThrottleProtocol::heartbeatChanged</a></div><div class="ttdeci">bool heartbeatChanged</div><div class="ttdoc">Recrdes if the server heatbeat value has changed.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:388</div></div>
+<div class="ttc" id="aclassWiThrottleProtocol_html_a342cf344eddbc6e262ac9edbaf91009b"><div class="ttname"><a href="classWiThrottleProtocol.html#a342cf344eddbc6e262ac9edbaf91009b">WiThrottleProtocol::locomotivesFacing</a></div><div class="ttdeci">std::vector&lt; Direction &gt; locomotivesFacing[6]</div><div class="ttdoc">Used to record the direction the locos in a consist (on each Throttle) are facing.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:559</div></div>
+<div class="ttc" id="aclassWiThrottleProtocol_html_a3e26cd670490fbdff5764986a57950a5"><div class="ttname"><a href="classWiThrottleProtocol.html#a3e26cd670490fbdff5764986a57950a5">WiThrottleProtocol::heartbeatChanged</a></div><div class="ttdeci">bool heartbeatChanged</div><div class="ttdoc">Recrdes if the server heatbeat value has changed.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:395</div></div>
 <div class="ttc" id="aclassWiThrottleProtocol_html_a4f0a663e5b83705eb514a5456e712d3b"><div class="ttname"><a href="classWiThrottleProtocol.html#a4f0a663e5b83705eb514a5456e712d3b">WiThrottleProtocol::stealLocomotive</a></div><div class="ttdeci">bool stealLocomotive(String address)</div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.cpp:1138</div></div>
-<div class="ttc" id="aclassWiThrottleProtocol_html_a4fe3c1b2f899dd30c67c9e45f88dacd8"><div class="ttname"><a href="classWiThrottleProtocol.html#a4fe3c1b2f899dd30c67c9e45f88dacd8">WiThrottleProtocol::clockChanged</a></div><div class="ttdeci">bool clockChanged</div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:378</div></div>
+<div class="ttc" id="aclassWiThrottleProtocol_html_a4fe3c1b2f899dd30c67c9e45f88dacd8"><div class="ttname"><a href="classWiThrottleProtocol.html#a4fe3c1b2f899dd30c67c9e45f88dacd8">WiThrottleProtocol::clockChanged</a></div><div class="ttdeci">bool clockChanged</div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:385</div></div>
 <div class="ttc" id="aclassWiThrottleProtocol_html_a582ab3f0200a274ce5c0d51a538585b6"><div class="ttname"><a href="classWiThrottleProtocol.html#a582ab3f0200a274ce5c0d51a538585b6">WiThrottleProtocol::setFunction</a></div><div class="ttdeci">void setFunction(int funcnum, bool pressed)</div><div class="ttdoc">Set a Function on the default (first) Throttle.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.cpp:1391</div></div>
 <div class="ttc" id="aclassWiThrottleProtocol_html_a5aca71ce61e4d0590c214b627c50844a"><div class="ttname"><a href="classWiThrottleProtocol.html#a5aca71ce61e4d0590c214b627c50844a">WiThrottleProtocol::sendCommand</a></div><div class="ttdeci">void sendCommand(String cmd)</div><div class="ttdoc">Send command to the Command Station.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.cpp:191</div></div>
-<div class="ttc" id="aclassWiThrottleProtocol_html_a5d2a2c50fce110c71678bb6d82ca1598"><div class="ttname"><a href="classWiThrottleProtocol.html#a5d2a2c50fce110c71678bb6d82ca1598">WiThrottleProtocol::currentDeviceName</a></div><div class="ttdeci">String currentDeviceName</div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:381</div></div>
-<div class="ttc" id="aclassWiThrottleProtocol_html_a5f20d7c0c1b03b14cb7cd30ee511e341"><div class="ttname"><a href="classWiThrottleProtocol.html#a5f20d7c0c1b03b14cb7cd30ee511e341">WiThrottleProtocol::locomotives</a></div><div class="ttdeci">std::vector&lt; String &gt; locomotives[6]</div><div class="ttdoc">Used to record the locos in a consist (on each Throttle)</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:549</div></div>
+<div class="ttc" id="aclassWiThrottleProtocol_html_a5d2a2c50fce110c71678bb6d82ca1598"><div class="ttname"><a href="classWiThrottleProtocol.html#a5d2a2c50fce110c71678bb6d82ca1598">WiThrottleProtocol::currentDeviceName</a></div><div class="ttdeci">String currentDeviceName</div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:388</div></div>
+<div class="ttc" id="aclassWiThrottleProtocol_html_a5f20d7c0c1b03b14cb7cd30ee511e341"><div class="ttname"><a href="classWiThrottleProtocol.html#a5f20d7c0c1b03b14cb7cd30ee511e341">WiThrottleProtocol::locomotives</a></div><div class="ttdeci">std::vector&lt; String &gt; locomotives[6]</div><div class="ttdoc">Used to record the locos in a consist (on each Throttle)</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.h:556</div></div>
 <div class="ttc" id="aclassWiThrottleProtocol_html_a64dfaad3f82d2d3b338cce722ab1b06d"><div class="ttname"><a href="classWiThrottleProtocol.html#a64dfaad3f82d2d3b338cce722ab1b06d">WiThrottleProtocol::check</a></div><div class="ttdeci">bool check()</div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.cpp:148</div></div>
 <div class="ttc" id="aclassWiThrottleProtocol_html_a66d44b552feb3e1afc3f5bb0f3be7f98"><div class="ttname"><a href="classWiThrottleProtocol.html#a66d44b552feb3e1afc3f5bb0f3be7f98">WiThrottleProtocol::requireHeartbeat</a></div><div class="ttdeci">void requireHeartbeat(bool needed=true)</div><div class="ttdoc">TBA.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.cpp:1089</div></div>
 <div class="ttc" id="aclassWiThrottleProtocol_html_a6c35567e70938262456875f2448ce6d0"><div class="ttname"><a href="classWiThrottleProtocol.html#a6c35567e70938262456875f2448ce6d0">WiThrottleProtocol::setTrackPower</a></div><div class="ttdeci">void setTrackPower(TrackPower state)</div><div class="ttdoc">Set the state of a Track Power.</div><div class="ttdef"><b>Definition:</b> WiThrottleProtocol.cpp:1436</div></div>
