@@ -567,7 +567,7 @@ class WiThrottleProtocol
     
     ///
     /// Private
-    /// =======
+    /// -------
     ///
 
 
@@ -587,7 +587,7 @@ class WiThrottleProtocol
 
     ///
     /// Inbound Command processing
-    /// --------------------------
+    /// ^^^^^^^^^^^^^^^^^^^^^^^^^^
     ///
 
     /// @brief Process an incomming command from the Command Station
@@ -718,8 +718,8 @@ class WiThrottleProtocol
     // void processUnknownCommand(const String& unknownCommand);
 
     ///
-    /// Inbound Commands
-    /// ----------------
+    /// Outbound Commands
+    /// ^^^^^^^^^^^^^^^^^
     ///
 
     /// @brief TBA
