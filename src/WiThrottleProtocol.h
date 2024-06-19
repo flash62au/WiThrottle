@@ -711,7 +711,7 @@ class WiThrottleProtocol
 
     ///
     /// Inbound Commands
-    /// ================
+    /// ----------------
     ///
 
     /// @brief TBA
