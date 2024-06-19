@@ -4,11 +4,15 @@ on:
   push:
     branches: 
       - 'main'
+      - 'Master'
   pull_request:
     branches: 
       - 'main'
+      - 'Master'
   workflow_dispatch:
-    branches: [ main ]
+    branches:
+      - 'main'
+      - 'Master'
 
 jobs:
   build:
