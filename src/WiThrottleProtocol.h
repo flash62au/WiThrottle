@@ -577,134 +577,142 @@ class WiThrottleProtocol
 	
 	WiThrottleProtocolDelegate *delegate = NULL;
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    ///
+    /// Inbound Command processing
+    /// ==========================
+    ///
+
+    /// @brief Process an incomming command from the Command Station
+    /// @param c Command to process
+    /// @param len length of the command
     bool processCommand(char *c, int len);
 
-    /// @brief TBA
-    /// @param multithrottle TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming command from the Command Station - specific to locomotives
+    /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param c Command to process
+    /// @param len length of the command
     bool processLocomotiveAction(char multiThrottle, char *c, int len);
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming fast time command from the Command Station
+    /// @param c Command/information to process
+    /// @param len length of the command/information
     bool processFastTime(char *c, int len);
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming Heartbeat command from the Command Station
+    /// @param c Information to process
+    /// @param len length of the command/information
     bool processHeartbeat(char *c, int len);
 
-    /// @brief TBA
-    /// @param multithrottle TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming Roster command from the Command Station
+    /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param c Command to process
+    /// @param len length of the command
     bool processRosterFunctionList(char multiThrottle, char *c, int len);
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming Protocol information from the Command Station
+    /// @param c Protocol information to process
+    /// @param len length of the command/information
     void processProtocolVersion(char *c, int len);
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming Server Type information from the Command Station
+    /// @param c Information to process
+    /// @param len length of the information
     void processServerType(char *c, int len);
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming Server Description information from the Command Station
+    /// @param c Information to process
+    /// @param len length of the information
     void processServerDescription(char *c, int len);	
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming Broadcast Message from the Command Station
+    /// @param c Message to process
+    /// @param len length of the message
     void processMessage(char *c, int len);	
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming Broadcast Alert from the Command Station
+    /// @param c Alert message to process
+    /// @param len length of the Alert message
     void processAlert(char *c, int len);	
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming Web Port information from the Command Station.  The port that serves HTTP. This can be used to retrieve loco images.
+    /// @param c Message to process
+    /// @param len length of the message
     void processWebPort(char *c, int len);
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming Roster List from the Command Station. This is the complete list of all the locos in the Roster.
+    /// @param c Roster list to process
+    /// @param len length of the list
 	void processRosterList(char *c, int len);
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming Turnout/Points List from the Command Station. This is the complete list of all the locos in the Roster.
+    /// @param c Turnout/Points list to process
+    /// @param len length of the list
     void processTurnoutList(char *c, int len);
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming Routes List from the Command Station. This is the complete list of all the locos in the Roster.
+    /// @param c Routes list to process
+    /// @param len length of the list
     void processRouteList(char *c, int len);
 
-    /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming Track Power information from the Command Station
+    /// @param c Information to process
+    /// @param len length of the information
     void processTrackPower(char *c, int len);
 
     /// @brief TBA
-    /// @param multithrottle TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param functionData TBA
     void processFunctionState(char multiThrottle, const String& functionData);
 
     /// @brief TBA
-    /// @param multithrottle TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param s TBA
     void processRosterFunctionListEntries(char multiThrottle, const String& s);
 
     /// @brief TBA
-    /// @param multithrottle TBA
+    /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param speedStepData TBA
     void processSpeedSteps(char multiThrottle, const String& speedStepData);
 
-    /// @brief TBA
-    /// @param multithrottle TBA
-    /// @param speedStepData TBA
-    void processDirection(char multiThrottle, const String& speedStepData);
+    /// @brief Process an incomming Direction command from the Command Station for a specific multiThrottle
+    /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param directionStr TBA
+    void processDirection(char multiThrottle, const String& directionStr);
 
-    /// @brief TBA
-    /// @param speedDate TBA
+    /// @brief Process an incomming Speed command from the Command Station for a specific multiThrottle
+    /// @param speedData TBA
     void processSpeed(char multiThrottle, const String& speedData);
 
-    /// @brief TBA
-    /// @param multithrottle TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming command from the Command Station to add or remove on or more locomotives from a specified multiThrottle
+    /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param c Command to process
+    /// @param len length of the command
     void processAddRemove(char multiThrottle, char *c, int len);
 
-    /// @brief TBA
-    /// @param multithrottle TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @brief Process an incomming command from the Command Station to to advice that a steal command is required to aquire a locomotive. Specific the DigiTrack Command Stations only.
+    /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param c Command to process
+    /// @param len length of the command
     void processStealNeeded(char multiThrottle, char *c, int len);
 
     /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @param c Command to process
+    /// @param len length of the command
     void processTurnoutAction(char *c, int len);
 
     /// @brief TBA
-    /// @param c TBA
-    /// @param len TBA
+    /// @param c Command to process
+    /// @param len length of the command
     void processRouteAction(char *c, int len);
 
     // /// @brief TBA
     // /// @param unknownCommand TBA
     // void processUnknownCommand(const String& unknownCommand);
+
+    ///
+    /// Inbound Commands
+    /// ================
+    ///
 
     /// @brief TBA
     bool checkFastTime();
