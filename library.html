@@ -68,6 +68,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol18WiThrottleProtocolEb"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::WiThrottleProtocol()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol11setDelegateEP26WiThrottleProtocolDelegate"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::setDelegate()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol12setLogStreamEP6Stream"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::setLogStream()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol11setLogLevelEi"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::setLogLevel()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol26setCommandsNeedLeadingCrLfEb"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::setCommandsNeedLeadingCrLf()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol7connectEP6Stream"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::connect()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol7connectEP6Streami"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::connect()</span></code></a></li>
@@ -152,6 +153,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol4initEv"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::init()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol6serverE"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::server</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol6streamE"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::stream</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol8logLevelE"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::logLevel</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol7consoleE"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::console</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol10nullStreamE"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::nullStream</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18WiThrottleProtocol14outboundBufferE"><code class="docutils literal notranslate"><span class="pre">WiThrottleProtocol::outboundBuffer</span></code></a></li>
@@ -378,6 +380,17 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>console</strong> – TBA </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol11setLogLevelEi">
+<span id="_CPPv3N18WiThrottleProtocol11setLogLevelEi"></span><span id="_CPPv2N18WiThrottleProtocol11setLogLevelEi"></span><span id="WiThrottleProtocol::setLogLevel__i"></span><span class="target" id="classWiThrottleProtocol_1a2896913bf262519724e61ada43acf1e4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogLevel</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol11setLogLevelEi" title="Link to this definition"></a><br /></dt>
+<dd><p>TBA. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>level</strong> – 0 = off 1 = basic 2 = high </p>
 </dd>
 </dl>
 </dd></dl>
@@ -947,22 +960,13 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol14processCommandEPci">
 <span id="_CPPv3N18WiThrottleProtocol14processCommandEPci"></span><span id="_CPPv2N18WiThrottleProtocol14processCommandEPci"></span><span id="WiThrottleProtocol::processCommand__cP.i"></span><span class="target" id="classWiThrottleProtocol_1a2ff49fe0df27074318860bcae9e89009"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processCommand</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol14processCommandEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming command from the Command Station. </p>
-<p>Inbound Command processing ^^^^^^^^^^^^^^^^^^^^^^^^^^ </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>c</strong> – Command to process </p></li>
-<li><p><strong>len</strong> – length of the command </p></li>
-</ul>
-</dd>
-</dl>
+<dd><p>Process an incoming command from the Command Station. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol23processLocomotiveActionEcPci">
 <span id="_CPPv3N18WiThrottleProtocol23processLocomotiveActionEcPci"></span><span id="_CPPv2N18WiThrottleProtocol23processLocomotiveActionEcPci"></span><span id="WiThrottleProtocol::processLocomotiveAction__c.cP.i"></span><span class="target" id="classWiThrottleProtocol_1a0e599a811be098b7a3e67094db864353"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processLocomotiveAction</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol23processLocomotiveActionEcPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming command from the Command Station - specific to locomotives. </p>
+<dd><p>Process an incoming command from the Command Station - specific to locomotives. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -977,7 +981,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol15processFastTimeEPci">
 <span id="_CPPv3N18WiThrottleProtocol15processFastTimeEPci"></span><span id="_CPPv2N18WiThrottleProtocol15processFastTimeEPci"></span><span id="WiThrottleProtocol::processFastTime__cP.i"></span><span class="target" id="classWiThrottleProtocol_1a8a66d37b50995d05a9d26504f686b196"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processFastTime</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol15processFastTimeEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming fast time command from the Command Station. </p>
+<dd><p>Process an incoming fast time command from the Command Station. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -991,7 +995,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol16processHeartbeatEPci">
 <span id="_CPPv3N18WiThrottleProtocol16processHeartbeatEPci"></span><span id="_CPPv2N18WiThrottleProtocol16processHeartbeatEPci"></span><span id="WiThrottleProtocol::processHeartbeat__cP.i"></span><span class="target" id="classWiThrottleProtocol_1a93bf3769de3a76cfc65864a210b8320d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processHeartbeat</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol16processHeartbeatEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Heartbeat command from the Command Station. </p>
+<dd><p>Process an incoming Heartbeat command from the Command Station. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1005,7 +1009,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol25processRosterFunctionListEcPci">
 <span id="_CPPv3N18WiThrottleProtocol25processRosterFunctionListEcPci"></span><span id="_CPPv2N18WiThrottleProtocol25processRosterFunctionListEcPci"></span><span id="WiThrottleProtocol::processRosterFunctionList__c.cP.i"></span><span class="target" id="classWiThrottleProtocol_1aba1adca9763e32b2a515623836e5fde0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processRosterFunctionList</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol25processRosterFunctionListEcPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Roster command from the Command Station. </p>
+<dd><p>Process an incoming Roster command from the Command Station. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1020,7 +1024,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol22processProtocolVersionEPci">
 <span id="_CPPv3N18WiThrottleProtocol22processProtocolVersionEPci"></span><span id="_CPPv2N18WiThrottleProtocol22processProtocolVersionEPci"></span><span id="WiThrottleProtocol::processProtocolVersion__cP.i"></span><span class="target" id="classWiThrottleProtocol_1a2e07e326c8df151be0713500e7b9cf22"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processProtocolVersion</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol22processProtocolVersionEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Protocol information from the Command Station. </p>
+<dd><p>Process an incoming Protocol information from the Command Station. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1034,7 +1038,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol17processServerTypeEPci">
 <span id="_CPPv3N18WiThrottleProtocol17processServerTypeEPci"></span><span id="_CPPv2N18WiThrottleProtocol17processServerTypeEPci"></span><span id="WiThrottleProtocol::processServerType__cP.i"></span><span class="target" id="classWiThrottleProtocol_1ae4700e84522f634ad2e805d95875bcb2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processServerType</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol17processServerTypeEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Server Type information from the Command Station. </p>
+<dd><p>Process an incoming Server Type information from the Command Station. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1048,7 +1052,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol24processServerDescriptionEPci">
 <span id="_CPPv3N18WiThrottleProtocol24processServerDescriptionEPci"></span><span id="_CPPv2N18WiThrottleProtocol24processServerDescriptionEPci"></span><span id="WiThrottleProtocol::processServerDescription__cP.i"></span><span class="target" id="classWiThrottleProtocol_1a2c129cc1156eeb58964271e685e99a74"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processServerDescription</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol24processServerDescriptionEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Server Description information from the Command Station. </p>
+<dd><p>Process an incoming Server Description information from the Command Station. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1062,7 +1066,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol14processMessageEPci">
 <span id="_CPPv3N18WiThrottleProtocol14processMessageEPci"></span><span id="_CPPv2N18WiThrottleProtocol14processMessageEPci"></span><span id="WiThrottleProtocol::processMessage__cP.i"></span><span class="target" id="classWiThrottleProtocol_1a8fc98496564988cf16d43eeca2b5a343"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processMessage</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol14processMessageEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Broadcast Message from the Command Station. </p>
+<dd><p>Process an incoming Broadcast Message from the Command Station. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1076,7 +1080,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol12processAlertEPci">
 <span id="_CPPv3N18WiThrottleProtocol12processAlertEPci"></span><span id="_CPPv2N18WiThrottleProtocol12processAlertEPci"></span><span id="WiThrottleProtocol::processAlert__cP.i"></span><span class="target" id="classWiThrottleProtocol_1afcc965571d9966414af5ec3f95ee5cd6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processAlert</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol12processAlertEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Broadcast Alert from the Command Station. </p>
+<dd><p>Process an incoming Broadcast Alert from the Command Station. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1090,7 +1094,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol14processWebPortEPci">
 <span id="_CPPv3N18WiThrottleProtocol14processWebPortEPci"></span><span id="_CPPv2N18WiThrottleProtocol14processWebPortEPci"></span><span id="WiThrottleProtocol::processWebPort__cP.i"></span><span class="target" id="classWiThrottleProtocol_1a12bc87e775ab27139a178b0ff7b3c9c8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processWebPort</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol14processWebPortEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Web Port information from the Command Station. The port that serves HTTP. This can be used to retrieve loco images. </p>
+<dd><p>Process an incoming Web Port information from the Command Station. The port that serves HTTP. This can be used to retrieve loco images. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1104,7 +1108,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol17processRosterListEPci">
 <span id="_CPPv3N18WiThrottleProtocol17processRosterListEPci"></span><span id="_CPPv2N18WiThrottleProtocol17processRosterListEPci"></span><span id="WiThrottleProtocol::processRosterList__cP.i"></span><span class="target" id="classWiThrottleProtocol_1a855f7489020ed8f0997f3e3c310d7420"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processRosterList</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol17processRosterListEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Roster List from the Command Station. This is the complete list of all the locos in the Roster. </p>
+<dd><p>Process an incoming Roster List from the Command Station. This is the complete list of all the locos in the Roster. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1118,7 +1122,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol18processTurnoutListEPci">
 <span id="_CPPv3N18WiThrottleProtocol18processTurnoutListEPci"></span><span id="_CPPv2N18WiThrottleProtocol18processTurnoutListEPci"></span><span id="WiThrottleProtocol::processTurnoutList__cP.i"></span><span class="target" id="classWiThrottleProtocol_1a7eb0e5ecbef2b2ca42785c855fc5269b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processTurnoutList</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol18processTurnoutListEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Turnout/Points List from the Command Station. This is the complete list of all the locos in the Roster. </p>
+<dd><p>Process an incoming Turnout/Points List from the Command Station. This is the complete list of all the locos in the Roster. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1132,7 +1136,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol16processRouteListEPci">
 <span id="_CPPv3N18WiThrottleProtocol16processRouteListEPci"></span><span id="_CPPv2N18WiThrottleProtocol16processRouteListEPci"></span><span id="WiThrottleProtocol::processRouteList__cP.i"></span><span class="target" id="classWiThrottleProtocol_1ab58dadcbae9de637af28c321877c0ac4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processRouteList</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol16processRouteListEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Routes List from the Command Station. This is the complete list of all the locos in the Roster. </p>
+<dd><p>Process an incoming Routes List from the Command Station. This is the complete list of all the locos in the Roster. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1146,7 +1150,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol17processTrackPowerEPci">
 <span id="_CPPv3N18WiThrottleProtocol17processTrackPowerEPci"></span><span id="_CPPv2N18WiThrottleProtocol17processTrackPowerEPci"></span><span id="WiThrottleProtocol::processTrackPower__cP.i"></span><span class="target" id="classWiThrottleProtocol_1adaf6a84fe8c37ddc6ca953c4af93039c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processTrackPower</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol17processTrackPowerEPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Track Power information from the Command Station. </p>
+<dd><p>Process an incoming Track Power information from the Command Station. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1202,7 +1206,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol16processDirectionEcRK6String">
 <span id="_CPPv3N18WiThrottleProtocol16processDirectionEcRK6String"></span><span id="_CPPv2N18WiThrottleProtocol16processDirectionEcRK6String"></span><span id="WiThrottleProtocol::processDirection__c.StringCR"></span><span class="target" id="classWiThrottleProtocol_1ab7410d5c2194df9d6ea8541e73eb7f77"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processDirection</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">directionStr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol16processDirectionEcRK6String" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Direction command from the Command Station for a specific multiThrottle. </p>
+<dd><p>Process an incoming Direction command from the Command Station for a specific multiThrottle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1216,7 +1220,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol12processSpeedEcRK6String">
 <span id="_CPPv3N18WiThrottleProtocol12processSpeedEcRK6String"></span><span id="_CPPv2N18WiThrottleProtocol12processSpeedEcRK6String"></span><span id="WiThrottleProtocol::processSpeed__c.StringCR"></span><span class="target" id="classWiThrottleProtocol_1a4044a4c3a0dd14da668a32602ba9317c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processSpeed</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">speedData</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol12processSpeedEcRK6String" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming Speed command from the Command Station for a specific multiThrottle. </p>
+<dd><p>Process an incoming Speed command from the Command Station for a specific multiThrottle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>speedData</strong> – TBA </p>
@@ -1227,7 +1231,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol16processAddRemoveEcPci">
 <span id="_CPPv3N18WiThrottleProtocol16processAddRemoveEcPci"></span><span id="_CPPv2N18WiThrottleProtocol16processAddRemoveEcPci"></span><span id="WiThrottleProtocol::processAddRemove__c.cP.i"></span><span class="target" id="classWiThrottleProtocol_1a2a5a1876ff252997f98a9a3c3cd41bfb"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processAddRemove</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol16processAddRemoveEcPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming command from the Command Station to add or remove on or more locomotives from a specified multiThrottle. </p>
+<dd><p>Process an incoming command from the Command Station to add or remove on or more locomotives from a specified multiThrottle. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1242,7 +1246,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol18processStealNeededEcPci">
 <span id="_CPPv3N18WiThrottleProtocol18processStealNeededEcPci"></span><span id="_CPPv2N18WiThrottleProtocol18processStealNeededEcPci"></span><span id="WiThrottleProtocol::processStealNeeded__c.cP.i"></span><span class="target" id="classWiThrottleProtocol_1a6d4ac91acd10a41fd725c84e99f2cb7b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processStealNeeded</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">multiThrottle</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol18processStealNeededEcPci" title="Link to this definition"></a><br /></dt>
-<dd><p>Process an incomming command from the Command Station to to advice that a steal command is required to aquire a locomotive. Specific the DigiTrack Command Stations only. </p>
+<dd><p>Process an incoming command from the Command Station to to advice that a steal command is required to aquire a locomotive. Specific the DigiTrack Command Stations only. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1338,6 +1342,11 @@
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol6streamE">
 <span id="_CPPv3N18WiThrottleProtocol6streamE"></span><span id="_CPPv2N18WiThrottleProtocol6streamE"></span><span id="WiThrottleProtocol::stream__StreamP"></span><span class="target" id="classWiThrottleProtocol_1a7b2d96544357c968fcfe6e1b9fe2c215"></span><span class="n"><span class="pre">Stream</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">stream</span></span></span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol6streamE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18WiThrottleProtocol8logLevelE">
+<span id="_CPPv3N18WiThrottleProtocol8logLevelE"></span><span id="_CPPv2N18WiThrottleProtocol8logLevelE"></span><span id="WiThrottleProtocol::logLevel__i"></span><span class="target" id="classWiThrottleProtocol_1ad067103cabdacea3a8417793a10d1685"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">logLevel</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N18WiThrottleProtocol8logLevelE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
