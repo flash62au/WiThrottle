@@ -29,6 +29,8 @@
 /*
 Version information:
 
+1.1.18   - Added support for logLevel. Assigned levels to every log message
+         - changed all the log messages so that it is clearer which came from this library
 1.1.17   - fix version numbers. no code change
 1.1.15/16   - fix a bug where the speeds were not being updated when changed on another device
 1.1.14   - addition of 'sendCommand(String cmd);
@@ -342,6 +344,10 @@ class WiThrottleProtocol
     void setLogStream(Stream *console);
 
     /// @brief TBA
+    /// @param level 0 = off 1 = basic 2 = high
+    void setLogLevel(int level);
+
+    /// @brief TBA
     /// @param needed TBA
     void setCommandsNeedLeadingCrLf(bool needed);
 
@@ -576,6 +582,7 @@ class WiThrottleProtocol
     bool server;
     
 	Stream *stream;
+    int logLevel = 1;
     Stream *console;
 	NullStream nullStream;
     String outboundBuffer;
@@ -587,82 +594,82 @@ class WiThrottleProtocol
 
     ///
     /// Inbound Command processing
-    /// ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    /// --------------------------
     ///
 
-    /// @brief Process an incomming command from the Command Station
+    /// @brief Process an incoming command from the Command Station
     /// @param c Command to process
     /// @param len length of the command
     bool processCommand(char *c, int len);
 
-    /// @brief Process an incomming command from the Command Station - specific to locomotives
+    /// @brief Process an incoming command from the Command Station - specific to locomotives
     /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param c Command to process
     /// @param len length of the command
     bool processLocomotiveAction(char multiThrottle, char *c, int len);
 
-    /// @brief Process an incomming fast time command from the Command Station
+    /// @brief Process an incoming fast time command from the Command Station
     /// @param c Command/information to process
     /// @param len length of the command/information
     bool processFastTime(char *c, int len);
 
-    /// @brief Process an incomming Heartbeat command from the Command Station
+    /// @brief Process an incoming Heartbeat command from the Command Station
     /// @param c Information to process
     /// @param len length of the command/information
     bool processHeartbeat(char *c, int len);
 
-    /// @brief Process an incomming Roster command from the Command Station
+    /// @brief Process an incoming Roster command from the Command Station
     /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param c Command to process
     /// @param len length of the command
     bool processRosterFunctionList(char multiThrottle, char *c, int len);
 
-    /// @brief Process an incomming Protocol information from the Command Station
+    /// @brief Process an incoming Protocol information from the Command Station
     /// @param c Protocol information to process
     /// @param len length of the command/information
     void processProtocolVersion(char *c, int len);
 
-    /// @brief Process an incomming Server Type information from the Command Station
+    /// @brief Process an incoming Server Type information from the Command Station
     /// @param c Information to process
     /// @param len length of the information
     void processServerType(char *c, int len);
 
-    /// @brief Process an incomming Server Description information from the Command Station
+    /// @brief Process an incoming Server Description information from the Command Station
     /// @param c Information to process
     /// @param len length of the information
     void processServerDescription(char *c, int len);	
 
-    /// @brief Process an incomming Broadcast Message from the Command Station
+    /// @brief Process an incoming Broadcast Message from the Command Station
     /// @param c Message to process
     /// @param len length of the message
     void processMessage(char *c, int len);	
 
-    /// @brief Process an incomming Broadcast Alert from the Command Station
+    /// @brief Process an incoming Broadcast Alert from the Command Station
     /// @param c Alert message to process
     /// @param len length of the Alert message
     void processAlert(char *c, int len);	
 
-    /// @brief Process an incomming Web Port information from the Command Station.  The port that serves HTTP. This can be used to retrieve loco images.
+    /// @brief Process an incoming Web Port information from the Command Station.  The port that serves HTTP. This can be used to retrieve loco images.
     /// @param c Message to process
     /// @param len length of the message
     void processWebPort(char *c, int len);
 
-    /// @brief Process an incomming Roster List from the Command Station. This is the complete list of all the locos in the Roster.
+    /// @brief Process an incoming Roster List from the Command Station. This is the complete list of all the locos in the Roster.
     /// @param c Roster list to process
     /// @param len length of the list
 	void processRosterList(char *c, int len);
 
-    /// @brief Process an incomming Turnout/Points List from the Command Station. This is the complete list of all the locos in the Roster.
+    /// @brief Process an incoming Turnout/Points List from the Command Station. This is the complete list of all the locos in the Roster.
     /// @param c Turnout/Points list to process
     /// @param len length of the list
     void processTurnoutList(char *c, int len);
 
-    /// @brief Process an incomming Routes List from the Command Station. This is the complete list of all the locos in the Roster.
+    /// @brief Process an incoming Routes List from the Command Station. This is the complete list of all the locos in the Roster.
     /// @param c Routes list to process
     /// @param len length of the list
     void processRouteList(char *c, int len);
 
-    /// @brief Process an incomming Track Power information from the Command Station
+    /// @brief Process an incoming Track Power information from the Command Station
     /// @param c Information to process
     /// @param len length of the information
     void processTrackPower(char *c, int len);
@@ -682,22 +689,22 @@ class WiThrottleProtocol
     /// @param speedStepData TBA
     void processSpeedSteps(char multiThrottle, const String& speedStepData);
 
-    /// @brief Process an incomming Direction command from the Command Station for a specific multiThrottle
+    /// @brief Process an incoming Direction command from the Command Station for a specific multiThrottle
     /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param directionStr TBA
     void processDirection(char multiThrottle, const String& directionStr);
 
-    /// @brief Process an incomming Speed command from the Command Station for a specific multiThrottle
+    /// @brief Process an incoming Speed command from the Command Station for a specific multiThrottle
     /// @param speedData TBA
     void processSpeed(char multiThrottle, const String& speedData);
 
-    /// @brief Process an incomming command from the Command Station to add or remove on or more locomotives from a specified multiThrottle
+    /// @brief Process an incoming command from the Command Station to add or remove on or more locomotives from a specified multiThrottle
     /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param c Command to process
     /// @param len length of the command
     void processAddRemove(char multiThrottle, char *c, int len);
 
-    /// @brief Process an incomming command from the Command Station to to advice that a steal command is required to aquire a locomotive. Specific the DigiTrack Command Stations only.
+    /// @brief Process an incoming command from the Command Station to to advice that a steal command is required to aquire a locomotive. Specific the DigiTrack Command Stations only.
     /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param c Command to process
     /// @param len length of the command
