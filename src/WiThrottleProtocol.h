@@ -29,7 +29,7 @@
 /*
 Version information:
 
-1.1.18   - Added support for logLevel. Assigned levels to every log message
+1.1.18/19- Added support for logLevel. Assigned levels to every log message
          - changed all the log messages so that it is clearer which came from this library
 1.1.17   - fix version numbers. no code change
 1.1.15/16   - fix a bug where the speeds were not being updated when changed on another device
