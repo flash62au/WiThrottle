@@ -29,6 +29,7 @@
 /*
 Version information:
 
+1.1.20   - Corrected the EStop for 'all' throttles
 1.1.18/19- Added support for logLevel. Assigned levels to every log message
          - changed all the log messages so that it is clearer which came from this library
 1.1.17   - fix version numbers. no code change
@@ -68,6 +69,7 @@ Version information:
 #define DEFAULT_MULTITHROTTLE 'T'
 #define ALL_LOCOS_ON_THROTTLE "*"
 
+#define MAX_WIT_THROTTLES 6
 #define MAX_FUNCTIONS 32
 
 /// @brief Loco/Throttle Direction options
@@ -760,13 +762,13 @@ class WiThrottleProtocol
 
     void init();
 
-    bool locomotiveSelected[6] = {false, false, false, false, false, false};
+    bool locomotiveSelected[MAX_WIT_THROTTLES] = {false, false, false, false, false, false};
 
-    String currentAddress[6];
+    String currentAddress[MAX_WIT_THROTTLES];
 
-    int currentSpeed[6];
-    int speedSteps[6];  // 1=128, 2=28, 4=27, 8=14, 16=28Mot
-    Direction currentDirection[6];
+    int currentSpeed[MAX_WIT_THROTTLES];
+    int speedSteps[MAX_WIT_THROTTLES];  // 1=128, 2=28, 4=27, 8=14, 16=28Mot
+    Direction currentDirection[MAX_WIT_THROTTLES];
 
     String mostRecentTurnout;
     TurnoutState mostRecentTurnoutState;

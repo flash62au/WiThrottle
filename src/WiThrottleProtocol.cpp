@@ -1089,7 +1089,7 @@ bool WiThrottleProtocol::checkHeartbeat() {
 
         // if there are any locos under control, resend all their speeds
         if ( (timeLastLocoAcquired!=0) && ((millis() - timeLastLocoAcquired) > 5000) ) { // wait at least 5 seconds from the last time that a loco was aqcuired, to give the server time to send any existing speeds
-            for (int i=0; i<6; i++) {
+            for (int i=0; i<MAX_WIT_THROTTLES; i++) {
                 char multiThrottleChar = '0' + i;
                 if (getNumberOfLocomotives(multiThrottleChar)>0) {
                     setSpeed(multiThrottleChar, getSpeed(multiThrottleChar), true);
@@ -1393,7 +1393,7 @@ Direction WiThrottleProtocol::getDirection(char multiThrottle, String address) {
 // ******************************************************************************************************
 
 void WiThrottleProtocol::emergencyStop() {
-    emergencyStop(DEFAULT_MULTITHROTTLE, ALL_LOCOS_ON_THROTTLE);
+    emergencyStop('*', ALL_LOCOS_ON_THROTTLE);
 }
 void WiThrottleProtocol::emergencyStop(char multiThrottle) {
     emergencyStop(multiThrottle, ALL_LOCOS_ON_THROTTLE);
@@ -1401,12 +1401,21 @@ void WiThrottleProtocol::emergencyStop(char multiThrottle) {
 
 void WiThrottleProtocol::emergencyStop(char multiThrottle, String address) {
     if (logLevel>0) { console->print("WiT:: emergencyStop(): "); console->print(multiThrottle);console->print(" address: "); console->print(address);  }
-    setSpeed(multiThrottle,0);
-    String cmd = "M" + String(multiThrottle) + "A" + address;
-    cmd.concat(PROPERTY_SEPARATOR);
-    cmd.concat("X");
 
-    sendDelayedCommand(cmd);
+    String cmd; cmd.reserve(10);
+    char multiThrottleChar = multiThrottle;
+
+    if (multiThrottleChar!='*') { // single throttle
+        setSpeed(multiThrottle,0);
+        cmd = "M" + String(multiThrottle) + "A" + address + PROPERTY_SEPARATOR + "X";
+        sendDelayedCommand(cmd);
+    } else { // all throttles
+        for (int i=0; i<MAX_WIT_THROTTLES; i++) {
+            multiThrottleChar = '0' + i;
+            cmd = "M" + String(multiThrottleChar) + "A" + address + PROPERTY_SEPARATOR + "X";
+            sendDelayedCommand(cmd);
+        }
+    }
 }
 
 // ******************************************************************************************************
