@@ -29,6 +29,7 @@
 /*
 Version information:
 
+1.1.21   - Add support for setting the Speed Step mode 28/128/14 etc.  setSpeedSteps(), getSpeedSteps()
 1.1.20   - Corrected the EStop for 'all' throttles
 1.1.18/19- Added support for logLevel. Assigned levels to every log message
          - changed all the log messages so that it is clearer which came from this library
@@ -242,7 +243,7 @@ class WiThrottleProtocolDelegate
     virtual void receivedDirection(Direction dir) { }     // R{0,1}
     
     /// @brief Delegate method to receive the number of speed steps for the default (first) throttle from the Withrottle Server
-    /// @param steps 28 or 128
+    /// @param steps 1=128step, 2=28step, 4=27step or 8=14step
     virtual void receivedSpeedSteps(int steps) { }        // snn
 
     /// @brief Delegate method to receive the speed for a specific throttle from the Withrottle Server
@@ -257,7 +258,7 @@ class WiThrottleProtocolDelegate
 
     /// @brief Delegate method to receive the speed steps for a specific throttle from the Withrottle Server
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param steps 28 or 128
+    /// @param steps 1=128step, 2=28step, 4=27step or 8=14step
     virtual void receivedSpeedStepsMultiThrottle(char multiThrottle, int steps) { }        // snn
 
     /// @brief Delegate method to receive  from the Withrottle Server
@@ -486,28 +487,46 @@ class WiThrottleProtocol
     /// @brief Get the direction of the default (first) Throttle
     Direction getDirection();
 
+    /// @brief Get the speed step of the default (first) Throttle
+    int getSpeedSteps();
+    
     // multiThrottle support
-    /// @brief Set the speed of the a specified Throttle
+    /// @brief Get the speed step of a specified Throttle
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    int getSpeedSteps(char multiThrottle);
+
+    /// @brief Set the speed step of the default (first) Throttle
+    /// @param steps 1=128step, 2=28step, 4=27step or 8=14step
+    bool setSpeedSteps(int steps);
+    
+    // multiThrottle support
+    /// @brief Set the speed step of a specified Throttle
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param steps 1=128step, 2=28step, 4=27step or 8=14step
+    bool setSpeedSteps(char multiThrottle, int steps);
+
+    // multiThrottle support
+    /// @brief Set the speed of a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param speed Speed 0-126
     bool setSpeed(char multiThrottle, int speed);
 
-    /// @brief Set the speed of the a specified Throttle
+    /// @brief Set the speed of a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param speed Speed 0-126
     /// @param forceSend Option to force the command to be sent, even if the protocol thinks it is at that speed
     bool setSpeed(char multiThrottle, int speed, bool forceSend);
 
-    /// @brief Get the speed of the a specified Throttle
+    /// @brief Get the speed of a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     int getSpeed(char multiThrottle);
 
-    /// @brief Set the direction of the a specified Throttle
+    /// @brief Set the direction of a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param direction Direction. One of - Reverse = 0, Forward = 1
     bool setDirection(char multiThrottle, Direction direction);
 
-    /// @brief Set the direction of the a specified Throttle, with the option to force the send
+    /// @brief Set the direction of a specified Throttle, with the option to force the send
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param direction Direction. One of - Reverse = 0, Forward = 1
     /// @param forceSend Option to force the command to be sent, even if the protocol thinks it is in that Direction

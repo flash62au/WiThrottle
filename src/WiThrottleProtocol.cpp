@@ -75,7 +75,7 @@ void WiThrottleProtocol::init() {
     for (int multiThrottleIndex=0; multiThrottleIndex<6; multiThrottleIndex++) {
         locomotiveSelected[multiThrottleIndex] = false;
         currentSpeed[multiThrottleIndex] = 0;
-        speedSteps[multiThrottleIndex] = 0;
+        speedSteps[multiThrottleIndex] = 1;  //1=128 steps
         currentDirection[multiThrottleIndex] = Forward;
         locomotives[multiThrottleIndex].resize(0);
         locomotivesFacing[multiThrottleIndex].resize(0);
@@ -893,20 +893,24 @@ void WiThrottleProtocol::processSpeed(char multiThrottle, const String& speedDat
 
 
 void WiThrottleProtocol::processSpeedSteps(char multiThrottle, const String& speedStepData) {
-    if (logLevel>0) { console->print("WiT:: processSpeedSteps(): "); console->println(multiThrottle); }
+    if (logLevel>0) { console->print("WiT:: processSpeedSteps(): "); console->print(multiThrottle); console->print(" : "); console->println(speedStepData); }
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
 
     if (delegate && speedStepData.length() >= 2) {
         String speedStepStr = speedStepData.substring(1);
         int steps = speedStepStr.toInt();
 
-        if (steps != 1 && steps != 2 && steps != 4 && steps != 8 && steps !=16) {
+        // 1 = 128step, 2 = 28step, 4 = 27step or 8 = 14step
+        if (steps != 1 && steps != 2 && steps != 4 && steps != 8) {
             // error, not one of the known values
         }
         else {
             if (multiThrottle == DEFAULT_MULTITHROTTLE) {
                 delegate->receivedSpeedSteps(steps);
+                speedSteps[0] = steps;
             } else {
                 delegate->receivedSpeedStepsMultiThrottle(multiThrottle, steps);
+                speedSteps[multiThrottleIndex] = steps;
             }
         }
     }
@@ -1263,6 +1267,47 @@ int WiThrottleProtocol::getNumberOfLocomotives(char multiThrottle) {
     if (logLevel>1) { console->print("WiT:: getNumberOfLocomotives(): end "); console->println(size); }
     return size;
 }
+
+// ******************************************************************************************************
+
+int WiThrottleProtocol::getSpeedSteps() {
+    return setSpeedSteps(DEFAULT_MULTITHROTTLE);
+}
+
+int WiThrottleProtocol::getSpeedSteps(char multiThrottle) {
+    if (logLevel>0) { console->print("WiT:: getSpeedSteps(): "); console->println(multiThrottle); }
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
+    return speedSteps[multiThrottleIndex];
+}
+
+// ******************************************************************************************************
+
+bool WiThrottleProtocol::setSpeedSteps(int steps) {
+    return setSpeedSteps(DEFAULT_MULTITHROTTLE, steps);
+}
+
+bool WiThrottleProtocol::setSpeedSteps(char multiThrottle, int steps) {
+    if (logLevel>0) { console->print("WiT:: setSpeedSteps(): "); console->print(multiThrottle); console->print(" : "); console->println(steps); }
+
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
+
+    // 1 = 128step, 2 = 28step, 4 = 27step or 8 = 14step
+    if (steps != 1 && steps != 2 && steps != 4 && steps != 8) {
+        console->print("WiT:: setSpeedSteps(): Error, not one of the known values");
+        return false;
+    }
+
+    String cmd = "M" + String(multiThrottle) + "A*" 
+        + PROPERTY_SEPARATOR
+        + "s"
+        + String(steps);
+    sendDelayedCommand(cmd);
+    speedSteps[multiThrottleIndex] = steps;
+
+    return true;
+}
+
 
 // ******************************************************************************************************
 
