@@ -85,13 +85,19 @@ see https://flash62au.github.io/WiThrottleProtocol/library.html
 ## Todos
 
  - Update the examples
+ - Add multithrottle examples
+ - Finish the in-code documentation 
  - Write Tests
- - More complete WiThrottle protocol parsing
  - Better Parser (Antlr?)
  
+ ## Usage Notes
+ 
+ - When I added the multithrottle support I have done my best to maintain backwards compatibility.  As a result if you use the non-multithrottle versions of any of the methods, the *default* multithrottle is now defunct 'T' rather than the now standard '0'.<br/>That means that you ***cannot mix*** multithrottle and non-multithrottle versions of the methods in your code.
 
-License
 ----
+----
+
+# License
 
 Creative Commons [CC-BY-SA 4.0][CCBYSA]   ![CCBYSA](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
 

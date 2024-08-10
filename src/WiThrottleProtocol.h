@@ -29,6 +29,7 @@
 /*
 Version information:
 
+1.1.22   - Fix for the original 'steal' code
 1.1.21   - Add support for setting the Speed Step mode 28/128/14 etc.  setSpeedSteps(), getSpeedSteps()
 1.1.20   - Corrected the EStop for 'all' throttles
 1.1.18/19- Added support for logLevel. Assigned levels to every log message

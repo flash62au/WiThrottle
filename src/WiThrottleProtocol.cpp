@@ -1168,11 +1168,10 @@ bool WiThrottleProtocol::stealLocomotive(String address) {
 bool WiThrottleProtocol::stealLocomotive(char multiThrottle, String address) {
     if (logLevel>0) { console->print("WiT:: stealLocomotive(): "); console->print(multiThrottle); console->print(" : "); console->println(address); }
 
-    bool ok = false;
-
-    if (releaseLocomotive(multiThrottle, address)) {
-        ok = addLocomotive(multiThrottle, address);
-    }
+    bool ok = true;
+    // MTSxxxx<;>xxxxx
+    String cmd = "M" + String(multiThrottle) + "S" +address + PROPERTY_SEPARATOR + address;
+    sendDelayedCommand(cmd);
 
     return ok;
 }
