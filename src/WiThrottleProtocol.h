@@ -29,6 +29,7 @@
 /*
 Version information:
 
+1.1.23   - Fix for individual loco direction (facing) changes in a consist
 1.1.22   - Fix for the original 'steal' code
 1.1.21   - Add support for setting the Speed Step mode 28/128/14 etc.  setSpeedSteps(), getSpeedSteps()
 1.1.20   - Corrected the EStop for 'all' throttles
@@ -243,6 +244,11 @@ class WiThrottleProtocolDelegate
     /// @param dir TBA
     virtual void receivedDirection(Direction dir) { }     // R{0,1}
     
+    /// @brief Delegate method to receive the direction for the default (first) throttle for an individual loco from the Withrottle Server
+    /// @param dir TBA
+    /// @param loco TBA
+    virtual void receivedDirection(String address, Direction dir) { }     // R{0,1}
+    
     /// @brief Delegate method to receive the number of speed steps for the default (first) throttle from the Withrottle Server
     /// @param steps 1=128step, 2=28step, 4=27step or 8=14step
     virtual void receivedSpeedSteps(int steps) { }        // snn
@@ -256,6 +262,12 @@ class WiThrottleProtocolDelegate
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param dir TBA
     virtual void receivedDirectionMultiThrottle(char multiThrottle, Direction dir) { }     // R{0,1}
+
+    /// @brief Delegate method to receive the direction for a specific throttle for an individual loco from the Withrottle Server
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param dir TBA
+    /// @param loco TBA
+    virtual void receivedDirectionMultiThrottle(char multiThrottle, String address, Direction dir) { }     // R{0,1}
 
     /// @brief Delegate method to receive the speed steps for a specific throttle from the Withrottle Server
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
@@ -715,6 +727,12 @@ class WiThrottleProtocol
     /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param directionStr TBA
     void processDirection(char multiThrottle, const String& directionStr);
+
+    /// @brief Process an incoming Direction command from the Command Station for a specific multiThrottle
+    /// @param multithrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param loco TBA
+    /// @param directionStr TBA
+    void processDirection(char multiThrottle, String& loco, const String& directionStr);
 
     /// @brief Process an incoming Speed command from the Command Station for a specific multiThrottle
     /// @param speedData TBA

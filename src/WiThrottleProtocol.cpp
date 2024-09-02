@@ -319,14 +319,23 @@ bool WiThrottleProtocol::processLocomotiveAction(char multiThrottle, char *c, in
         if (logLevel>1) console->printf("WiT::   currentAddress is '%s'\n", currentAddress[multiThrottleIndex].c_str());
     }
 
+    bool isLeadOrAll = true;
+    String address = "";
     String addrCheck = currentAddress[multiThrottleIndex] + PROPERTY_SEPARATOR;
     String allCheck = "*";
     allCheck.concat(PROPERTY_SEPARATOR);
     if (remainder.startsWith(addrCheck)) {
         remainder.remove(0, addrCheck.length());
-    }
-    else if (remainder.startsWith(allCheck)) {
+    } else if (remainder.startsWith(allCheck)) {
         remainder.remove(0, allCheck.length());
+    } else {
+        int p = remainder.indexOf(PROPERTY_SEPARATOR);
+        if (p > 0) { // non-lead loco
+            address = remainder.substring(0, p);
+            addrCheck = address + PROPERTY_SEPARATOR;
+            remainder.remove(0, addrCheck.length());
+            isLeadOrAll = false;
+        }
     }
 
     if (logLevel>1) console->printf("WiT:: processLocomotiveAction: after separator is %s\n", remainder.c_str());
@@ -334,24 +343,41 @@ bool WiThrottleProtocol::processLocomotiveAction(char multiThrottle, char *c, in
     if (remainder.length() > 0) {
         char action = remainder[0];
 
-        switch (action) {
-            case 'F':
-                if (logLevel>1) console->printf("WiT:: processing function state\n");
-                processFunctionState(multiThrottle, remainder);
-                break;
-            case 'V':
-                processSpeed(multiThrottle, remainder);
-                break;
-            case 's':
-                processSpeedSteps(multiThrottle, remainder);
-                break;
-            case 'R':
-                processDirection(multiThrottle, remainder);
-                break;
-            default:
-                if (logLevel>0) console->printf("WiT:: unrecognized action '%c'\n", action);
-                // no processing on unrecognized actions
-                break;
+        if (isLeadOrAll) {
+            switch (action) {
+                case 'F':
+                    if (logLevel>1) console->printf("WiT:: processing function state\n");
+                    processFunctionState(multiThrottle, remainder);
+                    break;
+                case 'V':
+                    processSpeed(multiThrottle, remainder);
+                    break;
+                case 's':
+                    processSpeedSteps(multiThrottle, remainder);
+                    break;
+                case 'R':
+                    processDirection(multiThrottle, remainder);
+                    break;
+                default:
+                    if (logLevel>0) console->printf("WiT:: unrecognized action '%c'\n", action);
+                    // no processing on unrecognized actions
+                    break;
+            }
+        } else { // non-lead loco
+            if (logLevel>0) console->printf("WiT:: Non-lead loco action '%c'\n", action);
+            switch (action) {
+                case 'F':
+                case 'V':
+                case 's':
+                    break;
+                case 'R':
+                    processDirection(multiThrottle, address, remainder);
+                    break;
+                default:
+                    if (logLevel>0) console->printf("WiT:: unrecognized action '%c'\n", action);
+                    // no processing on unrecognized actions
+                    break;
+            }
         }
         return true;
     }
@@ -920,14 +946,13 @@ void WiThrottleProtocol::processSpeedSteps(char multiThrottle, const String& spe
 
 
 void WiThrottleProtocol::processDirection(char multiThrottle, const String& directionStr) {
-    if (logLevel>0) { console->print("WiT:: processDirection(): "); console->println(multiThrottle); }
+    if (logLevel>0) {  }
 
     int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
     if (logLevel>0) {
-        console->print("WiT:: DIRECTION STRING: ");
-        console->println(directionStr);
-        console->print("LENGTH: ");
-        console->println(directionStr.length());
+        console->print("WiT:: processDirection(): throttle: "); console->println(multiThrottle);
+        console->print("  DIRECTION STRING: "); console->println(directionStr);
+        console->print("  LENGTH: "); console->println(directionStr.length());
     }
 
     // R[0|1]
@@ -943,6 +968,38 @@ void WiThrottleProtocol::processDirection(char multiThrottle, const String& dire
             delegate->receivedDirection(currentDirection[multiThrottleIndex]);
         } else {
             delegate->receivedDirectionMultiThrottle(multiThrottle, currentDirection[multiThrottleIndex]);
+        }
+    }
+
+    if (logLevel>1) console->println("WiT:: processDirection(): end"); 
+}
+
+// should only ever be called for the non-lead locos
+void WiThrottleProtocol::processDirection(char multiThrottle, String& address, const String& directionStr) {
+    int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
+    Direction direction = Forward;
+    if (directionStr.charAt(1) == '0') direction = Reverse;
+
+    if (logLevel>0) {
+        console->print("WiT:: processDirection(): (facing) throttle: "); console->println(multiThrottle);
+        console->print("  Address: "); console->println(address); ; 
+        console->print("  DIRECTION STRING: "); console->println(directionStr); 
+        console->print(" LENGTH: "); console->println(directionStr.length());
+    }
+
+    // R[0|1]
+    if (delegate && directionStr.length() == 2) {
+        for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
+            if (locomotives[multiThrottleIndex][i].equals(address)) {
+                locomotivesFacing[multiThrottleIndex][i] = direction;
+
+                if (multiThrottle == DEFAULT_MULTITHROTTLE) {
+                    delegate->receivedDirection(address, direction);
+                } else {
+                    delegate->receivedDirectionMultiThrottle(multiThrottle, address, direction);
+                }
+                break;
+            }
         }
     }
 
@@ -1097,7 +1154,15 @@ bool WiThrottleProtocol::checkHeartbeat() {
                 char multiThrottleChar = '0' + i;
                 if (getNumberOfLocomotives(multiThrottleChar)>0) {
                     setSpeed(multiThrottleChar, getSpeed(multiThrottleChar), true);
-                    setDirection(multiThrottleChar, getDirection(multiThrottleChar), true);
+                    int multiThrottleIndex = getMultiThrottleIndex(multiThrottleChar);
+                    if (locomotives[multiThrottleIndex].size()==1) {
+                        setDirection(multiThrottleChar, getDirection(multiThrottleChar), true);
+                    } else {                    
+                        for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
+                            String loco = getLocomotiveAtPosition(multiThrottleChar,i);
+                            setDirection(multiThrottleChar, loco, getDirection(multiThrottleChar, loco), true);
+                        }
+                    }
                 }
             }
         }
@@ -1372,34 +1437,35 @@ bool WiThrottleProtocol::setDirection(char multiThrottle, String address, Direct
 }
 
 bool WiThrottleProtocol::setDirection(char multiThrottle, String address, Direction direction, bool forceSend) {
-    if (logLevel>0) { console->print("WiT:: setDirection(): "); console->print(multiThrottle); console->print(" : "); console->println(direction); }
+    if (logLevel>0) { console->print("WiT:: setDirection(): address: "); console->print(address); console->print(" throttle: "); 
+    console->print(multiThrottle); console->print(" direction: "); console->println(direction); }
 
     int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
     if (!locomotiveSelected[multiThrottleIndex]) {
         return false;
     }
 
-    if ( (direction != currentDirection[multiThrottleIndex]) || (forceSend) ) {
-        String cmd = "M" + String(multiThrottle) + "A" + address;
-        cmd.concat(PROPERTY_SEPARATOR);
-        cmd.concat("R");
-        if (direction == Reverse) {
-            cmd += "0";
+    String directionString = (direction == Reverse) ? "0" : "1";
+    Direction currentDir = currentDirection[multiThrottleIndex];
+    int locoIndex = -1;
+    if (!address.equals(ALL_LOCOS_ON_THROTTLE)) {
+        for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
+            if (locomotives[multiThrottleIndex][i].equals(address)) {
+                locoIndex = i;
+                currentDir = locomotivesFacing[multiThrottleIndex][i];
+                break;
+            }
         }
-        else {
-            cmd += "1";
-        }
+    }
+
+    if ( (direction != currentDir) || (forceSend) ) {
+        String cmd = "M" + String(multiThrottle) + "A" + address + PROPERTY_SEPARATOR + "R" + directionString;
         sendDelayedCommand(cmd);
 
-        if (address.equals(ALL_LOCOS_ON_THROTTLE)) {
+        if (locoIndex == -1) { // all locos
             currentDirection[multiThrottleIndex] = direction;
         } else {
-            for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
-                if (locomotives[multiThrottleIndex][i].equals(address)) {
-                    locomotivesFacing[multiThrottleIndex][i] = direction;
-                    break;
-                }
-            }
+            locomotivesFacing[multiThrottleIndex][locoIndex] = direction;
         }
     }
     return true;
@@ -1416,11 +1482,12 @@ Direction WiThrottleProtocol::getDirection(char multiThrottle) {
 }
 
 Direction WiThrottleProtocol::getDirection(char multiThrottle, String address) {
-    if (logLevel>0) { console->print("WiT:: getDirection(): "); console->println(multiThrottle); }
+    if (logLevel>0) { console->print("WiT:: getDirection(): addr: "); console->print(address); console->print(" throttle: "); console->println(multiThrottle); }
 
     int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
 
     if (address.equals(ALL_LOCOS_ON_THROTTLE)) {
+        if (logLevel>0) { console->print("WiT:: getDirection(): all dir: "); console->println(currentDirection[multiThrottleIndex]); }
         return currentDirection[multiThrottleIndex];
     } else {
         Direction individualDirection = currentDirection[multiThrottleIndex];
@@ -1430,6 +1497,7 @@ Direction WiThrottleProtocol::getDirection(char multiThrottle, String address) {
                 break;
             }
         }
+        if (logLevel>0) { console->print("WiT:: getDirection(): individual dir: "); console->println(individualDirection); }
         return individualDirection;
     }
 }
