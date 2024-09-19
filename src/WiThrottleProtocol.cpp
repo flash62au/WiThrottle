@@ -1533,14 +1533,18 @@ void WiThrottleProtocol::emergencyStop(char multiThrottle, String address) {
 // ******************************************************************************************************
 
 void WiThrottleProtocol::setFunction(int funcNum, bool pressed) {
-    setFunction(DEFAULT_MULTITHROTTLE, funcNum, pressed);
+    setFunction(DEFAULT_MULTITHROTTLE, "", funcNum, pressed, false);
 }
 
 void WiThrottleProtocol::setFunction(char multiThrottle, int funcNum, bool pressed) {
-    setFunction(multiThrottle, "", funcNum, pressed) ;
+    setFunction(multiThrottle, "", funcNum, pressed, false) ;
 }
 
 void WiThrottleProtocol::setFunction(char multiThrottle, String address, int funcNum, bool pressed) {
+    setFunction(multiThrottle, address, funcNum, pressed, false) ;
+}
+
+void WiThrottleProtocol::setFunction(char multiThrottle, String address, int funcNum, bool pressed, bool force) {
     if (logLevel>0) { console->print("WiT:: setFunction(): "); console->print(multiThrottle); console->print(" : "); console->println(funcNum); }
 
     int multiThrottleIndex = getMultiThrottleIndex(multiThrottle);
@@ -1561,7 +1565,11 @@ void WiThrottleProtocol::setFunction(char multiThrottle, String address, int fun
     }
 
     cmd.concat(PROPERTY_SEPARATOR);
-    cmd.concat("F");
+    if (!force) {
+        cmd.concat("F");
+    } else {
+        cmd.concat("f");
+    }
 
     if (pressed) {
         cmd += "1";

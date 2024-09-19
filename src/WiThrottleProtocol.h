@@ -29,6 +29,7 @@
 /*
 Version information:
 
+1.1.24   - Add support for forcing a function
 1.1.23   - Fix for individual loco direction (facing) changes in a consist
 1.1.22   - Fix for the original 'steal' code
 1.1.21   - Add support for setting the Speed Step mode 28/128/14 etc.  setSpeedSteps(), getSpeedSteps()
@@ -485,6 +486,14 @@ class WiThrottleProtocol
     /// @param funcnum Function Number
     /// @param pressed TBA
     void setFunction(char multiThrottle, String address, int funcnum, bool pressed);
+
+    /// @brief Set a Function on a specified Loco only, on a specified Throttle
+    /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param address DCC Address of the loco to set
+    /// @param funcnum Function Number
+    /// @param pressed TBA
+    /// @param force TBA
+    void setFunction(char multiThrottle, String address, int funcnum, bool pressed, bool force);
 
     /// @brief Set the speed of the default (first) Throttle
     /// @param speed Speed 0-126
