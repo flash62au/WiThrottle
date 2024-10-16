@@ -162,6 +162,7 @@ bool WiThrottleProtocol::check() {
 
         while(stream->available()) {
             char b = stream->read();
+            if (logLevel>3) { console->print("WiT:: check() : "); console->println(b); }
             if (b == NEWLINE || b==CR) {
                 // server sends TWO newlines after each command, we trigger on the
                 // first, and this skips the second one
@@ -1145,27 +1146,33 @@ bool WiThrottleProtocol::checkHeartbeat() {
     if ((heartbeatPeriod > 0) && ((millis() - heartbeatTimer) > 0.5 * heartbeatPeriod * 1000)) {
     	if (logLevel>0) console->println("WiT:: checkHeartbeat(): ");
 
+        if (!heartbeatEnabled) {
+            if (logLevel>1) console->println("WiT:: checkHeartbeat(): heartbeat not enabled");
+            heartbeatTimer = millis();
+            return true;
+        }
+
         sendDelayedCommand("*");
         setDeviceName(currentDeviceName);  // resent the device name instead of the heartbeat.  this forces the wit server to respond
 
-        // if there are any locos under control, resend all their speeds
-        if ( (timeLastLocoAcquired!=0) && ((millis() - timeLastLocoAcquired) > 5000) ) { // wait at least 5 seconds from the last time that a loco was aqcuired, to give the server time to send any existing speeds
-            for (int i=0; i<MAX_WIT_THROTTLES; i++) {
-                char multiThrottleChar = '0' + i;
-                if (getNumberOfLocomotives(multiThrottleChar)>0) {
-                    setSpeed(multiThrottleChar, getSpeed(multiThrottleChar), true);
-                    int multiThrottleIndex = getMultiThrottleIndex(multiThrottleChar);
-                    if (locomotives[multiThrottleIndex].size()==1) {
-                        setDirection(multiThrottleChar, getDirection(multiThrottleChar), true);
-                    } else {                    
-                        for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
-                            String loco = getLocomotiveAtPosition(multiThrottleChar,i);
-                            setDirection(multiThrottleChar, loco, getDirection(multiThrottleChar, loco), true);
-                        }
-                    }
-                }
-            }
-        }
+        // // if there are any locos under control, resend all their speeds
+        // if ( (timeLastLocoAcquired!=0) && ((millis() - timeLastLocoAcquired) > 5000) ) { // wait at least 5 seconds from the last time that a loco was aqcuired, to give the server time to send any existing speeds
+        //     for (int i=0; i<MAX_WIT_THROTTLES; i++) {
+        //         char multiThrottleChar = '0' + i;
+        //         if (getNumberOfLocomotives(multiThrottleChar)>0) {
+        //             setSpeed(multiThrottleChar, getSpeed(multiThrottleChar), true);
+        //             int multiThrottleIndex = getMultiThrottleIndex(multiThrottleChar);
+        //             if (locomotives[multiThrottleIndex].size()==1) {
+        //                 setDirection(multiThrottleChar, getDirection(multiThrottleChar), true);
+        //             } else {                    
+        //                 for(int i=0;i<locomotives[multiThrottleIndex].size();i++) {
+        //                     String loco = getLocomotiveAtPosition(multiThrottleChar,i);
+        //                     setDirection(multiThrottleChar, loco, getDirection(multiThrottleChar, loco), true);
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
 
 		heartbeatTimer = millis();
 		
@@ -1179,9 +1186,11 @@ bool WiThrottleProtocol::checkHeartbeat() {
 
 void WiThrottleProtocol::requireHeartbeat(bool needed) {
     if (needed) {
+        heartbeatEnabled = true;
         sendDelayedCommand("*+");
     }
     else {
+        heartbeatEnabled = false;
         sendDelayedCommand("*-");
     }
 }

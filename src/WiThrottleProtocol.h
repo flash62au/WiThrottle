@@ -29,6 +29,7 @@
 /*
 Version information:
 
+1.1.25   - Simplify the heartbeat send, as this was creating problems for JMRI
 1.1.24   - Add support for forcing a function
 1.1.23   - Fix for individual loco direction (facing) changes in a consist
 1.1.22   - Fix for the original 'steal' code
@@ -798,6 +799,7 @@ class WiThrottleProtocol
     //Chrono heartbeatTimer;
 	unsigned long heartbeatTimer;
     int heartbeatPeriod;
+    bool heartbeatEnabled = false;
 	unsigned long timeLastLocoAcquired;
 
     //Chrono fastTimeTimer;
