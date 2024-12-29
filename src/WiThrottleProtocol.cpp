@@ -525,10 +525,12 @@ bool WiThrottleProtocol::processCommand(char *c, int len) {
     }
     else if (len > 3 && c[0]=='A' && c[1]=='T' && c[2]=='+') {
         // this is an AT+.... command that the LnWi sometimes emits and we
+        processUnknownCommand(c, len);
         // ignore these commands altogether
     }
     else {
         if (logLevel>0) console->printf("WiT:: unknown command '%s'\n", c);
+        processUnknownCommand(c, len);
         // all other commands are explicitly ignored
     }
     return false;
@@ -1193,6 +1195,14 @@ void WiThrottleProtocol::requireHeartbeat(bool needed) {
         heartbeatEnabled = false;
         sendDelayedCommand("*-");
     }
+}
+
+void WiThrottleProtocol::processUnknownCommand(char *c, int len) {
+    if (delegate && len > 0) {
+        String unknownCommand = String(c);
+        delegate->receivedUnknownCommand(unknownCommand);
+    }
+    heartbeatTimer = millis();
 }
 
 // ******************************************************************************************************

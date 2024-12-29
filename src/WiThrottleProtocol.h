@@ -29,6 +29,7 @@
 /*
 Version information:
 
+1.1.26   - Update the heartbeat timer when unknown commands are received
 1.1.25   - Simplify the heartbeat send, as this was creating problems for JMRI
 1.1.24   - Add support for forcing a function
 1.1.23   - Fix for individual loco direction (facing) changes in a consist
@@ -326,6 +327,10 @@ class WiThrottleProtocolDelegate
     /// @param systemName System name of the Route
     /// @param state TBA
     virtual void receivedRouteAction(String systemName, RouteState state) { } //  PTAturnoutstatesystemname
+
+    /// @brief Delegate method to receive and unknown command from the Withrottle Server
+    /// @param unknownCommand command received
+    virtual void receivedUnknownCommand(String unknownCommand) { }
 };
 
 ///
@@ -772,7 +777,7 @@ class WiThrottleProtocol
 
     // /// @brief TBA
     // /// @param unknownCommand TBA
-    // void processUnknownCommand(const String& unknownCommand);
+    void processUnknownCommand(char *c, int len);
 
     ///
     /// Outbound Commands
