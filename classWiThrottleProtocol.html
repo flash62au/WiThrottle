@@ -78,7 +78,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>TBA.  
+<p>This library implements the WiThrottle protocol (as used in JMRI and other servers), allowing an device to connect to the server and act as a client (such as a dedicated fast clock device or a hardware based throttle).  
  <a href="classWiThrottleProtocol.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="WiThrottleProtocol_8h_source.html">WiThrottleProtocol.h</a>&gt;</code></p>
@@ -133,22 +133,22 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>check</b> ()</td></tr
 <tr class="memdesc:a66d44b552feb3e1afc3f5bb0f3be7f98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set if the heartbnest is required or not.  <br /></td></tr>
 <tr class="separator:a66d44b552feb3e1afc3f5bb0f3be7f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06ece5aa6eb2fddf8a9401b903fb13bf" id="r_a06ece5aa6eb2fddf8a9401b903fb13bf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a06ece5aa6eb2fddf8a9401b903fb13bf">addLocomotive</a> (String address)</td></tr>
-<tr class="memdesc:a06ece5aa6eb2fddf8a9401b903fb13bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a loco to the default throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:a06ece5aa6eb2fddf8a9401b903fb13bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a loco to the default throttle [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a06ece5aa6eb2fddf8a9401b903fb13bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f0a663e5b83705eb514a5456e712d3b" id="r_a4f0a663e5b83705eb514a5456e712d3b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a4f0a663e5b83705eb514a5456e712d3b">stealLocomotive</a> (String address)</td></tr>
-<tr class="memdesc:a4f0a663e5b83705eb514a5456e712d3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steal a loco for the default throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:a4f0a663e5b83705eb514a5456e712d3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steal a loco for the default throttle [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a4f0a663e5b83705eb514a5456e712d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a772b2cce619d41e5009c116dd176fe50" id="r_a772b2cce619d41e5009c116dd176fe50"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a772b2cce619d41e5009c116dd176fe50">releaseLocomotive</a> (String address=&quot;*&quot;)</td></tr>
-<tr class="memdesc:a772b2cce619d41e5009c116dd176fe50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release a locomotive on he default traottle [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:a772b2cce619d41e5009c116dd176fe50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release a locomotive on he default throttle [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a772b2cce619d41e5009c116dd176fe50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1421028b157234446a47e8a92efae6f9" id="r_a1421028b157234446a47e8a92efae6f9"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a1421028b157234446a47e8a92efae6f9">getLeadLocomotive</a> ()</td></tr>
-<tr class="memdesc:a1421028b157234446a47e8a92efae6f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the lead (or only) loco on the default throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:a1421028b157234446a47e8a92efae6f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the lead (or only) loco on the default throttle [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a1421028b157234446a47e8a92efae6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4e7d8d0c369fffee45dcb483ba3681a" id="r_af4e7d8d0c369fffee45dcb483ba3681a"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#af4e7d8d0c369fffee45dcb483ba3681a">getLocomotiveAtPosition</a> (int position)</td></tr>
-<tr class="memdesc:af4e7d8d0c369fffee45dcb483ba3681a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the loco at a specific position within the consist/multi-unit on the default throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:af4e7d8d0c369fffee45dcb483ba3681a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the loco at a specific position within the consist/multi-unit on the default throttle [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:af4e7d8d0c369fffee45dcb483ba3681a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f56a69a3949b8d01d260146b7e4afd0" id="r_a0f56a69a3949b8d01d260146b7e4afd0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a0f56a69a3949b8d01d260146b7e4afd0">getNumberOfLocomotives</a> ()</td></tr>
-<tr class="memdesc:a0f56a69a3949b8d01d260146b7e4afd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of locos that are currently assigned ot the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:a0f56a69a3949b8d01d260146b7e4afd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of locos that are currently assigned ot the default Throttle [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a0f56a69a3949b8d01d260146b7e4afd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe0958209952254e8635e0f180c3abe2" id="r_afe0958209952254e8635e0f180c3abe2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#afe0958209952254e8635e0f180c3abe2">addLocomotive</a> (char multiThrottle, String address)</td></tr>
 <tr class="memdesc:afe0958209952254e8635e0f180c3abe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a specfied loco to a specified throttle. Will be added to the end of the consist of one or more locos are currently assigned to that Throttle.  <br /></td></tr>
@@ -169,10 +169,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>check</b> ()</td></tr
 <tr class="memdesc:a3084b9c63b8c31586b12b5dd78494ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of locos currently assigned to a specified Throttle.  <br /></td></tr>
 <tr class="separator:a3084b9c63b8c31586b12b5dd78494ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a582ab3f0200a274ce5c0d51a538585b6" id="r_a582ab3f0200a274ce5c0d51a538585b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a582ab3f0200a274ce5c0d51a538585b6">setFunction</a> (int funcnum, bool pressed)</td></tr>
-<tr class="memdesc:a582ab3f0200a274ce5c0d51a538585b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a Function on the default (first) Throttle.  <br /></td></tr>
+<tr class="memdesc:a582ab3f0200a274ce5c0d51a538585b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a Function on the default (first) Throttle. Assumes a button is being pressed hence Press or Release. [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a582ab3f0200a274ce5c0d51a538585b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c75834b468bb4245680485bfb21117f" id="r_a9c75834b468bb4245680485bfb21117f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a9c75834b468bb4245680485bfb21117f">setFunction</a> (char multiThrottle, int funcnum, bool pressed)</td></tr>
-<tr class="memdesc:a9c75834b468bb4245680485bfb21117f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a Function on the a specified Throttle.  <br /></td></tr>
+<tr class="memdesc:a9c75834b468bb4245680485bfb21117f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a Function on the a specified Throttle. Assumes a button is being pressed hence Press or Release. [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a9c75834b468bb4245680485bfb21117f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa446b823ead5d46a52a9523c831875b" id="r_aaa446b823ead5d46a52a9523c831875b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#aaa446b823ead5d46a52a9523c831875b">setFunction</a> (char multiThrottle, String address, int funcnum, bool pressed)</td></tr>
 <tr class="memdesc:aaa446b823ead5d46a52a9523c831875b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a Function on a specified Loco only, on a specified Throttle.  <br /></td></tr>
@@ -181,25 +181,25 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>check</b> ()</td></tr
 <tr class="memdesc:a9bbfe2f17129fa9304aceef9bb4667c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a Function on a specified Loco only, on a specified Throttle.  <br /></td></tr>
 <tr class="separator:a9bbfe2f17129fa9304aceef9bb4667c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9789210de4390db43c12e6ea37b212d9" id="r_a9789210de4390db43c12e6ea37b212d9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a9789210de4390db43c12e6ea37b212d9">setSpeed</a> (int speed)</td></tr>
-<tr class="memdesc:a9789210de4390db43c12e6ea37b212d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the speed of the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:a9789210de4390db43c12e6ea37b212d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the speed of the default Throttle [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a9789210de4390db43c12e6ea37b212d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a046c15134e76b360559cbf97afa5bba4" id="r_a046c15134e76b360559cbf97afa5bba4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a046c15134e76b360559cbf97afa5bba4">getSpeed</a> ()</td></tr>
-<tr class="memdesc:a046c15134e76b360559cbf97afa5bba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the speed of the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:a046c15134e76b360559cbf97afa5bba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the speed of the default Throttle [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a046c15134e76b360559cbf97afa5bba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba826a71434014a21d0f463219bef3bd" id="r_aba826a71434014a21d0f463219bef3bd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#aba826a71434014a21d0f463219bef3bd">setDirection</a> (Direction direction)</td></tr>
-<tr class="memdesc:aba826a71434014a21d0f463219bef3bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the direction of the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:aba826a71434014a21d0f463219bef3bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the direction of the default Throttle [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:aba826a71434014a21d0f463219bef3bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdd0bf93ddd4f0085b0f5b8e1d9af1f1" id="r_abdd0bf93ddd4f0085b0f5b8e1d9af1f1"><td class="memItemLeft" align="right" valign="top">Direction&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#abdd0bf93ddd4f0085b0f5b8e1d9af1f1">getDirection</a> ()</td></tr>
-<tr class="memdesc:abdd0bf93ddd4f0085b0f5b8e1d9af1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the direction of the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:abdd0bf93ddd4f0085b0f5b8e1d9af1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the direction of the default Throttle [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:abdd0bf93ddd4f0085b0f5b8e1d9af1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaf0d0fef8e4c82bf9e3a83e2f6295a3" id="r_aeaf0d0fef8e4c82bf9e3a83e2f6295a3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#aeaf0d0fef8e4c82bf9e3a83e2f6295a3">getSpeedSteps</a> ()</td></tr>
-<tr class="memdesc:aeaf0d0fef8e4c82bf9e3a83e2f6295a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the speed step of the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:aeaf0d0fef8e4c82bf9e3a83e2f6295a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the speed step of the default Throttle [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:aeaf0d0fef8e4c82bf9e3a83e2f6295a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac308f6721638dd4cf4c6dbc753a277b5" id="r_ac308f6721638dd4cf4c6dbc753a277b5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#ac308f6721638dd4cf4c6dbc753a277b5">getSpeedSteps</a> (char multiThrottle)</td></tr>
 <tr class="memdesc:ac308f6721638dd4cf4c6dbc753a277b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the speed step of a specified Throttle.  <br /></td></tr>
 <tr class="separator:ac308f6721638dd4cf4c6dbc753a277b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab958b830baecc8913e1ae8755bd123e5" id="r_ab958b830baecc8913e1ae8755bd123e5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#ab958b830baecc8913e1ae8755bd123e5">setSpeedSteps</a> (int steps)</td></tr>
-<tr class="memdesc:ab958b830baecc8913e1ae8755bd123e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the speed step of the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:ab958b830baecc8913e1ae8755bd123e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the speed step of the default Throttle [Deprecated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:ab958b830baecc8913e1ae8755bd123e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace2f381c140b18e218d450d88e7f4663" id="r_ace2f381c140b18e218d450d88e7f4663"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#ace2f381c140b18e218d450d88e7f4663">setSpeedSteps</a> (char multiThrottle, int steps)</td></tr>
 <tr class="memdesc:ace2f381c140b18e218d450d88e7f4663"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the speed step of a specified Throttle.  <br /></td></tr>
@@ -282,7 +282,7 @@ std::vector&lt; Direction &gt;&#160;</td><td class="memItemRight" valign="bottom
 <tr class="separator:a342cf344eddbc6e262ac9edbaf91009b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>TBA. </p>
+<div class="textblock"><p>This library implements the WiThrottle protocol (as used in JMRI and other servers), allowing an device to connect to the server and act as a client (such as a dedicated fast clock device or a hardware based throttle). </p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 WiThrottleProtocol</h1>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -369,7 +369,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Add a loco to the default throttle [Depricated. Use the multiThrottle version]. </p>
+<p>Add a loco to the default throttle [Deprecated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">address</td><td>DCC Address (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
@@ -541,7 +541,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Get the direction of the default Throttle [Depricated. Use the multiThrottle version]. </p>
+<p>Get the direction of the default Throttle [Deprecated. Use the multiThrottle version]. </p>
 <dl class="section return"><dt>Returns</dt><dd>Direction. (Forward or Reverse) </dd></dl>
 
 </div>
@@ -646,7 +646,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Get the lead (or only) loco on the default throttle [Depricated. Use the multiThrottle version]. </p>
+<p>Get the lead (or only) loco on the default throttle [Deprecated. Use the multiThrottle version]. </p>
 <dl class="section return"><dt>Returns</dt><dd>DCC Address of the loco (String containing the DCC address as number preceeded with "S" or "L") </dd></dl>
 
 </div>
@@ -732,7 +732,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Get the loco at a specific position within the consist/multi-unit on the default throttle [Depricated. Use the multiThrottle version]. </p>
+<p>Get the loco at a specific position within the consist/multi-unit on the default throttle [Deprecated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">position</td><td>the postion within the consist/Multi-Unit to retrieve </td></tr>
@@ -784,7 +784,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Get the number of locos that are currently assigned ot the default Throttle [Depricated. Use the multiThrottle version]. </p>
+<p>Get the number of locos that are currently assigned ot the default Throttle [Deprecated. Use the multiThrottle version]. </p>
 <dl class="section return"><dt>Returns</dt><dd>Number of locos (in consist/Multiple Unit) on the throttle </dd></dl>
 
 </div>
@@ -831,7 +831,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Get the speed of the default Throttle [Depricated. Use the multiThrottle version]. </p>
+<p>Get the speed of the default Throttle [Deprecated. Use the multiThrottle version]. </p>
 <dl class="section return"><dt>Returns</dt><dd>Speed (0-126) </dd></dl>
 
 </div>
@@ -878,7 +878,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Get the speed step of the default Throttle [Depricated. Use the multiThrottle version]. </p>
+<p>Get the speed step of the default Throttle [Deprecated. Use the multiThrottle version]. </p>
 <dl class="section return"><dt>Returns</dt><dd>Speed Step setting (1 = 128step, 2 = 28step, 4 = 27step or 8 = 14step) </dd></dl>
 
 </div>
@@ -964,7 +964,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Release a locomotive on he default traottle [Depricated. Use the multiThrottle version]. </p>
+<p>Release a locomotive on he default throttle [Deprecated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">address</td><td>DCC Address of the loco to drop (String containing the DCC address as number preceeded with "S" or "L") or "*" to drop all locos on the throttle </td></tr>
@@ -1327,7 +1327,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Set the direction of the default Throttle [Depricated. Use the multiThrottle version]. </p>
+<p>Set the direction of the default Throttle [Deprecated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">direction</td><td>Direction. (Reverse or Forward) </td></tr>
@@ -1370,12 +1370,12 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Set a Function on the a specified Throttle. </p>
+<p>Set a Function on the a specified Throttle. Assumes a button is being pressed hence Press or Release. [Deprecated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
-    <tr><td class="paramname">funcnum</td><td>Function Number </td></tr>
-    <tr><td class="paramname">pressed</td><td>TBA </td></tr>
+    <tr><td class="paramname">funcnum</td><td>Function Number (0-31) </td></tr>
+    <tr><td class="paramname">pressed</td><td>Press or Realase (True = pressed, False = released) </td></tr>
   </table>
   </dd>
 </dl>
@@ -1425,8 +1425,8 @@ Public</h2>
   <table class="params">
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
-    <tr><td class="paramname">funcnum</td><td>Function Number </td></tr>
-    <tr><td class="paramname">pressed</td><td>TBA </td></tr>
+    <tr><td class="paramname">funcnum</td><td>Function Number (0-31) </td></tr>
+    <tr><td class="paramname">pressed</td><td>Press or Realase (True = pressed, False = released) </td></tr>
   </table>
   </dd>
 </dl>
@@ -1482,9 +1482,9 @@ Public</h2>
   <table class="params">
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
-    <tr><td class="paramname">funcnum</td><td>Function Number </td></tr>
-    <tr><td class="paramname">pressed</td><td>TBA </td></tr>
-    <tr><td class="paramname">force</td><td>TBA </td></tr>
+    <tr><td class="paramname">funcnum</td><td>Function Number (0-31) </td></tr>
+    <tr><td class="paramname">pressed</td><td>Press or Realase (True = pressed, False = released) </td></tr>
+    <tr><td class="paramname">force</td><td>Force the activation of the function, overriding what the server wants to do. If true, 'Pressed' effectively becomes 'Activate' or 'Deactivate'. (False = not forced, True = force) </td></tr>
   </table>
   </dd>
 </dl>
@@ -1517,11 +1517,11 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Set a Function on the default (first) Throttle. </p>
+<p>Set a Function on the default (first) Throttle. Assumes a button is being pressed hence Press or Release. [Deprecated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">funcnum</td><td>Function Number </td></tr>
-    <tr><td class="paramname">pressed</td><td>TBA </td></tr>
+    <tr><td class="paramname">funcnum</td><td>Function Number (0-31) </td></tr>
+    <tr><td class="paramname">pressed</td><td>Press or Realase (True = pressed, False = released) </td></tr>
   </table>
   </dd>
 </dl>
@@ -1706,7 +1706,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Set the speed of the default Throttle [Depricated. Use the multiThrottle version]. </p>
+<p>Set the speed of the default Throttle [Deprecated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">speed</td><td>Speed (0-126) </td></tr>
@@ -1771,7 +1771,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Set the speed step of the default Throttle [Depricated. Use the multiThrottle version]. </p>
+<p>Set the speed step of the default Throttle [Deprecated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">steps</td><td>1=128step, 2=28step, 4=27step or 8=14step </td></tr>
@@ -1900,7 +1900,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Steal a loco for the default throttle [Depricated. Use the multiThrottle version]. </p>
+<p>Steal a loco for the default throttle [Deprecated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">address</td><td>DCC Address (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
