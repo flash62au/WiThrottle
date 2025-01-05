@@ -271,8 +271,8 @@ class WiThrottleProtocolDelegate
 
     /// @brief Delegate method to receive the direction for a specific throttle for an individual loco from the Withrottle Server
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param dir TBA
-    /// @param loco TBA
     virtual void receivedDirectionMultiThrottle(char multiThrottle, String address, Direction dir) { }     // R{0,1}
 
     /// @brief Delegate method to receive the speed steps for a specific throttle from the Withrottle Server
