@@ -175,7 +175,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2ab32cb78a9e5f08b1cb28fd50c816b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive a message that the loco has been dropped from the throttle, from the Withrottle Server [Depricated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a2ab32cb78a9e5f08b1cb28fd50c816b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfcc041af98a56ab0ea78eb85ca2dfe7" id="r_acfcc041af98a56ab0ea78eb85ca2dfe7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocolDelegate.html#acfcc041af98a56ab0ea78eb85ca2dfe7">addressStealNeeded</a> (String address, String entry)</td></tr>
-<tr class="memdesc:acfcc041af98a56ab0ea78eb85ca2dfe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive a message for the need to steal the loco, from the Withrottle Server [Depricated. Use the multiThrottle version].  <br /></td></tr>
+<tr class="memdesc:acfcc041af98a56ab0ea78eb85ca2dfe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive a message for the need to steal the loco, from the Withrottle Server. Only relevant to DigiTrax systems [Depricated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:acfcc041af98a56ab0ea78eb85ca2dfe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a401676e1e1385850c675c5440c89744c" id="r_a401676e1e1385850c675c5440c89744c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocolDelegate.html#a401676e1e1385850c675c5440c89744c">addressAddedMultiThrottle</a> (char multiThrottle, String address, String entry)</td></tr>
 <tr class="memdesc:a401676e1e1385850c675c5440c89744c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive a message that a loco has been added to a specific throttle, from the Withrottle Server.  <br /></td></tr>
@@ -184,7 +184,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1f0e16708ef174669bf68d5c23dc207b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive a message that a loco has been dropped from a specific throttle, from the Withrottle Server.  <br /></td></tr>
 <tr class="separator:a1f0e16708ef174669bf68d5c23dc207b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af38c493439c488353a57e14ab27d2b86" id="r_af38c493439c488353a57e14ab27d2b86"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocolDelegate.html#af38c493439c488353a57e14ab27d2b86">addressStealNeededMultiThrottle</a> (char multiThrottle, String address, String entry)</td></tr>
-<tr class="memdesc:af38c493439c488353a57e14ab27d2b86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive a message for the need to steal the loco for a specific throttle, from the Withrottle Server.  <br /></td></tr>
+<tr class="memdesc:af38c493439c488353a57e14ab27d2b86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive a message for the need to steal the loco for a specific throttle, from the Withrottle Server. Only relevant to DigiTrax systems.  <br /></td></tr>
 <tr class="separator:af38c493439c488353a57e14ab27d2b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37f7b5a4968a2604dfaf5c8e8d181446" id="r_a37f7b5a4968a2604dfaf5c8e8d181446"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocolDelegate.html#a37f7b5a4968a2604dfaf5c8e8d181446">receivedTurnoutAction</a> (String systemName, TurnoutState state)</td></tr>
 <tr class="memdesc:a37f7b5a4968a2604dfaf5c8e8d181446"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive a turnout/point action, from the Withrottle Server.  <br /></td></tr>
@@ -428,7 +428,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Delegate method to receive a message for the need to steal the loco, from the Withrottle Server [Depricated. Use the multiThrottle version]. </p>
+<p>Delegate method to receive a message for the need to steal the loco, from the Withrottle Server. Only relevant to DigiTrax systems [Depricated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">address</td><td>DCC Address (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
@@ -479,7 +479,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Delegate method to receive a message for the need to steal the loco for a specific throttle, from the Withrottle Server. </p>
+<p>Delegate method to receive a message for the need to steal the loco for a specific throttle, from the Withrottle Server. Only relevant to DigiTrax systems. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>

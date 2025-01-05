@@ -98,7 +98,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2896913bf262519724e61ada43acf1e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the console log level.  <br /></td></tr>
 <tr class="separator:a2896913bf262519724e61ada43acf1e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac62f2cd69c10b9628fa342b99f813180" id="r_ac62f2cd69c10b9628fa342b99f813180"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#ac62f2cd69c10b9628fa342b99f813180">setCommandsNeedLeadingCrLf</a> (bool needed)</td></tr>
-<tr class="memdesc:ac62f2cd69c10b9628fa342b99f813180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the server so that outgoing commands are always preceeded with ann extar CRLF. [Depricated. THe extar CRLF is now always sent].  <br /></td></tr>
+<tr class="memdesc:ac62f2cd69c10b9628fa342b99f813180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the server so that outgoing commands are always preceeded with an extra CrLf. The extra CrLF is now sent by default. This can be used to disable it.  <br /></td></tr>
 <tr class="separator:ac62f2cd69c10b9628fa342b99f813180"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae686ec6f02c4a8fb691fc499d82aab5b" id="r_ae686ec6f02c4a8fb691fc499d82aab5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#ae686ec6f02c4a8fb691fc499d82aab5b">connect</a> (Stream *stream)</td></tr>
 <tr class="memdesc:ae686ec6f02c4a8fb691fc499d82aab5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to the WiThrottle server.  <br /></td></tr>
@@ -118,18 +118,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> ()</td
 <tr class="separator:a118a5175c5e911f715e3a611e43541aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64dfaad3f82d2d3b338cce722ab1b06d" id="r_a64dfaad3f82d2d3b338cce722ab1b06d"><td class="memItemLeft" align="right" valign="top"><a id="a64dfaad3f82d2d3b338cce722ab1b06d" name="a64dfaad3f82d2d3b338cce722ab1b06d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>check</b> ()</td></tr>
-<tr class="memdesc:a64dfaad3f82d2d3b338cce722ab1b06d"><td class="mdescLeft">&#160;</td><td class="mdescRight">TBA. <br /></td></tr>
+<tr class="memdesc:a64dfaad3f82d2d3b338cce722ab1b06d"><td class="mdescLeft">&#160;</td><td class="mdescRight">check to see if any inbound comms have been received from the WiThrottle server. Should be called repeatedly, and often, in the main loop of the sketch. <br /></td></tr>
 <tr class="separator:a64dfaad3f82d2d3b338cce722ab1b06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5aca71ce61e4d0590c214b627c50844a" id="r_a5aca71ce61e4d0590c214b627c50844a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a5aca71ce61e4d0590c214b627c50844a">sendCommand</a> (String cmd)</td></tr>
-<tr class="memdesc:a5aca71ce61e4d0590c214b627c50844a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an arbitary command to the Command Station.  <br /></td></tr>
+<tr class="memdesc:a5aca71ce61e4d0590c214b627c50844a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an arbitary command to the WiThrottle server.  <br /></td></tr>
 <tr class="separator:a5aca71ce61e4d0590c214b627c50844a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf66736df751a0d283aca631bcd20fad" id="r_aaf66736df751a0d283aca631bcd20fad"><td class="memItemLeft" align="right" valign="top"><a id="aaf66736df751a0d283aca631bcd20fad" name="aaf66736df751a0d283aca631bcd20fad"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentFastTime</b> ()</td></tr>
-<tr class="memdesc:aaf66736df751a0d283aca631bcd20fad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current Fast Time value. <br /></td></tr>
+<tr class="memitem:aaf66736df751a0d283aca631bcd20fad" id="r_aaf66736df751a0d283aca631bcd20fad"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#aaf66736df751a0d283aca631bcd20fad">getCurrentFastTime</a> ()</td></tr>
+<tr class="memdesc:aaf66736df751a0d283aca631bcd20fad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current Fast Time value.  <br /></td></tr>
 <tr class="separator:aaf66736df751a0d283aca631bcd20fad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a300057d03c2c69f1859c67dce33e590d" id="r_a300057d03c2c69f1859c67dce33e590d"><td class="memItemLeft" align="right" valign="top"><a id="a300057d03c2c69f1859c67dce33e590d" name="a300057d03c2c69f1859c67dce33e590d"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getFastTimeRate</b> ()</td></tr>
-<tr class="memdesc:a300057d03c2c69f1859c67dce33e590d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current Fast Time rate. <br /></td></tr>
+<tr class="memitem:a300057d03c2c69f1859c67dce33e590d" id="r_a300057d03c2c69f1859c67dce33e590d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a300057d03c2c69f1859c67dce33e590d">getFastTimeRate</a> ()</td></tr>
+<tr class="memdesc:a300057d03c2c69f1859c67dce33e590d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current Fast Time rate.  <br /></td></tr>
 <tr class="separator:a300057d03c2c69f1859c67dce33e590d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66d44b552feb3e1afc3f5bb0f3be7f98" id="r_a66d44b552feb3e1afc3f5bb0f3be7f98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a66d44b552feb3e1afc3f5bb0f3be7f98">requireHeartbeat</a> (bool needed=true)</td></tr>
 <tr class="memdesc:a66d44b552feb3e1afc3f5bb0f3be7f98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set if the heartbnest is required or not.  <br /></td></tr>
@@ -143,22 +141,20 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>getFastTimeRate</b> 
 <tr class="memitem:a772b2cce619d41e5009c116dd176fe50" id="r_a772b2cce619d41e5009c116dd176fe50"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a772b2cce619d41e5009c116dd176fe50">releaseLocomotive</a> (String address=&quot;*&quot;)</td></tr>
 <tr class="memdesc:a772b2cce619d41e5009c116dd176fe50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release a locomotive on he default traottle [Depricated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a772b2cce619d41e5009c116dd176fe50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1421028b157234446a47e8a92efae6f9" id="r_a1421028b157234446a47e8a92efae6f9"><td class="memItemLeft" align="right" valign="top"><a id="a1421028b157234446a47e8a92efae6f9" name="a1421028b157234446a47e8a92efae6f9"></a>
-String&#160;</td><td class="memItemRight" valign="bottom"><b>getLeadLocomotive</b> ()</td></tr>
-<tr class="memdesc:a1421028b157234446a47e8a92efae6f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the lead (or only) loco on the default throttle [Depricated. Use the multiThrottle version]. <br /></td></tr>
+<tr class="memitem:a1421028b157234446a47e8a92efae6f9" id="r_a1421028b157234446a47e8a92efae6f9"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a1421028b157234446a47e8a92efae6f9">getLeadLocomotive</a> ()</td></tr>
+<tr class="memdesc:a1421028b157234446a47e8a92efae6f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the lead (or only) loco on the default throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a1421028b157234446a47e8a92efae6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4e7d8d0c369fffee45dcb483ba3681a" id="r_af4e7d8d0c369fffee45dcb483ba3681a"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#af4e7d8d0c369fffee45dcb483ba3681a">getLocomotiveAtPosition</a> (int position)</td></tr>
 <tr class="memdesc:af4e7d8d0c369fffee45dcb483ba3681a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the loco at a specific position within the consist/multi-unit on the default throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:af4e7d8d0c369fffee45dcb483ba3681a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f56a69a3949b8d01d260146b7e4afd0" id="r_a0f56a69a3949b8d01d260146b7e4afd0"><td class="memItemLeft" align="right" valign="top"><a id="a0f56a69a3949b8d01d260146b7e4afd0" name="a0f56a69a3949b8d01d260146b7e4afd0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getNumberOfLocomotives</b> ()</td></tr>
-<tr class="memdesc:a0f56a69a3949b8d01d260146b7e4afd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of locos that are currently assigned ot the default Throttle [Depricated. Use the multiThrottle version]. <br /></td></tr>
+<tr class="memitem:a0f56a69a3949b8d01d260146b7e4afd0" id="r_a0f56a69a3949b8d01d260146b7e4afd0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a0f56a69a3949b8d01d260146b7e4afd0">getNumberOfLocomotives</a> ()</td></tr>
+<tr class="memdesc:a0f56a69a3949b8d01d260146b7e4afd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of locos that are currently assigned ot the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a0f56a69a3949b8d01d260146b7e4afd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe0958209952254e8635e0f180c3abe2" id="r_afe0958209952254e8635e0f180c3abe2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#afe0958209952254e8635e0f180c3abe2">addLocomotive</a> (char multiThrottle, String address)</td></tr>
 <tr class="memdesc:afe0958209952254e8635e0f180c3abe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a specfied loco to a specified throttle. Will be added to the end of the consist of one or more locos are currently assigned to that Throttle.  <br /></td></tr>
 <tr class="separator:afe0958209952254e8635e0f180c3abe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a130cf78596a86cc9f4f7987a5608757b" id="r_a130cf78596a86cc9f4f7987a5608757b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a130cf78596a86cc9f4f7987a5608757b">stealLocomotive</a> (char multiThrottle, String address)</td></tr>
-<tr class="memdesc:a130cf78596a86cc9f4f7987a5608757b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steal a specified loco. Only relevant to DigiTrax system.  <br /></td></tr>
+<tr class="memdesc:a130cf78596a86cc9f4f7987a5608757b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steal a specified loco. Only relevant to DigiTrax systems.  <br /></td></tr>
 <tr class="separator:a130cf78596a86cc9f4f7987a5608757b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8f9d75324d18e0efa84f07c013bd858" id="r_ad8f9d75324d18e0efa84f07c013bd858"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#ad8f9d75324d18e0efa84f07c013bd858">releaseLocomotive</a> (char multiThrottle, String address=&quot;*&quot;)</td></tr>
 <tr class="memdesc:ad8f9d75324d18e0efa84f07c013bd858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release one or all locos from a specied throttle.  <br /></td></tr>
@@ -187,20 +183,17 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getNumberOfLocomotives
 <tr class="memitem:a9789210de4390db43c12e6ea37b212d9" id="r_a9789210de4390db43c12e6ea37b212d9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a9789210de4390db43c12e6ea37b212d9">setSpeed</a> (int speed)</td></tr>
 <tr class="memdesc:a9789210de4390db43c12e6ea37b212d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the speed of the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a9789210de4390db43c12e6ea37b212d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a046c15134e76b360559cbf97afa5bba4" id="r_a046c15134e76b360559cbf97afa5bba4"><td class="memItemLeft" align="right" valign="top"><a id="a046c15134e76b360559cbf97afa5bba4" name="a046c15134e76b360559cbf97afa5bba4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getSpeed</b> ()</td></tr>
-<tr class="memdesc:a046c15134e76b360559cbf97afa5bba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the speed of the default Throttle [Depricated. Use the multiThrottle version]. <br /></td></tr>
+<tr class="memitem:a046c15134e76b360559cbf97afa5bba4" id="r_a046c15134e76b360559cbf97afa5bba4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a046c15134e76b360559cbf97afa5bba4">getSpeed</a> ()</td></tr>
+<tr class="memdesc:a046c15134e76b360559cbf97afa5bba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the speed of the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:a046c15134e76b360559cbf97afa5bba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba826a71434014a21d0f463219bef3bd" id="r_aba826a71434014a21d0f463219bef3bd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#aba826a71434014a21d0f463219bef3bd">setDirection</a> (Direction direction)</td></tr>
 <tr class="memdesc:aba826a71434014a21d0f463219bef3bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the direction of the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:aba826a71434014a21d0f463219bef3bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdd0bf93ddd4f0085b0f5b8e1d9af1f1" id="r_abdd0bf93ddd4f0085b0f5b8e1d9af1f1"><td class="memItemLeft" align="right" valign="top"><a id="abdd0bf93ddd4f0085b0f5b8e1d9af1f1" name="abdd0bf93ddd4f0085b0f5b8e1d9af1f1"></a>
-Direction&#160;</td><td class="memItemRight" valign="bottom"><b>getDirection</b> ()</td></tr>
-<tr class="memdesc:abdd0bf93ddd4f0085b0f5b8e1d9af1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the direction of the default Throttle [Depricated. Use the multiThrottle version]. <br /></td></tr>
+<tr class="memitem:abdd0bf93ddd4f0085b0f5b8e1d9af1f1" id="r_abdd0bf93ddd4f0085b0f5b8e1d9af1f1"><td class="memItemLeft" align="right" valign="top">Direction&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#abdd0bf93ddd4f0085b0f5b8e1d9af1f1">getDirection</a> ()</td></tr>
+<tr class="memdesc:abdd0bf93ddd4f0085b0f5b8e1d9af1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the direction of the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:abdd0bf93ddd4f0085b0f5b8e1d9af1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaf0d0fef8e4c82bf9e3a83e2f6295a3" id="r_aeaf0d0fef8e4c82bf9e3a83e2f6295a3"><td class="memItemLeft" align="right" valign="top"><a id="aeaf0d0fef8e4c82bf9e3a83e2f6295a3" name="aeaf0d0fef8e4c82bf9e3a83e2f6295a3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getSpeedSteps</b> ()</td></tr>
-<tr class="memdesc:aeaf0d0fef8e4c82bf9e3a83e2f6295a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the speed step of the default Throttle [Depricated. Use the multiThrottle version]. <br /></td></tr>
+<tr class="memitem:aeaf0d0fef8e4c82bf9e3a83e2f6295a3" id="r_aeaf0d0fef8e4c82bf9e3a83e2f6295a3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#aeaf0d0fef8e4c82bf9e3a83e2f6295a3">getSpeedSteps</a> ()</td></tr>
+<tr class="memdesc:aeaf0d0fef8e4c82bf9e3a83e2f6295a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the speed step of the default Throttle [Depricated. Use the multiThrottle version].  <br /></td></tr>
 <tr class="separator:aeaf0d0fef8e4c82bf9e3a83e2f6295a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac308f6721638dd4cf4c6dbc753a277b5" id="r_ac308f6721638dd4cf4c6dbc753a277b5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#ac308f6721638dd4cf4c6dbc753a277b5">getSpeedSteps</a> (char multiThrottle)</td></tr>
 <tr class="memdesc:ac308f6721638dd4cf4c6dbc753a277b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the speed step of a specified Throttle.  <br /></td></tr>
@@ -273,11 +266,11 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>clockChanged</b></td>
 <tr class="separator:a4fe3c1b2f899dd30c67c9e45f88dacd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d2a2c50fce110c71678bb6d82ca1598" id="r_a5d2a2c50fce110c71678bb6d82ca1598"><td class="memItemLeft" align="right" valign="top"><a id="a5d2a2c50fce110c71678bb6d82ca1598" name="a5d2a2c50fce110c71678bb6d82ca1598"></a>
 String&#160;</td><td class="memItemRight" valign="bottom"><b>currentDeviceName</b></td></tr>
-<tr class="memdesc:a5d2a2c50fce110c71678bb6d82ca1598"><td class="mdescLeft">&#160;</td><td class="mdescRight">TBA. <br /></td></tr>
+<tr class="memdesc:a5d2a2c50fce110c71678bb6d82ca1598"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the client device. <br /></td></tr>
 <tr class="separator:a5d2a2c50fce110c71678bb6d82ca1598"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e26cd670490fbdff5764986a57950a5" id="r_a3e26cd670490fbdff5764986a57950a5"><td class="memItemLeft" align="right" valign="top"><a id="a3e26cd670490fbdff5764986a57950a5" name="a3e26cd670490fbdff5764986a57950a5"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>heartbeatChanged</b></td></tr>
-<tr class="memdesc:a3e26cd670490fbdff5764986a57950a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reacts if the server heatbeat value has changed. <br /></td></tr>
+<tr class="memdesc:a3e26cd670490fbdff5764986a57950a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the server heatbeat value has changed. <br /></td></tr>
 <tr class="separator:a3e26cd670490fbdff5764986a57950a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f20d7c0c1b03b14cb7cd30ee511e341" id="r_a5f20d7c0c1b03b14cb7cd30ee511e341"><td class="memItemLeft" align="right" valign="top"><a id="a5f20d7c0c1b03b14cb7cd30ee511e341" name="a5f20d7c0c1b03b14cb7cd30ee511e341"></a>
 std::vector&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>locomotives</b> [6]</td></tr>
@@ -356,6 +349,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the loco was added </dd></dl>
 
 </div>
 </div>
@@ -382,6 +376,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the loco was added </dd></dl>
 
 </div>
 </div>
@@ -511,8 +506,48 @@ Public</h2>
 
 </div>
 </div>
+<a id="aaf66736df751a0d283aca631bcd20fad" name="aaf66736df751a0d283aca631bcd20fad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf66736df751a0d283aca631bcd20fad">&#9670;&#160;</a></span>getCurrentFastTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double WiThrottleProtocol::getCurrentFastTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current Fast Time value. </p>
+<dl class="section return"><dt>Returns</dt><dd>the current fast time </dd></dl>
+
+</div>
+</div>
+<a id="abdd0bf93ddd4f0085b0f5b8e1d9af1f1" name="abdd0bf93ddd4f0085b0f5b8e1d9af1f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdd0bf93ddd4f0085b0f5b8e1d9af1f1">&#9670;&#160;</a></span>getDirection() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Direction WiThrottleProtocol::getDirection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the direction of the default Throttle [Depricated. Use the multiThrottle version]. </p>
+<dl class="section return"><dt>Returns</dt><dd>Direction. (Forward or Reverse) </dd></dl>
+
+</div>
+</div>
 <a id="a35a305aa26fd05ed730aca9a974829f4" name="a35a305aa26fd05ed730aca9a974829f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35a305aa26fd05ed730aca9a974829f4">&#9670;&#160;</a></span>getDirection() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a35a305aa26fd05ed730aca9a974829f4">&#9670;&#160;</a></span>getDirection() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -534,11 +569,12 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Direction (Forward or Reverse) </dd></dl>
 
 </div>
 </div>
 <a id="a472cc4f4e6da39b792d8a496db2a7a67" name="a472cc4f4e6da39b792d8a496db2a7a67"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a472cc4f4e6da39b792d8a496db2a7a67">&#9670;&#160;</a></span>getDirection() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a472cc4f4e6da39b792d8a496db2a7a67">&#9670;&#160;</a></span>getDirection() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -571,11 +607,52 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Direction (Forward or Reverse) </dd></dl>
+
+</div>
+</div>
+<a id="a300057d03c2c69f1859c67dce33e590d" name="a300057d03c2c69f1859c67dce33e590d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a300057d03c2c69f1859c67dce33e590d">&#9670;&#160;</a></span>getFastTimeRate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float WiThrottleProtocol::getFastTimeRate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current Fast Time rate. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current fast time rate </dd></dl>
+
+</div>
+</div>
+<a id="a1421028b157234446a47e8a92efae6f9" name="a1421028b157234446a47e8a92efae6f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1421028b157234446a47e8a92efae6f9">&#9670;&#160;</a></span>getLeadLocomotive() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String WiThrottleProtocol::getLeadLocomotive </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the lead (or only) loco on the default throttle [Depricated. Use the multiThrottle version]. </p>
+<dl class="section return"><dt>Returns</dt><dd>DCC Address of the loco (String containing the DCC address as number preceeded with "S" or "L") </dd></dl>
 
 </div>
 </div>
 <a id="a1013804e6c2283f0252e5793a2a68e0d" name="a1013804e6c2283f0252e5793a2a68e0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1013804e6c2283f0252e5793a2a68e0d">&#9670;&#160;</a></span>getLeadLocomotive()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1013804e6c2283f0252e5793a2a68e0d">&#9670;&#160;</a></span>getLeadLocomotive() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -597,6 +674,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>DCC Address of the loco (String containing the DCC address as number preceeded with "S" or "L") </dd></dl>
 
 </div>
 </div>
@@ -634,6 +712,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>DCC Address of the loco (String containing the DCC address as number preceeded with "S" or "L") </dd></dl>
 
 </div>
 </div>
@@ -660,6 +739,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>DCC Address of the loco (String containing the DCC address as number preceeded with "S" or "L") </dd></dl>
 
 </div>
 </div>
@@ -689,8 +769,28 @@ Public</h2>
 
 </div>
 </div>
+<a id="a0f56a69a3949b8d01d260146b7e4afd0" name="a0f56a69a3949b8d01d260146b7e4afd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f56a69a3949b8d01d260146b7e4afd0">&#9670;&#160;</a></span>getNumberOfLocomotives() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WiThrottleProtocol::getNumberOfLocomotives </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of locos that are currently assigned ot the default Throttle [Depricated. Use the multiThrottle version]. </p>
+<dl class="section return"><dt>Returns</dt><dd>Number of locos (in consist/Multiple Unit) on the throttle </dd></dl>
+
+</div>
+</div>
 <a id="a3084b9c63b8c31586b12b5dd78494ab7" name="a3084b9c63b8c31586b12b5dd78494ab7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3084b9c63b8c31586b12b5dd78494ab7">&#9670;&#160;</a></span>getNumberOfLocomotives()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3084b9c63b8c31586b12b5dd78494ab7">&#9670;&#160;</a></span>getNumberOfLocomotives() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -712,11 +812,32 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of locos (in consist/Multiple Unit) on the throttle </dd></dl>
+
+</div>
+</div>
+<a id="a046c15134e76b360559cbf97afa5bba4" name="a046c15134e76b360559cbf97afa5bba4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a046c15134e76b360559cbf97afa5bba4">&#9670;&#160;</a></span>getSpeed() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WiThrottleProtocol::getSpeed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the speed of the default Throttle [Depricated. Use the multiThrottle version]. </p>
+<dl class="section return"><dt>Returns</dt><dd>Speed (0-126) </dd></dl>
 
 </div>
 </div>
 <a id="a2bfaf75586a7b9f25a9cbfd9c86167d5" name="a2bfaf75586a7b9f25a9cbfd9c86167d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2bfaf75586a7b9f25a9cbfd9c86167d5">&#9670;&#160;</a></span>getSpeed()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bfaf75586a7b9f25a9cbfd9c86167d5">&#9670;&#160;</a></span>getSpeed() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -738,11 +859,32 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Speed (0-126) </dd></dl>
+
+</div>
+</div>
+<a id="aeaf0d0fef8e4c82bf9e3a83e2f6295a3" name="aeaf0d0fef8e4c82bf9e3a83e2f6295a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaf0d0fef8e4c82bf9e3a83e2f6295a3">&#9670;&#160;</a></span>getSpeedSteps() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WiThrottleProtocol::getSpeedSteps </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the speed step of the default Throttle [Depricated. Use the multiThrottle version]. </p>
+<dl class="section return"><dt>Returns</dt><dd>Speed Step setting (1 = 128step, 2 = 28step, 4 = 27step or 8 = 14step) </dd></dl>
 
 </div>
 </div>
 <a id="ac308f6721638dd4cf4c6dbc753a277b5" name="ac308f6721638dd4cf4c6dbc753a277b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac308f6721638dd4cf4c6dbc753a277b5">&#9670;&#160;</a></span>getSpeedSteps()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac308f6721638dd4cf4c6dbc753a277b5">&#9670;&#160;</a></span>getSpeedSteps() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -764,6 +906,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Speed Step setting (1 = 128step, 2 = 28step, 4 = 27step or 8 = 14step) </dd></dl>
 
 </div>
 </div>
@@ -801,6 +944,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Always true </dd></dl>
 
 </div>
 </div>
@@ -827,6 +971,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Always true </dd></dl>
 
 </div>
 </div>
@@ -872,7 +1017,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Send an arbitary command to the Command Station. </p>
+<p>Send an arbitary command to the WiThrottle server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cmd</td><td>WiThrottle command to send </td></tr>
@@ -898,7 +1043,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Configure the server so that outgoing commands are always preceeded with ann extar CRLF. [Depricated. THe extar CRLF is now always sent]. </p>
+<p>Configure the server so that outgoing commands are always preceeded with an extra CrLf. The extra CrLF is now sent by default. This can be used to disable it. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">needed</td><td>TBA </td></tr>
@@ -953,7 +1098,7 @@ Public</h2>
 <p>Send the ID of the client device to the WiThrottle server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">deviceId</td><td>Device ID - WARNING! Must be unique amoungst all clients connecting to the server. Recommend a large random number stored in a string. </td></tr>
+    <tr><td class="paramname">deviceId</td><td>Device ID - WARNING! Must be unique amoungst all clients connecting to the server. Recommend a large random number on each connection (as a string). </td></tr>
   </table>
   </dd>
 </dl>
@@ -1016,10 +1161,11 @@ Public</h2>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
-    <tr><td class="paramname">direction</td><td>Direction. One of - Reverse = 0, Forward = 1 </td></tr>
+    <tr><td class="paramname">direction</td><td>Direction. (Reverse or Forward) </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if there is a loco on the specified throttle. Otherwise False </dd></dl>
 
 </div>
 </div>
@@ -1059,11 +1205,12 @@ Public</h2>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
-    <tr><td class="paramname">direction</td><td>Direction. One of - Reverse = 0, Forward = 1 </td></tr>
+    <tr><td class="paramname">direction</td><td>Direction. (Reverse or Forward) </td></tr>
     <tr><td class="paramname">forceSend</td><td>Option to force the command to be sent, even if the protocol thinks it is in that Direction </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if there is a loco on the specified throttle. Otherwise False </dd></dl>
 
 </div>
 </div>
@@ -1104,10 +1251,11 @@ Public</h2>
   <table class="params">
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
-    <tr><td class="paramname">direction</td><td>Direction. One of - Reverse = 0, Forward = 1 </td></tr>
+    <tr><td class="paramname">direction</td><td>Direction. (Reverse or Forward) </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if there is a loco on the specified throttle. Otherwise False </dd></dl>
 
 </div>
 </div>
@@ -1159,6 +1307,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if there is a loco on the specified throttle. Otherwise False </dd></dl>
 
 </div>
 </div>
@@ -1181,10 +1330,11 @@ Public</h2>
 <p>Set the direction of the default Throttle [Depricated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">direction</td><td>Direction. One of - Reverse = 0, Forward = 1 </td></tr>
+    <tr><td class="paramname">direction</td><td>Direction. (Reverse or Forward) </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if there is a loco on the specified throttle. Otherwise False </dd></dl>
 
 </div>
 </div>
@@ -1453,6 +1603,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>always True </dd></dl>
 
 </div>
 </div>
@@ -1490,6 +1641,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the requested speed is valid and there is a loco on the specified throttle. Otherwise False </dd></dl>
 
 </div>
 </div>
@@ -1534,6 +1686,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the requested speed is valid and there is a loco on the specified throttle. Otherwise False </dd></dl>
 
 </div>
 </div>
@@ -1556,10 +1709,11 @@ Public</h2>
 <p>Set the speed of the default Throttle [Depricated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">speed</td><td>Speed 0-126 </td></tr>
+    <tr><td class="paramname">speed</td><td>Speed (0-126) </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the requested speed is valid and there is a loco on the specified throttle. Otherwise False </dd></dl>
 
 </div>
 </div>
@@ -1597,6 +1751,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the 'steps' is valid </dd></dl>
 
 </div>
 </div>
@@ -1623,6 +1778,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the 'steps' is valid </dd></dl>
 
 </div>
 </div>
@@ -1686,6 +1842,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>always True </dd></dl>
 
 </div>
 </div>
@@ -1715,7 +1872,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Steal a specified loco. Only relevant to DigiTrax system. </p>
+<p>Steal a specified loco. Only relevant to DigiTrax systems. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
@@ -1723,6 +1880,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>TBA </dd></dl>
 
 </div>
 </div>
@@ -1749,6 +1907,7 @@ Public</h2>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>TBA </dd></dl>
 
 </div>
 </div>
