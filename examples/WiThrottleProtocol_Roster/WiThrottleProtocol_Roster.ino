@@ -75,7 +75,7 @@ void setup() {
   wiThrottleProtocol.connect(&client);
   Serial.println("WiThrottle connected");
   wiThrottleProtocol.setDeviceName("myFirstThrottle");  
-  wiThrottleProtocol.addLocomotive("S3");
+  wiThrottleProtocol.addLocomotive('0', "S3");    // acquire loco 3 on throttle 0
 }
   
 void loop() {
