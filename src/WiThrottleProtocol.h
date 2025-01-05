@@ -491,32 +491,32 @@ class WiThrottleProtocol
     /// @return Number of locos (in consist/Multiple Unit) on the throttle
     int getNumberOfLocomotives(char multiThrottle);
 
-    /// @brief Set a Function on the default (first) Throttle
-    /// @param funcnum Function Number
-    /// @param pressed TBA
+    /// @brief Set a Function on the default (first) Throttle.  Assumes a button is being pressed hence Press or Release. [Deprecated. Use the multiThrottle version]
+    /// @param funcnum Function Number (0-31)
+    /// @param pressed Press or Realase (True = pressed, False = released)
     void setFunction(int funcnum, bool pressed);
 
     // multiThrottle support
 
-    /// @brief Set a Function on the a specified Throttle
+    /// @brief Set a Function on the a specified Throttle. Assumes a button is being pressed hence Press or Release. [Deprecated. Use the multiThrottle version]
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param funcnum Function Number
-    /// @param pressed TBA
+    /// @param funcnum Function Number (0-31)
+    /// @param pressed Press or Realase (True = pressed, False = released)
     void setFunction(char multiThrottle, int funcnum, bool pressed);
 
     /// @brief Set a Function on a specified Loco only, on a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L")
-    /// @param funcnum Function Number
-    /// @param pressed TBA
+    /// @param funcnum Function Number (0-31)
+    /// @param pressed Press or Realase (True = pressed, False = released)
     void setFunction(char multiThrottle, String address, int funcnum, bool pressed);
 
     /// @brief Set a Function on a specified Loco only, on a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L")
-    /// @param funcnum Function Number
-    /// @param pressed TBA
-    /// @param force TBA
+    /// @param funcnum Function Number (0-31)
+    /// @param pressed Press or Realase (True = pressed, False = released)
+    /// @param force Force the activation of the function, overriding what the server wants to do. If true, 'Pressed' effectively becomes 'Activate' or 'Deactivate'. (False = not forced, True = force)
     void setFunction(char multiThrottle, String address, int funcnum, bool pressed, bool force);
 
     /// @brief Set the speed of the default Throttle [Deprecated. Use the multiThrottle version]
