@@ -222,12 +222,12 @@ class WiThrottleProtocolDelegate
     /// @param seconds Number of seconds betwean heartbeats
     virtual void heartbeatConfig(int seconds) { }
 
-    /// @brief Delegate method to received from the Withrottle Server [Depricated. Use the multiThrottle version]
+    /// @brief Delegate method to received from the Withrottle Server [Deprecated. Use the multiThrottle version]
     /// @param func Function number (0-31)
     /// @param state Function State (Boolean True= active/pressed, False = inactive/not pressed)
     virtual void receivedFunctionState(uint8_t func, bool state) { }
     
-    /// @brief Delegate method to received from the Withrottle Server [Depricated. Use the multiThrottle version]
+    /// @brief Delegate method to received from the Withrottle Server [Deprecated. Use the multiThrottle version]
     /// @param functions TBA
     virtual void receivedRosterFunctionList(String functions[MAX_FUNCTIONS]) { }
 
@@ -242,20 +242,20 @@ class WiThrottleProtocolDelegate
     /// @param functions TBA
     virtual void receivedRosterFunctionListMultiThrottle(char multiThrottle, String functions[MAX_FUNCTIONS]) { }
 
-    /// @brief Delegate method to receive the speed for the default (first) throttle from the Withrottle Server [Depricated. Use the multiThrottle version]
+    /// @brief Delegate method to receive the speed for the default (first) throttle from the Withrottle Server [Deprecated. Use the multiThrottle version]
     /// @param speed TBA
     virtual void receivedSpeed(int speed) { }             // Vnnn
     
-    /// @brief Delegate method to receive the direction for the default (first) throttle from the Withrottle Server [Depricated. Use the multiThrottle version]
+    /// @brief Delegate method to receive the direction for the default (first) throttle from the Withrottle Server [Deprecated. Use the multiThrottle version]
     /// @param dir TBA
     virtual void receivedDirection(Direction dir) { }     // R{0,1}
     
-    /// @brief Delegate method to receive the direction for the default (first) throttle for an individual loco from the Withrottle Server [Depricated. Use the multiThrottle version]
+    /// @brief Delegate method to receive the direction for the default (first) throttle for an individual loco from the Withrottle Server [Deprecated. Use the multiThrottle version]
     /// @param dir TBA
     /// @param loco TBA
     virtual void receivedDirection(String address, Direction dir) { }     // R{0,1}
     
-    /// @brief Delegate method to receive the number of speed steps for the default (first) throttle from the Withrottle Server [Depricated. Use the multiThrottle version]
+    /// @brief Delegate method to receive the number of speed steps for the default (first) throttle from the Withrottle Server [Deprecated. Use the multiThrottle version]
     /// @param steps 1=128step, 2=28step, 4=27step or 8=14step
     virtual void receivedSpeedSteps(int steps) { }        // snn
 
@@ -288,17 +288,17 @@ class WiThrottleProtocolDelegate
     /// @param state TBA
     virtual void receivedTrackPower(TrackPower state) { } // PPAn
 
-    /// @brief Delegate method to receive a message that a loco has been added, from the Withrottle Server [Depricated. Use the multiThrottle version]
+    /// @brief Delegate method to receive a message that a loco has been added, from the Withrottle Server [Deprecated. Use the multiThrottle version]
     /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param entry TBA
     virtual void addressAdded(String address, String entry) { }  // MT+addr<;>roster entry
 
-    /// @brief Delegate method to receive a message that the loco has been dropped from the throttle, from the Withrottle Server [Depricated. Use the multiThrottle version]
+    /// @brief Delegate method to receive a message that the loco has been dropped from the throttle, from the Withrottle Server [Deprecated. Use the multiThrottle version]
     /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param command TBA
     virtual void addressRemoved(String address, String command) { } // MT-addr<;>[dr]
 
-    /// @brief Delegate method to receive a message for the need to steal the loco, from the Withrottle Server. Only relevant to DigiTrax systems [Depricated. Use the multiThrottle version]
+    /// @brief Delegate method to receive a message for the need to steal the loco, from the Withrottle Server. Only relevant to DigiTrax systems [Deprecated. Use the multiThrottle version]
     /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param entry TBA
     virtual void addressStealNeeded(String address, String entry) { } // MTSaddr<;>addr
@@ -341,7 +341,7 @@ class WiThrottleProtocolDelegate
 /// ==================
 ///
 
-/// @brief TBA
+/// @brief This library implements the WiThrottle protocol (as used in JMRI and other servers), allowing an device to connect to the server and act as a client (such as a dedicated fast clock device or a hardware based throttle).
 class WiThrottleProtocol
 {
 
@@ -428,31 +428,31 @@ class WiThrottleProtocol
     /// @brief If the server heatbeat value has changed
     bool heartbeatChanged;
 
-    /// @brief Add a loco to the default throttle [Depricated. Use the multiThrottle version]
+    /// @brief Add a loco to the default throttle [Deprecated. Use the multiThrottle version]
     /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @return True if the loco was added
     bool addLocomotive(String address);  // address is [S|L]nnnn (where n is 0-10000)
 
-    /// @brief Steal a loco for the default throttle [Depricated. Use the multiThrottle version]
+    /// @brief Steal a loco for the default throttle [Deprecated. Use the multiThrottle version]
     /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @return TBA
     bool stealLocomotive(String address);   // address is [S|L]nnnn (where n is 0-10000)
 
-    /// @brief Release a locomotive on he default traottle [Depricated. Use the multiThrottle version]
+    /// @brief Release a locomotive on he default throttle [Deprecated. Use the multiThrottle version]
     /// @param address DCC Address of the loco to drop (String containing the DCC address as number preceeded with "S" or "L") or "*" to drop all locos on the throttle
     /// @return Always true
     bool releaseLocomotive(String address = "*");
 
-    /// @brief Get the lead (or only) loco on the default throttle [Depricated. Use the multiThrottle version]
+    /// @brief Get the lead (or only) loco on the default throttle [Deprecated. Use the multiThrottle version]
     /// @return DCC Address of the loco (String containing the DCC address as number preceeded with "S" or "L")
     String getLeadLocomotive();
 
-    /// @brief Get the loco at a specific position within the consist/multi-unit on the default throttle [Depricated. Use the multiThrottle version]
+    /// @brief Get the loco at a specific position within the consist/multi-unit on the default throttle [Deprecated. Use the multiThrottle version]
     /// @param position the postion within the consist/Multi-Unit to retrieve
     /// @return DCC Address of the loco (String containing the DCC address as number preceeded with "S" or "L")
     String getLocomotiveAtPosition(int position);
 
-    /// @brief Get the number of locos that are currently assigned ot the default Throttle [Depricated. Use the multiThrottle version]
+    /// @brief Get the number of locos that are currently assigned ot the default Throttle [Deprecated. Use the multiThrottle version]
     /// @return Number of locos (in consist/Multiple Unit) on the throttle
     int getNumberOfLocomotives();
 
@@ -519,25 +519,25 @@ class WiThrottleProtocol
     /// @param force TBA
     void setFunction(char multiThrottle, String address, int funcnum, bool pressed, bool force);
 
-    /// @brief Set the speed of the default Throttle [Depricated. Use the multiThrottle version]
+    /// @brief Set the speed of the default Throttle [Deprecated. Use the multiThrottle version]
     /// @param speed Speed (0-126)
     /// @return True if the requested speed is valid and there is a loco on the specified throttle. Otherwise False
     bool setSpeed(int speed);
 
-    /// @brief Get the speed of the default Throttle [Depricated. Use the multiThrottle version]
+    /// @brief Get the speed of the default Throttle [Deprecated. Use the multiThrottle version]
     /// @return Speed (0-126)
     int getSpeed();
 
-    /// @brief Set the direction of the default Throttle [Depricated. Use the multiThrottle version]
+    /// @brief Set the direction of the default Throttle [Deprecated. Use the multiThrottle version]
     /// @param direction Direction. (Reverse or Forward)
     /// @return True if there is a loco on the specified throttle. Otherwise False
     bool setDirection(Direction direction);
 
-    /// @brief Get the direction of the default Throttle [Depricated. Use the multiThrottle version]
+    /// @brief Get the direction of the default Throttle [Deprecated. Use the multiThrottle version]
     /// @return Direction. (Forward or Reverse)
     Direction getDirection();
 
-    /// @brief Get the speed step of the default Throttle [Depricated. Use the multiThrottle version]
+    /// @brief Get the speed step of the default Throttle [Deprecated. Use the multiThrottle version]
     /// @return Speed Step setting (1 = 128step, 2 = 28step, 4 = 27step or 8 = 14step)
     int getSpeedSteps();
     
@@ -548,7 +548,7 @@ class WiThrottleProtocol
     /// @return Speed Step setting (1 = 128step, 2 = 28step, 4 = 27step or 8 = 14step)
     int getSpeedSteps(char multiThrottle);
 
-    /// @brief Set the speed step of the default Throttle [Depricated. Use the multiThrottle version]
+    /// @brief Set the speed step of the default Throttle [Deprecated. Use the multiThrottle version]
     /// @param steps 1=128step, 2=28step, 4=27step or 8=14step
     /// @return True if the 'steps' is valid
     bool setSpeedSteps(int steps);
