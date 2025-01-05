@@ -341,7 +341,8 @@ class WiThrottleProtocolDelegate
 /// ==================
 ///
 
-/// @brief This library implements the WiThrottle protocol (as used in JMRI and other servers), allowing an device to connect to the server and act as a client (such as a dedicated fast clock device or a hardware based throttle).
+/// @brief This library implements the WiThrottle protocol
+/// @details (as used in JMRI and other servers), allowing an device to connect to the server and act as a client (such as a dedicated fast clock device or a hardware based throttle).
 class WiThrottleProtocol
 {
 
@@ -353,11 +354,11 @@ class WiThrottleProtocol
   public:
     
     /// @brief Initialise the WiThrottle Protocol
-    /// @param server Server to connect to
+    /// @param server TBA
 	WiThrottleProtocol(bool server = false);
 
     /// @brief Set the Delegate 
-    /// @param delegate TBA
+    /// @param delegate pointer to the delegate
 	void setDelegate(WiThrottleProtocolDelegate *delegate);
 
     // /// @brief TBA
@@ -366,11 +367,11 @@ class WiThrottleProtocol
 	// void setDelegate(WiThrottleProtocolDelegate *delegate, int delayBetweenCommandsSent);
 
     /// @brief Set the log stream
-    /// @param console TBA
+    /// @param console pointer to the serial console
     void setLogStream(Stream *console);
 
     /// @brief Set the console log level
-    /// @param level 0 = off 1 = basic 2 = high
+    /// @param level Log Level (0 = off 1 = basic 2 = high)
     void setLogLevel(int level);
 
     /// @brief Configure the server so that outgoing commands are always preceeded with an extra CrLf. The extra CrLF is now sent by default. This can be used to disable it.
@@ -378,11 +379,11 @@ class WiThrottleProtocol
     void setCommandsNeedLeadingCrLf(bool needed);
 
     /// @brief Connect to the WiThrottle server
-    /// @param stream TBA
+    /// @param stream pointer to the stream
 	void connect(Stream *stream);
 
     /// @brief Connect to the WiThrottle server
-    /// @param stream TBA
+    /// @param stream pointer to the stream
     /// @param delayBetweenCommandsSent Delay Between Commands Sent - Minimum time allowable between outgoing commands
     void connect(Stream *stream, int delayBetweenCommandsSent);
 
@@ -390,14 +391,16 @@ class WiThrottleProtocol
     void disconnect();
 
     /// @brief Send the name of the client device to the WiThrottle server
-    /// @param deviceName TBA
+    /// @param deviceName Abitrary name for the client device
     void setDeviceName(String deviceName);
 
     /// @brief Send the ID of the client device to the WiThrottle server
-    /// @param deviceId Device ID - WARNING! Must be unique amoungst all clients connecting to the server. Recommend a large random number on each connection (as a string).
+    /// @param deviceId Device ID
+    /// @note WARNING! the Device ID must be unique amoungst all clients connecting to the server. Recommend a large random number on each connection (as a string).
     void setDeviceID(String deviceId);
 
     /// @brief check to see if any inbound comms have been received from the WiThrottle server. Should be called repeatedly, and often, in the main loop of the sketch.
+    /// @returns True if there have been updates from the server.
     bool check();
 
     /// @brief Send an arbitary command to the WiThrottle server
@@ -457,6 +460,7 @@ class WiThrottleProtocol
     int getNumberOfLocomotives();
 
     // multiThrottle support
+
     /// @brief Add a specfied loco to a specified throttle. Will be added to the end of the consist of one or more locos are currently assigned to that Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address Address of the loco to add.
@@ -493,7 +497,7 @@ class WiThrottleProtocol
 
     /// @brief Set a Function on the default (first) Throttle.  Assumes a button is being pressed hence Press or Release. [Deprecated. Use the multiThrottle version]
     /// @param funcnum Function Number (0-31)
-    /// @param pressed Press or Realase (True = pressed, False = released)
+    /// @param pressed Press or Release (True = pressed, False = released)
     void setFunction(int funcnum, bool pressed);
 
     // multiThrottle support
@@ -501,21 +505,21 @@ class WiThrottleProtocol
     /// @brief Set a Function on the a specified Throttle. Assumes a button is being pressed hence Press or Release. [Deprecated. Use the multiThrottle version]
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param funcnum Function Number (0-31)
-    /// @param pressed Press or Realase (True = pressed, False = released)
+    /// @param pressed Press or Release (True = pressed, False = released)
     void setFunction(char multiThrottle, int funcnum, bool pressed);
 
     /// @brief Set a Function on a specified Loco only, on a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L")
     /// @param funcnum Function Number (0-31)
-    /// @param pressed Press or Realase (True = pressed, False = released)
+    /// @param pressed Press or Release (True = pressed, False = released)
     void setFunction(char multiThrottle, String address, int funcnum, bool pressed);
 
     /// @brief Set a Function on a specified Loco only, on a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L")
     /// @param funcnum Function Number (0-31)
-    /// @param pressed Press or Realase (True = pressed, False = released)
+    /// @param pressed Press or Release (True = pressed, False = released)
     /// @param force Force the activation of the function, overriding what the server wants to do. If true, 'Pressed' effectively becomes 'Activate' or 'Deactivate'. (False = not forced, True = force)
     void setFunction(char multiThrottle, String address, int funcnum, bool pressed, bool force);
 
