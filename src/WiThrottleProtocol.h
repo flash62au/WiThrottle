@@ -184,7 +184,7 @@ class WiThrottleProtocolDelegate
     /// @brief Delegate method to receive the a single Roster Entry from the Withrottle Server
     /// @param index sequence number
     /// @param name Roster entry name
-    /// @param address DCC Address
+    /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param length S|L Short or Long address
     virtual void receivedRosterEntry(int index, String name, int address, char length) {}
 
@@ -289,35 +289,35 @@ class WiThrottleProtocolDelegate
     virtual void receivedTrackPower(TrackPower state) { } // PPAn
 
     /// @brief Delegate method to receive  from the Withrottle Server
-    /// @param address DCC Address
+    /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param entry TBA
     virtual void addressAdded(String address, String entry) { }  // MT+addr<;>roster entry
 
     /// @brief Delegate method to receive  from the Withrottle Server
-    /// @param address DCC Address
+    /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param command TBA
     virtual void addressRemoved(String address, String command) { } // MT-addr<;>[dr]
 
     /// @brief Delegate method to receive  from the Withrottle Server
-    /// @param address DCC Address
+    /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param entry TBA
     virtual void addressStealNeeded(String address, String entry) { } // MTSaddr<;>addr
 
     /// @brief Delegate method to receive  from the Withrottle Server
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address DCC Address
+    /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param entry TBA
     virtual void addressAddedMultiThrottle(char multiThrottle, String address, String entry) { }  // M0+addr<;>roster entry
 
     /// @brief Delegate method to receive  from the Withrottle Server
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address DCC Address
+    /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param command TBA
     virtual void addressRemovedMultiThrottle(char multiThrottle, String address, String command) { } // M0-addr<;>[dr]
 
     /// @brief Delegate method to receive  from the Withrottle Server
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address DCC Address
+    /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param entry TBA
     virtual void addressStealNeededMultiThrottle(char multiThrottle, String address, String entry) { } // MTSaddr<;>addr
 
@@ -491,14 +491,14 @@ class WiThrottleProtocol
 
     /// @brief Set a Function on a specified Loco only, on a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address DCC Address of the loco to set
+    /// @param address DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L")
     /// @param funcnum Function Number
     /// @param pressed TBA
     void setFunction(char multiThrottle, String address, int funcnum, bool pressed);
 
     /// @brief Set a Function on a specified Loco only, on a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address DCC Address of the loco to set
+    /// @param address DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L")
     /// @param funcnum Function Number
     /// @param pressed TBA
     /// @param force TBA
@@ -565,13 +565,13 @@ class WiThrottleProtocol
 
     /// @brief Set the direction of a specific locomotive on a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address DCC Address of the loco to set
+    /// @param address DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L")
     /// @param direction Direction. One of - Reverse = 0, Forward = 1
     bool setDirection(char multiThrottle, String address, Direction direction);
 
     /// @brief et the direction of a specific locomotive on a specified Throttle, with the option to force the send
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address DCC Address of the loco to set
+    /// @param address DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L")
     /// @param direction Direction. One of - Reverse = 0, Forward = 1
     /// @param ForceSend Option to force the command to be sent, even if the protocol thinks it is in that Direction
     bool setDirection(char multiThrottle, String address, Direction direction, bool ForceSend);
@@ -582,7 +582,7 @@ class WiThrottleProtocol
 
     /// @brief Get the direction of a specific locomotives on a specific throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address DCC Address of the loco to get
+    /// @param address DCC Address of the loco to get (String containing the DCC address as number preceeded with "S" or "L")
     Direction getDirection(char multiThrottle, String address);
 
     /// @brief Emergency Stop all locomotives on a specific throttle
@@ -591,7 +591,7 @@ class WiThrottleProtocol
 
     /// @brief Emergency Stop a specific locomotives on a specific throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param address DCC Address of the loco to stop
+    /// @param address DCC Address of the loco to stop (String containing the DCC address as number preceeded with "S" or "L")
     void emergencyStop(char multiThrottle, String address);
 	
     /// @brief Set the state of a Track Power
