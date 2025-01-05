@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['withrottleprotocol_78',['WiThrottleProtocol',['../classWiThrottleProtocol.html',1,'']]],
-  ['withrottleprotocoldelegate_79',['WiThrottleProtocolDelegate',['../classWiThrottleProtocolDelegate.html',1,'']]]
+  ['withrottleprotocol_0',['WiThrottleProtocol',['../classWiThrottleProtocol.html',1,'']]],
+  ['withrottleprotocoldelegate_1',['WiThrottleProtocolDelegate',['../classWiThrottleProtocolDelegate.html',1,'']]]
 ];

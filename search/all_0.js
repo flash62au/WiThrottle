@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['addlocomotive_0',['addLocomotive',['../classWiThrottleProtocol.html#a06ece5aa6eb2fddf8a9401b903fb13bf',1,'WiThrottleProtocol::addLocomotive(String address)'],['../classWiThrottleProtocol.html#afe0958209952254e8635e0f180c3abe2',1,'WiThrottleProtocol::addLocomotive(char multiThrottle, String address)']]],
+  ['addlocomotive_0',['addlocomotive',['../classWiThrottleProtocol.html#a06ece5aa6eb2fddf8a9401b903fb13bf',1,'WiThrottleProtocol::addLocomotive(String address)'],['../classWiThrottleProtocol.html#afe0958209952254e8635e0f180c3abe2',1,'WiThrottleProtocol::addLocomotive(char multiThrottle, String address)']]],
   ['addressadded_1',['addressAdded',['../classWiThrottleProtocolDelegate.html#afed314e8d487e46615f11ccda76dad89',1,'WiThrottleProtocolDelegate']]],
   ['addressaddedmultithrottle_2',['addressAddedMultiThrottle',['../classWiThrottleProtocolDelegate.html#a401676e1e1385850c675c5440c89744c',1,'WiThrottleProtocolDelegate']]],
   ['addressremoved_3',['addressRemoved',['../classWiThrottleProtocolDelegate.html#a2ab32cb78a9e5f08b1cb28fd50c816b8',1,'WiThrottleProtocolDelegate']]],
