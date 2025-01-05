@@ -78,7 +78,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>This library implements the WiThrottle protocol (as used in JMRI and other servers), allowing an device to connect to the server and act as a client (such as a dedicated fast clock device or a hardware based throttle).  
+<p>This library implements the WiThrottle protocol.  
  <a href="classWiThrottleProtocol.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="WiThrottleProtocol_8h_source.html">WiThrottleProtocol.h</a>&gt;</code></p>
@@ -116,9 +116,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> ()</td
 <tr class="memitem:a118a5175c5e911f715e3a611e43541aa" id="r_a118a5175c5e911f715e3a611e43541aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a118a5175c5e911f715e3a611e43541aa">setDeviceID</a> (String deviceId)</td></tr>
 <tr class="memdesc:a118a5175c5e911f715e3a611e43541aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send the ID of the client device to the WiThrottle server.  <br /></td></tr>
 <tr class="separator:a118a5175c5e911f715e3a611e43541aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64dfaad3f82d2d3b338cce722ab1b06d" id="r_a64dfaad3f82d2d3b338cce722ab1b06d"><td class="memItemLeft" align="right" valign="top"><a id="a64dfaad3f82d2d3b338cce722ab1b06d" name="a64dfaad3f82d2d3b338cce722ab1b06d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>check</b> ()</td></tr>
-<tr class="memdesc:a64dfaad3f82d2d3b338cce722ab1b06d"><td class="mdescLeft">&#160;</td><td class="mdescRight">check to see if any inbound comms have been received from the WiThrottle server. Should be called repeatedly, and often, in the main loop of the sketch. <br /></td></tr>
+<tr class="memitem:a64dfaad3f82d2d3b338cce722ab1b06d" id="r_a64dfaad3f82d2d3b338cce722ab1b06d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a64dfaad3f82d2d3b338cce722ab1b06d">check</a> ()</td></tr>
+<tr class="memdesc:a64dfaad3f82d2d3b338cce722ab1b06d"><td class="mdescLeft">&#160;</td><td class="mdescRight">check to see if any inbound comms have been received from the WiThrottle server. Should be called repeatedly, and often, in the main loop of the sketch.  <br /></td></tr>
 <tr class="separator:a64dfaad3f82d2d3b338cce722ab1b06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5aca71ce61e4d0590c214b627c50844a" id="r_a5aca71ce61e4d0590c214b627c50844a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a5aca71ce61e4d0590c214b627c50844a">sendCommand</a> (String cmd)</td></tr>
 <tr class="memdesc:a5aca71ce61e4d0590c214b627c50844a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an arbitary command to the WiThrottle server.  <br /></td></tr>
@@ -282,9 +281,10 @@ std::vector&lt; Direction &gt;&#160;</td><td class="memItemRight" valign="bottom
 <tr class="separator:a342cf344eddbc6e262ac9edbaf91009b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This library implements the WiThrottle protocol (as used in JMRI and other servers), allowing an device to connect to the server and act as a client (such as a dedicated fast clock device or a hardware based throttle). </p>
+<div class="textblock"><p>This library implements the WiThrottle protocol. </p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 WiThrottleProtocol</h1>
+<p>(as used in JMRI and other servers), allowing an device to connect to the server and act as a client (such as a dedicated fast clock device or a hardware based throttle). </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0e719e849409d41d201cc3fcc3a15796" name="a0e719e849409d41d201cc3fcc3a15796"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0e719e849409d41d201cc3fcc3a15796">&#9670;&#160;</a></span>WiThrottleProtocol()</h2>
@@ -307,7 +307,7 @@ WiThrottleProtocol</h1>
 Public</h2>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">server</td><td>Server to connect to </td></tr>
+    <tr><td class="paramname">server</td><td>TBA </td></tr>
   </table>
   </dd>
 </dl>
@@ -380,6 +380,26 @@ Public</h2>
 
 </div>
 </div>
+<a id="a64dfaad3f82d2d3b338cce722ab1b06d" name="a64dfaad3f82d2d3b338cce722ab1b06d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64dfaad3f82d2d3b338cce722ab1b06d">&#9670;&#160;</a></span>check()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool WiThrottleProtocol::check </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check to see if any inbound comms have been received from the WiThrottle server. Should be called repeatedly, and often, in the main loop of the sketch. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if there have been updates from the server. </dd></dl>
+
+</div>
+</div>
 <a id="ae686ec6f02c4a8fb691fc499d82aab5b" name="ae686ec6f02c4a8fb691fc499d82aab5b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae686ec6f02c4a8fb691fc499d82aab5b">&#9670;&#160;</a></span>connect() <span class="overload">[1/2]</span></h2>
 
@@ -399,7 +419,7 @@ Public</h2>
 <p>Connect to the WiThrottle server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stream</td><td>TBA </td></tr>
+    <tr><td class="paramname">stream</td><td>pointer to the stream </td></tr>
   </table>
   </dd>
 </dl>
@@ -435,7 +455,7 @@ Public</h2>
 <p>Connect to the WiThrottle server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stream</td><td>TBA </td></tr>
+    <tr><td class="paramname">stream</td><td>pointer to the stream </td></tr>
     <tr><td class="paramname">delayBetweenCommandsSent</td><td>Delay Between Commands Sent - Minimum time allowable between outgoing commands </td></tr>
   </table>
   </dd>
@@ -1072,7 +1092,7 @@ Public</h2>
 <p>Set the Delegate. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">delegate</td><td>TBA </td></tr>
+    <tr><td class="paramname">delegate</td><td>pointer to the delegate </td></tr>
   </table>
   </dd>
 </dl>
@@ -1098,10 +1118,11 @@ Public</h2>
 <p>Send the ID of the client device to the WiThrottle server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">deviceId</td><td>Device ID - WARNING! Must be unique amoungst all clients connecting to the server. Recommend a large random number on each connection (as a string). </td></tr>
+    <tr><td class="paramname">deviceId</td><td>Device ID </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>WARNING! the Device ID must be unique amoungst all clients connecting to the server. Recommend a large random number on each connection (as a string). </dd></dl>
 
 </div>
 </div>
@@ -1124,7 +1145,7 @@ Public</h2>
 <p>Send the name of the client device to the WiThrottle server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">deviceName</td><td>TBA </td></tr>
+    <tr><td class="paramname">deviceName</td><td>Abitrary name for the client device </td></tr>
   </table>
   </dd>
 </dl>
@@ -1375,7 +1396,7 @@ Public</h2>
   <table class="params">
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
     <tr><td class="paramname">funcnum</td><td>Function Number (0-31) </td></tr>
-    <tr><td class="paramname">pressed</td><td>Press or Realase (True = pressed, False = released) </td></tr>
+    <tr><td class="paramname">pressed</td><td>Press or Release (True = pressed, False = released) </td></tr>
   </table>
   </dd>
 </dl>
@@ -1426,7 +1447,7 @@ Public</h2>
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
     <tr><td class="paramname">funcnum</td><td>Function Number (0-31) </td></tr>
-    <tr><td class="paramname">pressed</td><td>Press or Realase (True = pressed, False = released) </td></tr>
+    <tr><td class="paramname">pressed</td><td>Press or Release (True = pressed, False = released) </td></tr>
   </table>
   </dd>
 </dl>
@@ -1483,7 +1504,7 @@ Public</h2>
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
     <tr><td class="paramname">funcnum</td><td>Function Number (0-31) </td></tr>
-    <tr><td class="paramname">pressed</td><td>Press or Realase (True = pressed, False = released) </td></tr>
+    <tr><td class="paramname">pressed</td><td>Press or Release (True = pressed, False = released) </td></tr>
     <tr><td class="paramname">force</td><td>Force the activation of the function, overriding what the server wants to do. If true, 'Pressed' effectively becomes 'Activate' or 'Deactivate'. (False = not forced, True = force) </td></tr>
   </table>
   </dd>
@@ -1521,7 +1542,7 @@ Public</h2>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">funcnum</td><td>Function Number (0-31) </td></tr>
-    <tr><td class="paramname">pressed</td><td>Press or Realase (True = pressed, False = released) </td></tr>
+    <tr><td class="paramname">pressed</td><td>Press or Release (True = pressed, False = released) </td></tr>
   </table>
   </dd>
 </dl>
@@ -1547,7 +1568,7 @@ Public</h2>
 <p>Set the console log level. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">level</td><td>0 = off 1 = basic 2 = high </td></tr>
+    <tr><td class="paramname">level</td><td>Log Level (0 = off 1 = basic 2 = high) </td></tr>
   </table>
   </dd>
 </dl>
@@ -1573,7 +1594,7 @@ Public</h2>
 <p>Set the log stream. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">console</td><td>TBA </td></tr>
+    <tr><td class="paramname">console</td><td>pointer to the serial console </td></tr>
   </table>
   </dd>
 </dl>
