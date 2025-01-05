@@ -1062,9 +1062,12 @@ void WiThrottleProtocol::processAddRemove(char multiThrottle, char *c, int len) 
         }
         if (remove) {
             if (entry.equals("d\n") || entry.equals("r\n")) {
-                delegate->addressRemoved(address, entry);
-            }
-            else {
+                if (multiThrottle == DEFAULT_MULTITHROTTLE) {
+                    delegate->addressRemoved(address, entry);
+                } else {
+                    delegate->addressRemovedMultiThrottle(multiThrottle, address, entry);
+                }
+            } else {
                 console->printf("WiT:: malformed address removal: command is %s\n", entry.c_str());
                 console->printf("entry length is %d\n", entry.length());
                 for (int i = 0; i < entry.length(); i++) {
