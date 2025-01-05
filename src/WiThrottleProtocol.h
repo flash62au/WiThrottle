@@ -29,6 +29,9 @@
 /*
 Version information:
 
+1.1.27   - Minor updates to the examples. 
+         - Additional example of using mDNS to browse for WiThrottle servers
+         - Additional example of using multiThrottle methods
 1.1.26   - Update the heartbeat timer when unknown commands are received
 1.1.25   - Simplify the heartbeat send, as this was creating problems for JMRI
 1.1.24   - Add support for forcing a function
