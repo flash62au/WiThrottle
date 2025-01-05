@@ -250,7 +250,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>emergencyStop</b> ()<
 <tr class="memdesc:a9b87c2f87449d2f1c66c28035d54dc6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set (activate) a Route.  <br /></td></tr>
 <tr class="separator:a9b87c2f87449d2f1c66c28035d54dc6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a984f3a12b2f6569b388da5df1a1def7f" id="r_a984f3a12b2f6569b388da5df1a1def7f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocol.html#a984f3a12b2f6569b388da5df1a1def7f">getMultiThrottleIndex</a> (char multiThrottle)</td></tr>
-<tr class="memdesc:a984f3a12b2f6569b388da5df1a1def7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Throttle index number from a char Throttle Id. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.  <br /></td></tr>
+<tr class="memdesc:a984f3a12b2f6569b388da5df1a1def7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Throttle index number from a char Throttle Id. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.)  <br /></td></tr>
 <tr class="separator:a984f3a12b2f6569b388da5df1a1def7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a254f39cf8abf19f6207ecd057e5af9df" id="r_a254f39cf8abf19f6207ecd057e5af9df"><td class="memItemLeft" align="right" valign="top"><a id="a254f39cf8abf19f6207ecd057e5af9df" name="a254f39cf8abf19f6207ecd057e5af9df"></a>
 long&#160;</td><td class="memItemRight" valign="bottom"><b>getLastServerResponseTime</b> ()</td></tr>
@@ -344,7 +344,7 @@ Public</h2>
 <p>Add a specfied loco to a specified throttle. Will be added to the end of the consist of one or more locos are currently assigned to that Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">address</td><td>Address of the loco to add. </td></tr>
   </table>
   </dd>
@@ -482,7 +482,7 @@ Public</h2>
 <p>Emergency Stop all locomotives on a specific throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
   </table>
   </dd>
 </dl>
@@ -518,7 +518,7 @@ Public</h2>
 <p>Emergency Stop a specific locomotives on a specific throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address of the loco to stop (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
   </table>
   </dd>
@@ -585,7 +585,7 @@ Public</h2>
 <p>Get the direction of a specific throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
   </table>
   </dd>
 </dl>
@@ -622,7 +622,7 @@ Public</h2>
 <p>Get the direction of a specific locomotives on a specific throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address of the loco to get (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
   </table>
   </dd>
@@ -690,7 +690,7 @@ Public</h2>
 <p>Get the address of the loco in the lead positon, currently assigned to a specified Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
   </table>
   </dd>
 </dl>
@@ -727,7 +727,7 @@ Public</h2>
 <p>Get the address of the loco at a specified positon, currently assigned to a specified Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">position</td><td>Postion of the loco to retrieve </td></tr>
   </table>
   </dd>
@@ -779,7 +779,7 @@ Public</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Get the Throttle index number from a char Throttle Id. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </p>
+<p>Get the Throttle index number from a char Throttle Id. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
@@ -828,7 +828,7 @@ Public</h2>
 <p>Get the number of locos currently assigned to a specified Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
   </table>
   </dd>
 </dl>
@@ -875,7 +875,7 @@ Public</h2>
 <p>Get the speed of a specified Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
   </table>
   </dd>
 </dl>
@@ -922,7 +922,7 @@ Public</h2>
 <p>Get the speed step of a specified Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
   </table>
   </dd>
 </dl>
@@ -959,7 +959,7 @@ Public</h2>
 <p>Release one or all locos from a specied throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address of the loco to drop (String containing the DCC address as number preceeded with "S" or "L") or "*" to drop all locos on the throttle </td></tr>
   </table>
   </dd>
@@ -1181,7 +1181,7 @@ Public</h2>
 <p>Set the direction of a specified Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">direction</td><td>Direction. (Reverse or Forward) </td></tr>
   </table>
   </dd>
@@ -1225,7 +1225,7 @@ Public</h2>
 <p>Set the direction of a specified Throttle, with the option to force the send. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">direction</td><td>Direction. (Reverse or Forward) </td></tr>
     <tr><td class="paramname">forceSend</td><td>Option to force the command to be sent, even if the protocol thinks it is in that Direction </td></tr>
   </table>
@@ -1270,7 +1270,7 @@ Public</h2>
 <p>Set the direction of a specific locomotive on a specified Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
     <tr><td class="paramname">direction</td><td>Direction. (Reverse or Forward) </td></tr>
   </table>
@@ -1321,9 +1321,9 @@ Public</h2>
 <p>et the direction of a specific locomotive on a specified Throttle, with the option to force the send </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
-    <tr><td class="paramname">direction</td><td>Direction. One of - Reverse = 0, Forward = 1 </td></tr>
+    <tr><td class="paramname">direction</td><td>Direction. (Forward or Reverse) </td></tr>
     <tr><td class="paramname">ForceSend</td><td>Option to force the command to be sent, even if the protocol thinks it is in that Direction </td></tr>
   </table>
   </dd>
@@ -1394,7 +1394,7 @@ Public</h2>
 <p>Set a Function on the a specified Throttle. Assumes a button is being pressed hence Press or Release. [Deprecated. Use the multiThrottle version]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">funcnum</td><td>Function Number (0-31) </td></tr>
     <tr><td class="paramname">pressed</td><td>Press or Release (True = pressed, False = released) </td></tr>
   </table>
@@ -1444,7 +1444,7 @@ Public</h2>
 <p>Set a Function on a specified Loco only, on a specified Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
     <tr><td class="paramname">funcnum</td><td>Function Number (0-31) </td></tr>
     <tr><td class="paramname">pressed</td><td>Press or Release (True = pressed, False = released) </td></tr>
@@ -1501,7 +1501,7 @@ Public</h2>
 <p>Set a Function on a specified Loco only, on a specified Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
     <tr><td class="paramname">funcnum</td><td>Function Number (0-31) </td></tr>
     <tr><td class="paramname">pressed</td><td>Press or Release (True = pressed, False = released) </td></tr>
@@ -1657,7 +1657,7 @@ Public</h2>
 <p>Set the speed of a specified Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">speed</td><td>Speed 0-126 </td></tr>
   </table>
   </dd>
@@ -1701,7 +1701,7 @@ Public</h2>
 <p>Set the speed of a specified Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">speed</td><td>Speed 0-126 </td></tr>
     <tr><td class="paramname">forceSend</td><td>Option to force the command to be sent, even if the protocol thinks it is at that speed </td></tr>
   </table>
@@ -1767,7 +1767,7 @@ Public</h2>
 <p>Set the speed step of a specified Throttle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">steps</td><td>1=128step, 2=28step, 4=27step or 8=14step </td></tr>
   </table>
   </dd>
@@ -1859,7 +1859,7 @@ Public</h2>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">address</td><td>Identifier of the Turnout/Point </td></tr>
-    <tr><td class="paramname">action</td><td>Action to perform on the Turnout/Point. one of - TurnoutClose = 0, TurnoutThrow = 1, TurnoutToggle = 2 </td></tr>
+    <tr><td class="paramname">action</td><td>Action to perform on the Turnout/Point. (TurnoutClose, TurnoutThrow or TurnoutToggle) </td></tr>
   </table>
   </dd>
 </dl>
@@ -1896,7 +1896,7 @@ Public</h2>
 <p>Steal a specified loco. Only relevant to DigiTrax systems. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">address</td><td>Address of the Loco to steal </td></tr>
   </table>
   </dd>

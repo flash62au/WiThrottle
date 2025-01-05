@@ -166,7 +166,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a9ac6e7f39feb44faad40d580007339a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive the web port number from the Withrottle Server.  <br /></td></tr>
 <tr class="separator:a9ac6e7f39feb44faad40d580007339a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc22b6ba83cfb6917a6b568628b598ce" id="r_adc22b6ba83cfb6917a6b568628b598ce"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocolDelegate.html#adc22b6ba83cfb6917a6b568628b598ce">receivedTrackPower</a> (TrackPower state)</td></tr>
-<tr class="memdesc:adc22b6ba83cfb6917a6b568628b598ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive a mssage the the track power hs chnaged, from the Withrottle Server.  <br /></td></tr>
+<tr class="memdesc:adc22b6ba83cfb6917a6b568628b598ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive a message that the track power has changed, from the Withrottle Server.  <br /></td></tr>
 <tr class="separator:adc22b6ba83cfb6917a6b568628b598ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afed314e8d487e46615f11ccda76dad89" id="r_afed314e8d487e46615f11ccda76dad89"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWiThrottleProtocolDelegate.html#afed314e8d487e46615f11ccda76dad89">addressAdded</a> (String address, String entry)</td></tr>
 <tr class="memdesc:afed314e8d487e46615f11ccda76dad89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate method to receive a message that a loco has been added, from the Withrottle Server [Deprecated. Use the multiThrottle version].  <br /></td></tr>
@@ -385,7 +385,7 @@ Public Member Functions</h2></td></tr>
 <p>Delegate method to receive a message that a loco has been dropped from a specific throttle, from the Withrottle Server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
     <tr><td class="paramname">command</td><td>TBA </td></tr>
   </table>
@@ -482,7 +482,7 @@ Public Member Functions</h2></td></tr>
 <p>Delegate method to receive a message for the need to steal the loco for a specific throttle, from the Withrottle Server. Only relevant to DigiTrax systems. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">address</td><td>DCC Address (String containing the DCC address as number preceeded with "S" or "L") </td></tr>
     <tr><td class="paramname">entry</td><td>TBA </td></tr>
   </table>
@@ -743,7 +743,7 @@ Public Member Functions</h2></td></tr>
 <p>Delegate method to receive the direction for a specific throttle from the Withrottle Server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">dir</td><td>Direction (Forward or Reverse) </td></tr>
   </table>
   </dd>
@@ -891,7 +891,7 @@ Public Member Functions</h2></td></tr>
 <p>Delegate method to received from the Withrottle Server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">func</td><td>Function number (0-31) </td></tr>
     <tr><td class="paramname">state</td><td>Function State (Boolean True= active/pressed, False = inactive/not pressed) </td></tr>
   </table>
@@ -1098,7 +1098,7 @@ Public Member Functions</h2></td></tr>
 <p>Delegate method to receive from the Withrottle Server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">functions</td><td>TBA </td></tr>
   </table>
   </dd>
@@ -1383,7 +1383,7 @@ Public Member Functions</h2></td></tr>
 <p>Delegate method to receive the speed for a specific throttle from the Withrottle Server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">speed</td><td>TBA </td></tr>
   </table>
   </dd>
@@ -1462,7 +1462,7 @@ Public Member Functions</h2></td></tr>
 <p>Delegate method to receive the speed steps for a specific throttle from the Withrottle Server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. </td></tr>
+    <tr><td class="paramname">multiThrottle</td><td>Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only. ('T' is include for compatibiilty with the non multiThrottle methods.) </td></tr>
     <tr><td class="paramname">steps</td><td>1=128step, 2=28step, 4=27step or 8=14step </td></tr>
   </table>
   </dd>
@@ -1494,7 +1494,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Delegate method to receive a mssage the the track power hs chnaged, from the Withrottle Server. </p>
+<p>Delegate method to receive a message that the track power has changed, from the Withrottle Server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">state</td><td>TBA </td></tr>
