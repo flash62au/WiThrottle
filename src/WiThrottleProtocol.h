@@ -298,7 +298,7 @@ class WiThrottleProtocolDelegate
     /// @param command TBA
     virtual void addressRemoved(String address, String command) { } // MT-addr<;>[dr]
 
-    /// @brief Delegate method to receive a message for the need to steal the loco, from the Withrottle Server [Depricated. Use the multiThrottle version]
+    /// @brief Delegate method to receive a message for the need to steal the loco, from the Withrottle Server. Only relevant to DigiTrax systems [Depricated. Use the multiThrottle version]
     /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param entry TBA
     virtual void addressStealNeeded(String address, String entry) { } // MTSaddr<;>addr
@@ -315,7 +315,7 @@ class WiThrottleProtocolDelegate
     /// @param command TBA
     virtual void addressRemovedMultiThrottle(char multiThrottle, String address, String command) { } // M0-addr<;>[dr]
 
-    /// @brief Delegate method to receive a message for the need to steal the loco for a specific throttle, from the Withrottle Server
+    /// @brief Delegate method to receive a message for the need to steal the loco for a specific throttle, from the Withrottle Server. Only relevant to DigiTrax systems
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
     /// @param entry TBA
@@ -373,7 +373,7 @@ class WiThrottleProtocol
     /// @param level 0 = off 1 = basic 2 = high
     void setLogLevel(int level);
 
-    /// @brief Configure the server so that outgoing commands are always preceeded with ann extar CRLF. [Depricated. THe extar CRLF is now always sent]
+    /// @brief Configure the server so that outgoing commands are always preceeded with an extra CrLf. The extra CrLF is now sent by default. This can be used to disable it.
     /// @param needed TBA
     void setCommandsNeedLeadingCrLf(bool needed);
 
@@ -394,13 +394,13 @@ class WiThrottleProtocol
     void setDeviceName(String deviceName);
 
     /// @brief Send the ID of the client device to the WiThrottle server
-    /// @param deviceId Device ID - WARNING! Must be unique amoungst all clients connecting to the server. Recommend a large random number stored in a string.
+    /// @param deviceId Device ID - WARNING! Must be unique amoungst all clients connecting to the server. Recommend a large random number on each connection (as a string).
     void setDeviceID(String deviceId);
 
-    /// @brief TBA
+    /// @brief check to see if any inbound comms have been received from the WiThrottle server. Should be called repeatedly, and often, in the main loop of the sketch.
     bool check();
 
-    /// @brief Send an arbitary command to the Command Station
+    /// @brief Send an arbitary command to the WiThrottle server
     /// @param cmd WiThrottle command to send
     void sendCommand(String cmd);
     
@@ -408,73 +408,87 @@ class WiThrottleProtocol
     //int fastTimeMinutes();
 
     /// @brief Get the current Fast Time value
+    /// @return the current fast time
 	double getCurrentFastTime();
 
     /// @brief Get the current Fast Time rate
+    /// @return The current fast time rate
     float getFastTimeRate();
 
     /// @brief TBA
     bool clockChanged;
 
-    /// @brief TBA
+    /// @brief The name of the client device
     String currentDeviceName;
 
     /// @brief Set if the heartbnest is required or not
     /// @param needed true or false
     void requireHeartbeat(bool needed=true);
 
-    /// @brief Reacts if the server heatbeat value has changed
+    /// @brief If the server heatbeat value has changed
     bool heartbeatChanged;
 
     /// @brief Add a loco to the default throttle [Depricated. Use the multiThrottle version]
     /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
+    /// @return True if the loco was added
     bool addLocomotive(String address);  // address is [S|L]nnnn (where n is 0-10000)
 
     /// @brief Steal a loco for the default throttle [Depricated. Use the multiThrottle version]
     /// @param address DCC Address (String containing the DCC address as number preceeded with "S" or "L")
+    /// @return TBA
     bool stealLocomotive(String address);   // address is [S|L]nnnn (where n is 0-10000)
 
     /// @brief Release a locomotive on he default traottle [Depricated. Use the multiThrottle version]
     /// @param address DCC Address of the loco to drop (String containing the DCC address as number preceeded with "S" or "L") or "*" to drop all locos on the throttle
+    /// @return Always true
     bool releaseLocomotive(String address = "*");
 
     /// @brief Get the lead (or only) loco on the default throttle [Depricated. Use the multiThrottle version]
+    /// @return DCC Address of the loco (String containing the DCC address as number preceeded with "S" or "L")
     String getLeadLocomotive();
 
     /// @brief Get the loco at a specific position within the consist/multi-unit on the default throttle [Depricated. Use the multiThrottle version]
     /// @param position the postion within the consist/Multi-Unit to retrieve
+    /// @return DCC Address of the loco (String containing the DCC address as number preceeded with "S" or "L")
     String getLocomotiveAtPosition(int position);
 
     /// @brief Get the number of locos that are currently assigned ot the default Throttle [Depricated. Use the multiThrottle version]
+    /// @return Number of locos (in consist/Multiple Unit) on the throttle
     int getNumberOfLocomotives();
 
     // multiThrottle support
     /// @brief Add a specfied loco to a specified throttle. Will be added to the end of the consist of one or more locos are currently assigned to that Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address Address of the loco to add.
+    /// @return True if the loco was added
     bool addLocomotive(char multiThrottle, String address);  // address is [S|L]nnnn (where n is 0-10000)
 
-    /// @brief Steal a specified loco. Only relevant to DigiTrax system
+    /// @brief Steal a specified loco. Only relevant to DigiTrax systems
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address Address of the Loco to steal
+    /// @return TBA
     bool stealLocomotive(char multiThrottle, String address);   // address is [S|L]nnnn (where n is 0-10000)
 
     /// @brief Release one or all locos from a specied throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address DCC Address of the loco to drop (String containing the DCC address as number preceeded with "S" or "L") or "*" to drop all locos on the throttle
+    /// @return Always true
     bool releaseLocomotive(char multiThrottle, String address = "*");
 
     /// @brief Get the address of the loco in the lead positon, currently assigned to a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @return DCC Address of the loco (String containing the DCC address as number preceeded with "S" or "L")
     String getLeadLocomotive(char multiThrottle);
 
     /// @brief Get the address of the loco at a specified positon, currently assigned to a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param position Postion of the loco to retrieve
+    /// @return DCC Address of the loco (String containing the DCC address as number preceeded with "S" or "L")
     String getLocomotiveAtPosition(char multiThrottle, int position);
 
     /// @brief Get the number of locos currently assigned to a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @return Number of locos (in consist/Multiple Unit) on the throttle
     int getNumberOfLocomotives(char multiThrottle);
 
     /// @brief Set a Function on the default (first) Throttle
@@ -506,69 +520,83 @@ class WiThrottleProtocol
     void setFunction(char multiThrottle, String address, int funcnum, bool pressed, bool force);
 
     /// @brief Set the speed of the default Throttle [Depricated. Use the multiThrottle version]
-    /// @param speed Speed 0-126
+    /// @param speed Speed (0-126)
+    /// @return True if the requested speed is valid and there is a loco on the specified throttle. Otherwise False
     bool setSpeed(int speed);
 
     /// @brief Get the speed of the default Throttle [Depricated. Use the multiThrottle version]
+    /// @return Speed (0-126)
     int getSpeed();
 
     /// @brief Set the direction of the default Throttle [Depricated. Use the multiThrottle version]
-    /// @param direction Direction. One of - Reverse = 0, Forward = 1
+    /// @param direction Direction. (Reverse or Forward)
+    /// @return True if there is a loco on the specified throttle. Otherwise False
     bool setDirection(Direction direction);
 
     /// @brief Get the direction of the default Throttle [Depricated. Use the multiThrottle version]
+    /// @return Direction. (Forward or Reverse)
     Direction getDirection();
 
     /// @brief Get the speed step of the default Throttle [Depricated. Use the multiThrottle version]
+    /// @return Speed Step setting (1 = 128step, 2 = 28step, 4 = 27step or 8 = 14step)
     int getSpeedSteps();
     
     // multiThrottle support
 
     /// @brief Get the speed step of a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @return Speed Step setting (1 = 128step, 2 = 28step, 4 = 27step or 8 = 14step)
     int getSpeedSteps(char multiThrottle);
 
     /// @brief Set the speed step of the default Throttle [Depricated. Use the multiThrottle version]
     /// @param steps 1=128step, 2=28step, 4=27step or 8=14step
+    /// @return True if the 'steps' is valid
     bool setSpeedSteps(int steps);
     
     // multiThrottle support
     /// @brief Set the speed step of a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param steps 1=128step, 2=28step, 4=27step or 8=14step
+    /// @return True if the 'steps' is valid
     bool setSpeedSteps(char multiThrottle, int steps);
 
     // multiThrottle support
     /// @brief Set the speed of a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param speed Speed 0-126
+    /// @return True if the requested speed is valid and there is a loco on the specified throttle. Otherwise False
     bool setSpeed(char multiThrottle, int speed);
 
     /// @brief Set the speed of a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param speed Speed 0-126
     /// @param forceSend Option to force the command to be sent, even if the protocol thinks it is at that speed
+    /// @return True if the requested speed is valid and there is a loco on the specified throttle. Otherwise False
     bool setSpeed(char multiThrottle, int speed, bool forceSend);
 
     /// @brief Get the speed of a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @return Speed (0-126)
     int getSpeed(char multiThrottle);
 
     /// @brief Set the direction of a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param direction Direction. One of - Reverse = 0, Forward = 1
+    /// @param direction Direction. (Reverse or Forward)
+    /// @return True if there is a loco on the specified throttle. Otherwise False
     bool setDirection(char multiThrottle, Direction direction);
 
     /// @brief Set the direction of a specified Throttle, with the option to force the send
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
-    /// @param direction Direction. One of - Reverse = 0, Forward = 1
+    /// @param direction Direction. (Reverse or Forward)
     /// @param forceSend Option to force the command to be sent, even if the protocol thinks it is in that Direction
+    /// @return True if there is a loco on the specified throttle. Otherwise False
     bool setDirection(char multiThrottle, Direction direction, bool forceSend);
 
     /// @brief Set the direction of a specific locomotive on a specified Throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L")
-    /// @param direction Direction. One of - Reverse = 0, Forward = 1
+    /// @param direction Direction. (Reverse or Forward)
+    /// @return True if there is a loco on the specified throttle. Otherwise False
     bool setDirection(char multiThrottle, String address, Direction direction);
 
     /// @brief et the direction of a specific locomotive on a specified Throttle, with the option to force the send
@@ -576,15 +604,18 @@ class WiThrottleProtocol
     /// @param address DCC Address of the loco to set (String containing the DCC address as number preceeded with "S" or "L")
     /// @param direction Direction. One of - Reverse = 0, Forward = 1
     /// @param ForceSend Option to force the command to be sent, even if the protocol thinks it is in that Direction
+    /// @return True if there is a loco on the specified throttle. Otherwise False
     bool setDirection(char multiThrottle, String address, Direction direction, bool ForceSend);
 
     /// @brief Get the direction of a specific throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
+    /// @return Direction (Forward or Reverse)
     Direction getDirection(char multiThrottle);
 
     /// @brief Get the direction of a specific locomotives on a specific throttle
     /// @param multiThrottle Which Throttle. Supported multiThrottle codes are 'T' '0' '1' '2' '3' '4' '5' only.
     /// @param address DCC Address of the loco to get (String containing the DCC address as number preceeded with "S" or "L")
+    /// @return Direction (Forward or Reverse)
     Direction getDirection(char multiThrottle, String address);
 
     /// @brief Emergency Stop all locomotives on a specific throttle
@@ -606,10 +637,12 @@ class WiThrottleProtocol
     /// @brief Set the state of a Turnout/Point 
     /// @param address Identifier of the Turnout/Point
     /// @param action Action to perform on the Turnout/Point. one of - TurnoutClose = 0, TurnoutThrow = 1, TurnoutToggle = 2
+    /// @return always True
     bool setTurnout(String address, TurnoutAction action);   // address is turnout system name e.g. LT92
 
     /// @brief Set (activate) a Route
     /// @param address Identifier of the Route to activate
+    /// @return always True
     bool setRoute(String address);   // address is turnout system name e.g. IO:AUTO:0008
 
     /// @brief Used to record the locos in a consist (on each Throttle)
